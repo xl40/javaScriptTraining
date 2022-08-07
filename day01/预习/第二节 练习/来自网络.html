@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1, 入职薪水10K，每年涨幅入职薪水的5%，50年后工资多少？
+        var asd = 10000, asf = parseInt(asd * Math.pow(1.05, 50));
+        console.log('50年后的工资为' + asf + '元');
+        console.log('************************************************************************');
+        // 2, 为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+        var A = 89;
+        console.log("编程计算共" + (A - A % 24) / 24 + "天" + A % 24 + "小时");
+        console.log('************************************************************************');
+        // 3, 小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。它需要一个程序将华氏温度（80度）转换为摄氏度，并以华氏度和摄氏度为单位分别显示该温度。提示：摄氏度与华氏度的转换公式为：摄氏度 = 5/9.0*(华氏度-32)
+        var B = 80, D = 5 / 9 * (B - 32);
+        console.log("华氏度为" + B + "°F\n摄氏度为" + (Math.round(D)) + "°C");
+        console.log('************************************************************************');
+        // 4, 给定一个三位数，分别把这个数字的百位、十位、个位算出来并显示。
+        var C = parseInt(window.prompt("请输入一个三位数:", 123));
+        console.log("百位为:" + (C - C % 100) / 100 + "\n十位为:" + (C % 100 - C % 100 % 10) / 10 + "\n个位为:" + C % 10);
+        console.log('************************************************************************');
+        //摄氏度与华氏度相互转化
+        var sheShi = 0;
+        var huaShi = 0;
+        sheShi = parseFloat(window.prompt('请输入摄氏温度：', 123.123));
+        huaShi = sheShi * 9 / 5 + 32;
+        document.write('你输入的是摄氏温度：' + sheShi + '°C,转换为华氏温度为：' + (huaShi.toFixed(3)) + '°F');
+        document.write('<br>************************************************************************</br>');
+        var sheShi = 0;
+        var huaShi = 0;
+        huaShi = parseFloat(window.prompt('请输入华氏温度为：', 123));
+        sheShi = 5 / 9.0 * (huaShi - 32);
+        document.write('你输入的是华氏温度：' + huaShi + '°F,转换为摄氏温度为：' + (sheShi.toFixed(3)) + '°C');
+    </script>
+</body>
+</html>
