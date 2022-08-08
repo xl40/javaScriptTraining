@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <!--  1.计算两个文本框的加减乘除
+        要求：1.使用parseInt方法类型转换
+             2.计算结果是用Math.round方法四舍五入  -->
+
+    <label for="firstNum">first num </label><input type="text" name="" id="firstNum">
+    <br>
+    <label for="secondNum"> second num </label><input type="text" name="" id="secondNum">
+
+    <button onclick="addition()">加</button>
+    <button onclick="subtraction()">减</button>
+    <button onclick="multiplication()">乘</button>
+    <button onclick="division()">除</button>
+
+</body>
+
+<script>
+    let firstNum;
+    let secondNum;
+
+    function parse() {
+        if (firstNum === null ){
+            alert("请输入 first number")
+            return;
+        }
+        if (secondNum === null ){
+            alert("请输入 second number")
+        }
+        firstNum = parseInt(document.getElementById("firstNum").value);
+        secondNum = parseInt(document.getElementById("secondNum").value);
+    }
+
+
+    function addition() {
+        parse();
+        write("addition", secondNum + firstNum);
+    }
+
+    function subtraction() {
+        parse();
+        write("subtraction", secondNum - firstNum);
+    }
+
+    function multiplication() {
+        parse();
+        write("multiplication", secondNum * firstNum);
+    }
+
+    function division() {
+        parse();
+        if (secondNum === 0){
+            alert("分母不能为零")
+        }
+        write("division", secondNum / firstNum);
+    }
+
+    function write(str, num){
+        document.write(firstNum + " " + str + " " + secondNum + " result is " + num);
+    }
+
+</script>
+
+
+</html>
