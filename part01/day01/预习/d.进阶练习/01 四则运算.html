@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<!--1. 计算两个文本框的和
+    计算两个文本框的差
+    计算两个文本框的积
+    计算两个文本框的商-->
+
+<main style="width: 200px; height: 200px; margin: 50px auto;">
+    <button onclick="account()"> 点击开始计算 </button>
+    <br>
+    <br>
+    <input type="button" onclick="disp_prompt()" value="显示一个提示框">
+</main>
+
+
+<!--    prompt() 方法用于显示可提示用户进行输入的对话框。   -->
+<script>
+
+    function disp_prompt(){
+        var name = prompt("请输入您的名字","默认值")
+        if (name != null && name !== "") {
+            document.write("Hello, " + name + " ! How was your day")
+        }
+
+    }
+
+    function account(){
+        let firstNum = prompt("请输入第一个数字");
+        let secondNum = prompt("请输入第二个数字");
+
+        firstNum = parseInt(firstNum);
+        secondNum = parseInt(secondNum);
+
+        let operator = prompt("请输入运算符");
+        let result;
+        switch (operator){
+            case "+":
+                result = firstNum + secondNum;
+                break;
+            case "-":
+                result = firstNum - secondNum;
+                break;
+            case "*":
+                result = firstNum * secondNum;
+                break;
+            case "/":
+                result = firstNum / secondNum;
+                break;
+        }
+
+        document.write(result + "<br />")
+
+    }
+</script>
+</html>
