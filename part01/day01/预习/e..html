@@ -60,7 +60,7 @@
         if (secondNum === 0){
             alert("分母不能为零")
         }
-        write("division", secondNum / firstNum);
+        write("division", Math.round(firstNum / secondNum * 1000) / 1000);
     }
 
     function write(str, num){
