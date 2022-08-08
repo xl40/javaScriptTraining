@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#cont{width: 600px;height: 300px;border: solid 10px black;margin: 50px auto;}
+			#box{position: relative;}
+			#box div{width: 600px;height: 300px;display: flex;justify-content: center;align-items: center;position: absolute;left: 0;top: 0;}
+			#box div:nth-child(1){background: hotpink;z-index: 1;}
+			#box div:nth-child(2){background: yellowgreen;}
+			#box div:nth-child(3){background: cornflowerblue;}
+			#box div:nth-child(4){background: forestgreen;}
+		</style>
+		<script src="move.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			onload = function(){
+				var ocont = document.getElementById("cont");
+				var obox = document.getElementById("box");
+				var adiv = obox.getElementsByTagName("div");
+				var oprve = document.getElementById("prve");
+				var onext = document.getElementById("next");
+				var index = 0;
+				onext.onclick = function(){
+					
+					if(index == adiv.length-1){
+						index = 0;
+					}else{
+						index++;
+					}
+					console.log(index);
+					for(var i=0;i<adiv.length;i++){
+						adiv[i].style.zIndex = 0;
+					}
+					
+					adiv[index].style.zIndex = 2;
+					
+					adiv[index].style.opacity = 0;
+					startMove(adiv[index],{"opacity":100})
+					
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div class="cont" id="cont">
+			<div class="box" id="box">
+				<div>1</div>
+				<div>2</div>
+				<div>3</div>
+				<div>4</div>
+			</div>
+		</div>
+		<div id="prve">上一个</div>
+		<div id="next">下一个</div>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!docEventType html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+window.onload=function(){
+
+	var EventUtil={
+		addHandler:function(DOM,EventType,fn){
+			if(DOM.addEventListener){
+				DOM.addEventListener(EventType,fn,false);
+			}else if(DOM.attachEvent){
+				DOM.attachEvent('on'+EventType,fn)
+			}else{
+				DOM['on'+EventType]=fn
+			}
+		},
+		removeHandler:function(DOM,EventType,fn){
+			if(DOM.removeEventListener){
+				DOM.removeEventListener(EventType,fn,false)
+			}else if(DOM.detachEvent){
+				DOM.detachEvent('on'+EventType,fn)
+			}else{
+				DOM['on'+EventType]=null;
+			}
+		}
+	}
+
+	
+	var oDiv=document.getElementById('div');
+	var fnAlert=function(){
+		alert(1)
+	}
+	EventUtil.addHandler(oDiv,'click',fnAlert);
+	EventUtil.removeHandler(oDiv,'click',fnAlert)
+}
+</script>
+</head>
+<body>
+	<div id="div">123</div>
+</body>
+</html>

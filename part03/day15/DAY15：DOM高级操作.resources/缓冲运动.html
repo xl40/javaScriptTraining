@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		
+
+
+	</script>
+	<style>
+		
+	#box{
+		
+		width: 100px;
+		height: 100px;
+		background: #f10;
+		position: absolute;
+		left:1000px;
+		top: 0;
+
+	}
+
+	#btn{
+		position: absolute;
+		top: 200px;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="box">
+		
+		</div>
+	<div style="width:1px; height:300px; position:absolute; left:500px; top:0;background:#000;"></div>
+	
+	<button id="btn">开始运动</button>
+	<script>
+		
+		var oBtn = document.getElementById("btn");
+		var oBox = document.getElementById("box");
+
+		oBtn.onclick = function(){
+
+			move(500);
+
+		}
+
+		var timer = null;
+
+		function move(target){
+			// 1. 关闭开启定时器;
+			clearInterval(timer);
+			timer = setInterval(function(){
+				//2.计算速度;
+				var speed = (target - oBox.offsetLeft) / 10;
+				// if(speed > 0){
+				// 	speed = Math.ceil(speed);
+				// }else{
+				// 	speed = Math.floor(speed);
+				// }
+				// 速度取整判断;
+				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+				//console.log(speed,oBox.offsetLeft);	
+				// 3. 终止运动;
+				if(target == oBox.offsetLeft){
+					clearInterval(timer);
+				}else{
+					oBox.style.left = oBox.offsetLeft + speed + "px";
+				}
+			}, 30);
+
+		}
+
+
+
+	</script>
+</body>
+</html>
