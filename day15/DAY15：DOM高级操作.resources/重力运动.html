@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			.box{width: 1000px;height: 400px;margin: 50px auto;position:relative}
+			#ball{width: 50px;height: 50px;background: red;border-radius: 50%;position: absolute;left: 0px;top: 0;}
+			.line{width: 1000px;height: 1px;background: black;position: absolute;top: 300px;left: 0px;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div id="ball"></div>
+			<div class="line"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var oball = document.getElementById("ball");
+		var speed = 5;		//步长
+		var g = 1;			//重力
+		var index = 0;		//计时器的计数器
+		var timer = null;	//计时器
+		var maxTop = 300 - oball.offsetHeight;
+		
+		timer = setInterval(function(){
+			index++;
+			if(index%5 == 0){
+				speed += g;
+			}
+			if(maxTop-oball.offsetTop<speed){
+//				clearInterval(timer);
+				speed = -Math.round(speed*0.7);
+				oball.style.top = maxTop + "px";
+				if(Math.abs(speed) <= 1){
+					clearInterval(timer);
+				}
+				console.log(speed);
+			}else{
+				oball.style.top = oball.offsetTop + speed + "px"
+			}
+		},30)
+		
+//		判断最后剩下的距离<步长的时候
+//		停!
+//		手动到终点
+		//打车
+	</script>
+</html>

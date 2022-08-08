@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+		var map;
+		var snake;
+		var food;
+		onload = function(){
+			map = new Map();
+			map.display();
+			food = new Food();
+			food.display()
+			snake = new Snake();
+			snake.display();
+			snake.move();
+			
+			document.onkeydown = function(e){
+				var e = e || event;
+				snake.setDirect(e.keyCode);
+			}
+		}
+		function Map(){
+			this.width = 800;
+			this.height = 400;
+			this.color = "#ccc";
+			this.pos = "0 auto";
+			this.m = null;
+			
+			this.display = function(){
+				this.m = document.createElement("div");
+				this.m.style.width = this.width + "px";
+				this.m.style.height = this.height + "px";
+				this.m.style.margin = this.pos;
+				this.m.style.position = "relative";
+				this.m.style.background = this.color;
+				document.body.appendChild(this.m);
+			}
+		}
+		function Food(){
+			this.width = 20;
+			this.height = 20;
+			this.color = "red";
+			this.x = 0;
+			this.y = 0;
+			this.f = null;
+			
+			this.display = function(){
+				if(this.f == null){
+					this.f = document.createElement("div");
+					this.f.style.width = this.width + "px";
+					this.f.style.height = this.height + "px";
+					this.f.style.background = this.color;
+					this.f.style.position = "absolute";
+					map.m.appendChild(this.f);
+				}
+				
+				this.x = Math.round(Math.random()*39);
+				this.y = Math.round(Math.random()*19);
+				
+				this.f.style.left = this.x*this.width + "px"; 
+				this.f.style.top = this.y*this.height + "px";
+			}
+		}
+		function Snake(){
+			this.width = 20;
+			this.height = 20;
+			this.color = "yellow";
+			this.body = [[5,3,null],[4,3,null],[3,3,null]];
+			this.direct = "right";
+			this.display = function(){
+				for(var i=0;i<this.body.length;i++){
+					if(this.body[i][2] == null){
+						this.body[i][2] = document.createElement("div");
+					}
+					this.body[i][2].style.width = this.width + "px";
+					this.body[i][2].style.height = this.height + "px";
+					this.body[i][2].style.position = "absolute";
+					this.body[i][2].style.background = this.color;
+					this.body[i][2].style.left = this.body[i][0]*this.width + "px";
+					this.body[i][2].style.top = this.body[i][1]*this.height + "px";
+					map.m.appendChild(this.body[i][2]);
+				}
+			}
+			this.move = function(){
+				for(var i=this.body.length-1;i>0;i--){
+					this.body[i][0] = this.body[i-1][0];
+					this.body[i][1] = this.body[i-1][1];
+				}
+				switch(this.direct){
+					case "left":this.body[0][0] -= 1;break
+					case "right":this.body[0][0] += 1;break
+					case "top":this.body[0][1] -= 1;break
+					case "bottom":this.body[0][1] += 1;break
+				}
+				if(this.body[0][0] < 0){
+					alert("撞墙了");
+					return;
+				}
+				if(this.body[0][0] > 39){
+					alert("撞墙了");
+					return;
+				}
+				if(this.body[0][1] < 0){
+					alert("撞墙了");
+					return;
+				}
+				if(this.body[0][1] > 19){
+					alert("撞墙了");
+					return;
+				}
+				
+				if(this.body[0][0] == food.x && this.body[0][1] == food.y){
+					var le = this.body.length;
+					var x = this.body[le-1][0];
+					var y = this.body[le-1][1];
+					this.body.push([x,y,null]);
+					food.display();
+				}
+				
+				for(var i=this.body.length-1;i>0;i--){
+					if(this.body[0][0] == this.body[i][0] && this.body[0][1] == this.body[i][1]){
+						alert("吃到自己了");
+						return;
+					}
+				}
+				
+				this.display();
+				setTimeout(function(){
+					snake.move();
+				},100)
+				
+			}
+			this.setDirect = function(value){
+				switch(value){
+					case 37:this.direct = "left";break;
+					case 38:this.direct = "top";break;
+					case 39:this.direct = "right";break;
+					case 40:this.direct = "bottom";break;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+</body>
+</html>

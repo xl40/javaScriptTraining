@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+#div1{
+	width: 60px;
+	height: 100px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	background: #b7b7b7;
+}
+body{
+	height: 3000px;
+}
+input{
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+	</style>
+	<script>
+	window.onscroll=function(){
+
+		var oDiv=document.getElementById('div1');
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+
+		//alert(document.documentElement.clientHeight)
+		//oDiv.style.top=document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop+'px';
+
+		move(Math.round((document.documentElement.clientHeight-oDiv.offsetHeight)/2+scrollTop))
+
+
+	}
+	var timer=null;
+	function move(target){
+		var oDiv=document.getElementById('div1');
+		clearInterval(timer);
+		timer=setInterval(function(){
+			var speed=(target-oDiv.offsetTop)/10;
+
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+
+			if(oDiv.offsetTop==target){
+
+				clearInterval(timer)
+
+			}else{
+				document.title=target;
+				document.getElementById('txt1').value=oDiv.offsetTop
+				oDiv.style.top=oDiv.offsetTop+speed+'px';
+			}
+		},30)
+		
+	}
+
+	</script>
+</head>
+<body>
+	<div id='div1'></div>
+	<input type="text" id='txt1'>
+</body>
+</html>

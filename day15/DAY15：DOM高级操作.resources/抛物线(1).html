@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			.box{width: 1000px;height: 400px;margin: 50px auto;position:relative}
+			#ball{width: 50px;height: 50px;background: red;border-radius: 50%;position: absolute;left: 0px;top: 0;}
+			.line{width: 1000px;height: 1px;background: black;position: absolute;top: 300px;left: 0px;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div id="ball"></div>
+			<div class="line"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var oball = document.getElementById("ball");
+		var speed = 5;		//Y轴步长
+		var g = 1;			//Y轴的重力
+		var index = 0;		//计时器的计数器
+		var timer = null;	//计时器
+		var maxTop = 300 - oball.offsetHeight;		//Y轴的最大值
+		var left = 20;								//x轴的步长
+		var maxLeft = 1000 - oball.offsetWidth;		//X轴的最大值
+		
+		timer = setInterval(function(){
+			//计时器的计数器
+			index++;
+			//每五次增加重力
+			if(index%5 == 0){
+				speed += g;
+			}
+			//判断最后一步的距离，不足一步了，打车差点到终点的时候，下车结束行程
+			if(maxTop-oball.offsetTop < speed){
+				//让小球在Y轴回弹，同时每次回弹损耗0.3
+				speed = -Math.round(speed*0.7);
+				//强制到终点
+				oball.style.top = maxTop + "px";
+				//当速度不足1，清除没用的计时器
+				if(Math.abs(speed) <= 1){
+					clearInterval(timer);
+				}
+			}else{
+				//正常设置运动元素的位置
+				oball.style.left = oball.offsetLeft + left + "px";
+				oball.style.top = oball.offsetTop + speed + "px";
+			}
+			//让小球在X轴的右边回弹
+			if(maxLeft - oball.offsetLeft < left){
+				left = -left;
+			}
+			//让小球在X轴的左边回弹
+			if(oball.offsetLeft < 0){
+				left = -left;
+			}
+		},30)
+		
+//		判断最后剩下的距离<步长的时候
+//		停!
+//		手动到终点
+		//打车
+	</script>
+</html>

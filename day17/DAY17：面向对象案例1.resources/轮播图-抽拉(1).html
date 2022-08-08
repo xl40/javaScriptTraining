@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#cont{width: 600px;height: 300px;border: solid 10px black;margin: 50px auto;}
+			#box{position: relative;}
+			#box div{width: 600px;height: 300px;display: flex;justify-content: center;align-items: center;position: absolute;left: 0;top: 0;}
+			#box div:nth-child(1){background: hotpink;z-index: 1;}
+			#box div:nth-child(2){background: yellowgreen;}
+			#box div:nth-child(3){background: cornflowerblue;}
+			#box div:nth-child(4){background: forestgreen;}
+		</style>
+		<script src="move.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			onload = function(){
+				var ocont = document.getElementById("cont");
+				var obox = document.getElementById("box");
+				var oprev = document.getElementById("prev");
+				var onext = document.getElementById("next");
+				var adiv = obox.getElementsByTagName("div");
+				var index = 0;
+				var zindex = 2;
+				onext.onclick = function(){
+					if(index == adiv.length-1){
+						index = 0;
+					}else{
+						index++;
+					}
+					
+					adiv[index].style.zIndex = zindex++;
+					
+					adiv[index].style.left=-600+"px";
+					startMove(adiv[index],{"left":0})
+					
+					
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div class="cont" id="cont">
+			<div class="box" id="box">
+				<div class="active">1</div>
+				<div>2</div>
+				<div>3</div>
+				<div>4</div>
+			</div>
+		</div>
+		<div id="prev">上一张</div>
+		<div id="next">下一张</div>
+	</body>
+</html>

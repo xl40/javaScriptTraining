@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#box{width: 100px;height: 100px;background: red;position: absolute;top: 50px;}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="btn" value="走你" />
+			<div id="box"></div>
+	</body>
+	<script type="text/javascript">
+//		动
+//		运动:以一定的频率,加上一定的速度,重复执行
+//		帧,一秒24帧,连续的动画
+//		图
+//		一秒30帧,一秒播放连贯30张图片	
+//		性能,画面的质量,取中
+//		一秒执行30帧
+//		1000/30==33.3333333
+//		30毫秒执行一帧,保证了动画的流畅
+		
+//		每隔30毫秒,执行一"帧",(帧:改变)
+//		每一针帧的,步长,取最折中的值
+//		30毫秒改变位置一次,一次位置向右10px
+
+//		终止运动:条件
+		
+		var obox = document.getElementById("box");
+		var obtn = document.getElementById("btn");
+		var speed = 5;
+		var timer = null;
+		
+		obtn.onclick = function(){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				if(obox.offsetLeft >= 1800){
+					clearInterval(timer);
+				}else{
+					obox.style.left = obox.offsetLeft + speed + "px";
+				}
+			},30)
+		}
+		
+//		匀速运动+边界设定
+	</script>
+</html>

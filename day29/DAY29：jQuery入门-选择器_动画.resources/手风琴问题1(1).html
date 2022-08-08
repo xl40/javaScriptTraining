@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    ul{
+        height: 200px;
+        border: 1px solid green;
+        margin: 0 auto;
+    }
+    ul li{
+        width: 80px;
+        height: 198px;
+        border: 1px solid #b5b5b5;
+        position: relative;
+        overflow: hidden;
+        background: green;
+        float: left;
+    }
+    ul li div{
+        position: absolute;
+        width: 240px;
+        height:200px;        
+        background: red;
+        left: 80px;
+    }
+    
+
+        </style>
+        <script src="http://libs.baidu.com/jquery/1.11.3/jquery.js"></script>
+        <script>
+        $(function(){
+
+            $('li').mouseover(function(){
+                $(this).animate({
+                    'width':'310px'
+                }).siblings().animate({
+                    'width':'80px'
+                })
+            })
+
+        })
+
+        </script>
+    </head>
+    <body>
+<ul>
+    <li>
+            
+    <div></div>
+    </li>
+    <li>
+            
+    <div></div>
+    </li>
+    <li>
+            
+    <div></div>
+    </li>
+    <li>
+            
+    <div></div>
+    </li>
+    <li>
+            
+    <div></div>
+    </li>
+    <li>
+            
+    <div></div>
+    </li>
+    <li>
+            
+    <div></div>
+    </li>
+</ul>
+    </body>
+</html>
