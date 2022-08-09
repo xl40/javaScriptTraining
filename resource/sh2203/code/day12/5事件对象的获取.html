@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 100px;height: 100px;background: red;}
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    var obox = document.querySelector(".box");
+
+    obox.onclick = function(eve){
+        // 事件处理函数的第一个形参
+        // 形参：函数定义时
+        // console.log(eve);
+        // 在事件处理函数内部，通过window.event获取
+        // console.log(window.event);
+
+
+        var e = eve || window.event;
+        console.log(e);
+
+    }
+
+
+</script>
+</html>

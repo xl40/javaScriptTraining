@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 默认绑定：
+    // 没有明确隶属对象的函数
+    // function fn(){
+    //     console.log(this);
+    // }
+    // fn();       // window
+    // // 不是全局函数
+    // function box(a){
+    //     a();        // window
+    // }
+    // box( function(){
+    //     console.log(this);
+    // } )
+
+
+    // 隐式绑定
+    function fn(){
+        console.log(this);
+    }
+    var obj = {
+        name:"obj"
+    };
+    obj.show = fn;
+    obj.show();     // obj
+    document.onclick = obj.show; // 点击页面时，为document
+
+    // 隐式丢失
+    function box(a){
+        console.log(1);
+        a();        // window
+        console.log(2);
+    }
+    box( obj.show );
+    var b = obj.show;
+    b();
+
+
+
+
+
+</script>
+</html>

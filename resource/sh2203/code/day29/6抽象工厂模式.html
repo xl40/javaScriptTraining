@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    // 造车厂
+    class Cart{
+        constructor( color, brand, type, x, y ){
+            this.color = color;
+            this.brand = brand;
+            this.type = type;
+            this.x = x
+            this.y = y
+        }
+        move(){
+            this.x += 10;
+            this.y += 10;
+        }
+    }
+
+    // 抽象工厂
+    // 单独开一条生产线，只生产白色大众
+    function whiteBig(type,x,y){
+        return new Cart("白色", "大众", type, x, y);
+    }
+    function blackBig(type,x,y){
+        return new Cart("黑色", "大众", type, x, y);
+    }
+    function blackBie(type,x,y){
+        return new Cart("黑色", "别克", type, x, y);
+    }
+    function RedBYD(type,x,y){
+        return new Cart("红色", "比亚迪", type, x, y);
+    }
+
+    const c1 = whiteBig("SUV", 0, 0);
+    const c2 = blackBig("SUV", 0, 0);
+    const c3 = blackBie("SUV", 0, 0);
+    const c4 = RedBYD("SUV", 0, 0);
+
+    
+
+</script>
+</html>

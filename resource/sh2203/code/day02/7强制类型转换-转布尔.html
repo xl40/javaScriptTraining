@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    console.log( Boolean( "hello" ) );
+    console.log( Boolean( "true" ) );
+    console.log( Boolean( "false" ) );
+    console.log( Boolean( " " ) );
+    console.log( Boolean( "" ) );
+    // 非空字符为true
+    
+    console.log( Boolean( 25 ) );
+    console.log( Boolean( -25 ) );
+    console.log( Boolean( 3.1415 ) );
+    console.log( Boolean( -3.1415 ) );
+    console.log( Boolean( 0 ) );
+    // 非0为true
+
+    console.log( Boolean( {} ) );
+    console.log( Boolean( {name:"admin"} ) );
+
+    console.log( Boolean( [] ) );
+    console.log( Boolean( [0] ) );
+    console.log( Boolean( [false] ) );
+    console.log( Boolean( [""] ) );
+    console.log( Boolean( ["hello",123] ) );
+
+    console.log( Boolean( function(){} ) );
+    // 对象，数组，函数都是true
+
+    console.log( Boolean( undefined ) );
+    console.log( Boolean( null ) );
+    console.log( Boolean( NaN ) );
+    // undefined，null，NaN都是false
+    
+
+
+
+
+</script>
+</html>

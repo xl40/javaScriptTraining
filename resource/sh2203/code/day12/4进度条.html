@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 400px;height:200px;border: solid 1px black;margin: 50px auto;position: relative;}
+        .box p{height:30px;position: absolute;left: 0;top:85px;width: 0px;margin: 0;background: blue;color: #fff;line-height: 30px;text-align: center;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p><span></span></p>
+    </div>
+</body>
+<script>
+    var op = document.querySelector(".box p");
+    var ospan = document.querySelector(".box span");
+    // 终点值
+    var target = 400;
+    // 步长
+    var speed = 3;
+    // 准备保存计时器
+    var t = null;
+
+    document.onclick = function(){
+        // 判断是否开启过计时器，如果没有，就开启，如果已经存在计时器，不开启
+        if(t === null){
+            t = setInterval(function(){
+                // 先判断剩下的距离是否够一步
+                if(target - op.offsetWidth < speed){
+                    // 不够，停止计时器
+                    clearInterval(t);
+                    // 然后强行将宽度设置为终点值
+                    op.style.width = target + "px";
+                    ospan.innerText = "100%";
+                }else{
+                    // 够，继续增加宽度
+                    op.style.width = op.offsetWidth + speed + "px";
+                    ospan.innerText = parseInt(op.offsetWidth / target * 100) + "%";
+                }
+            }, 30);
+        }
+    }
+
+
+    // document.onclick = function(){
+    //     clearInterval(t);
+    //     t = setInterval(function(){
+    //         if(target - op.offsetWidth < speed){
+    //             clearInterval(t);
+    //             op.style.width = target + "px";
+    //         }else{
+    //             op.style.width = op.offsetWidth + speed + "px";
+    //         }
+    //     }, 30);
+    // }
+
+
+    // 所有案例，所有的效果，都至少有两个逻辑组成
+    //     程序逻辑：代码如何实现，代码思路
+    //     业务逻辑：交互逻辑，是否符合用户操作行为
+</script>
+</html>

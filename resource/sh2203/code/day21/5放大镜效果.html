@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .m_box{position: absolute;width: 350px;height: 350px;left:50px;top:50px;}
+        .m_box img{width: 350px;height: 350px;}
+        .m_box span{position: absolute;left:0;top:0;background: rgba(255,100,100,0.5);display: none;}
+        .m_box em{position: absolute;left: 0;top:0;right:0;bottom: 0;z-index: 1;}
+        .l_box{position: absolute;width: 350px;height: 350px;left: 450px;top: 50px;overflow: hidden;display: none;}
+        .l_box img{width: 1050px;height: 1050px;position: absolute;left:0;top:0;}
+    </style>
+</head>
+<body>
+    <div class="m_box">
+        <img src="./imgs/m0.jpg" alt="">
+        <span></span>
+        <em></em>
+    </div>
+    <div class="l_box">
+        <img src="./imgs/l0.jpg" alt="">
+    </div>
+</body>
+<script>
+    // OOA：等比例移动
+    // 1. 选择元素
+    // 2. 绑定事件
+        // 进入
+            // 3. 显示右侧框，显示遮罩层
+                // 给遮罩层补全尺寸
+        // 离开
+            // 4. 隐藏右侧框，隐藏遮罩层
+        // 移动
+            // 5. 遮罩层跟随鼠标移动
+                // 先获取某些坐标和位置，进行计算
+                // 对计算之后的位置进行边界限定
+                // 将位置设置给遮罩层
+            // 6. 右侧图跟随移动（鼠标相反方向）
+                // 先根据所测遮罩层移动的距离计算出移动比例
+                // 根据移动比例，计算右侧大图应该移动的距离
+                // 设置到大图
+
+    // OOD
+    // class BigImgMove{
+    //     constructor(){
+    //         // 选择元素
+    //         // 绑定事件
+    //         this.addEvent()
+    //     }
+    //     addEvent(){
+    //         // 进入执行显示功能
+    //             this.show()
+    //         // 离开执行隐藏功能
+    //             this.hide()
+    //         // 移动执行移动功能
+    //             this.move()
+    //     }
+    //     hide(){
+    //         // 实现隐藏功能
+    //     }
+    //     show(){
+    //         // 实现显示功能
+    //         // 计算并设置遮罩层的尺寸
+    //     }
+    //     move(){
+    //         // 遮罩层跟随鼠标移动
+    //             // 先获取某些坐标和位置，进行计算
+    //             // 对计算之后的位置进行边界限定
+    //             // 将位置设置给遮罩层
+    //         // 右侧图跟随移动（鼠标相反方向）
+    //             // 先根据所测遮罩层移动的距离计算出移动比例
+    //             // 根据移动比例，计算右侧大图应该移动的距离
+    //             // 设置到大图
+    //     }
+    // }
+    // new BigImgMove()
+
+    // OOP
+    class BigImgMove{
+        constructor(){
+            // 选择元素
+            this.mBox = document.querySelector(".m_box")
+            this.mSpan = document.querySelector(".m_box span");
+            this.lBox = document.querySelector(".l_box")
+            this.lImg = document.querySelector(".l_box img")
+
+            // 绑定事件
+            this.addEvent();
+        }
+        addEvent(){
+            const that = this;
+            this.mBox.addEventListener("mouseover", function(){
+                // 进入执行显示功能
+                that.show()
+            })
+            this.mBox.addEventListener("mouseout", function(){
+                // 离开执行隐藏功能
+                that.hide()
+            })
+            this.mBox.addEventListener("mousemove", function(eve){
+                const e = eve || window.event;
+                // 移动执行移动功能
+                that.move(e);
+            })
+        }
+        hide(){
+            // 实现隐藏功能
+            this.lBox.style.display = "none";
+            this.mSpan.style.display = "none";
+        }
+        show(){
+            // 实现显示功能
+            this.lBox.style.display = "block";
+            this.mSpan.style.display = "block";
+            // 计算并设置遮罩层的尺寸
+
+            // 千锋杯编程打大赛，前端班总人数80，派出8个人参加比赛
+            // java班总人数60人，要求java班派出同样比例的人员参赛
+            // 前端班出人数的比例：8 / 80
+            // java班应该出多少人：比例 * java班总人数
+
+            // 比例：右侧显示区域的尺寸 / 右侧总尺寸
+            // 遮罩层的尺寸：比例 * 左侧总尺寸
+            this.mSpan.style.width = this.lBox.offsetWidth / this.lImg.offsetWidth * this.mBox.offsetWidth + "px";
+            this.mSpan.style.height = this.lBox.offsetHeight / this.lImg.offsetHeight * this.mBox.offsetHeight + "px";
+        }
+        move(e){
+            // 遮罩层跟随鼠标移动
+            // 先获取某些坐标和位置，进行计算
+            let l = e.offsetX - this.mSpan.offsetWidth/2;
+            let t = e.offsetY - this.mSpan.offsetHeight/2;
+            // 对计算之后的位置进行边界限定
+            if(l < 0) l=0;
+            if(t < 0) t=0;
+            if(l > this.mBox.offsetWidth - this.mSpan.offsetWidth){
+                l = this.mBox.offsetWidth - this.mSpan.offsetWidth
+            }
+            if(t > this.mBox.offsetHeight - this.mSpan.offsetHeight){
+                t = this.mBox.offsetHeight - this.mSpan.offsetHeight
+            }
+            // 将位置设置给遮罩层
+            this.mSpan.style.left = l + "px";
+            this.mSpan.style.top = t + "px";
+            // 右侧图跟随移动（鼠标相反方向）
+            // 先根据所测遮罩层移动的距离计算出移动比例
+            // 比例：移动的距离 / 能移动的总值
+            const x = l / (this.mBox.offsetWidth - this.mSpan.offsetWidth);
+            const y = t / (this.mBox.offsetHeight - this.mSpan.offsetHeight);
+            // 根据移动比例，计算右侧大图应该移动的距离，设置到大图
+            // 应该移动的距离：比例 * 可移动的总值
+            this.lImg.style.left = -x * (this.lImg.offsetWidth - this.lBox.offsetWidth) + "px"
+            this.lImg.style.top = -y * (this.lImg.offsetHeight - this.lBox.offsetHeight) + "px"
+        }
+    }
+    new BigImgMove();
+</script>
+</html>

@@ -1,0 +1,5 @@
+.box{width: 1000px;border: solid 1px black;display: flex;flex-wrap: wrap;}
+.box .item{width: 250px;border: solid 1px black;box-sizing: border-box;text-align: center;}
+.box .item img{width: 80%;}
+.box .item p{margin: 10px 0;}
+.box .item p:nth-child(3){height: 40px;line-height: 20px;overflow: hidden;}

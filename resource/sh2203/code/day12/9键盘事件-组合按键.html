@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    document.onkeydown = function(eve){
+        var e = eve || window.event;
+        var code = e.keyCode || e.which;
+
+        // 回车：13
+        // ctrl：17
+
+        // 功能键的判断方式：布尔值
+        // console.log(e.ctrlKey);
+        // console.log(e.shiftKey);
+        // console.log(e.altKey);
+        // console.log(e.metaKey);
+        // ctrlKey：windows的ctrl，Mac的control
+        // shiftKey：shift
+        // altKey：windows的alt，Mac的option
+        // metaKey：windows的win键，Mac的command
+
+        // 用来做组合键
+        if(code === 65 && e.ctrlKey && e.shiftKey && e.altKey){
+            console.log("ctrl+shift+alt+a");
+        }
+
+    }
+</script>
+</html>

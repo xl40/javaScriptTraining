@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    这是准备被复制的文字
+</body>
+<script>
+    // 阻止鼠标按下
+    document.onmousedown = function(eve){
+        eve.preventDefault();
+    }
+    // 阻止右键事件
+    document.oncontextmenu = function(eve){
+        eve.preventDefault();
+    }
+    document.onkeydown = function(eve){
+        // 针对windows：阻止ctrl+a
+        if(eve.keyCode === 65 && eve.ctrlKey){
+            eve.preventDefault();
+        }
+        // 针对Mac：阻止command+a
+        if(eve.keyCode === 65 && eve.metaKey){
+            eve.preventDefault();
+        }
+        // 阻止F12
+        if(eve.keyCode === 123){
+            eve.preventDefault();
+        }
+    }
+</script>
+</html>

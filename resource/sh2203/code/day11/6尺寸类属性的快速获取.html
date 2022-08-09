@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width:100px;height:100px;background: red;padding: 20px;border: solid 30px black;margin: 40px;overflow: auto}
+    </style>
+</head>
+<body>
+    <h1>123123</h1>
+    <div class="box">6尺寸类属性的快速获取6尺寸类属性的快速获取6尺寸类属性的快速获取6尺寸类属性的快速获取6尺寸类属性的快速获取6尺寸类属性的快速获取6尺寸类属性的快速获取6尺寸类属性的快速获取6尺寸类属性的快速获取6尺寸类属性的快速获取6尺寸类属性的快速获取6尺寸类属性的快速获取6</div>
+</body>
+<script>
+
+    var obox = document.querySelector(".box");
+
+    console.log(obox);
+
+    console.log(obox.clientHeight);  // cont+padding
+    
+    console.log(obox.offsetHeight);  // cont+padding+border
+    
+    console.log(obox.scrollHeight);  // cont+padding+可滚动的区域
+
+    console.log(obox.offsetTop);    // 相对于包含块偏移的位置
+    
+    document.onclick = function(){
+        // 滚走了的距离，即可获取，又可设置
+        // console.log(obox.scrollTop);
+        obox.scrollTop = 366;
+    }
+
+</script>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 200px;height: 30px;margin: 50px auto;}
+        .box .display{display: block;border: solid 1px black;line-height: 30px;}
+        .box .list{margin: 0;padding:0;list-style: none;border: solid 1px black;border-top:none;line-height: 30px;text-indent: 4px;background: #fafafa;display: none;}
+        .box .list li span{float: right;margin-right: 10px;}
+        .box .list li em{font-style: normal;}
+
+        .box .list li.hover{background: blue;color: #fff;}
+    </style>
+</head>
+<body>
+    <select name="" id="">
+        <option value="">1</option>
+        <option value="">2</option>
+        <option value="">3</option>
+        <option value="">4</option>
+        <option value="">5</option>
+        <option value="">6</option>
+        <option value="">7</option>
+    </select>
+    <div class="box">
+        <span class="display">北京</span>
+        <ul class="list">
+            <li><em>北京</em></li>
+            <li><em>上海</em></li>
+            <li><em>广州</em></li>
+            <li><em>深圳</em></li>
+            <li><em>杭州</em></li>
+            <li><em>南京</em></li>
+            <li><em>成都</em></li>
+        </ul>
+    </div>
+</body>
+<script>
+    var od = document.querySelector(".display");
+    var olist = document.querySelector(".list");
+    var ali = olist.children;
+
+    // 1. 提前准备变量，用来记录下拉菜单的显示状态：true为显示，false为隐藏
+    var isShow = false;
+
+    var index = 5;
+    od.innerText = ali[index].children[0].innerText
+    var s = document.createElement("span");
+    s.innerText = "√";
+    ali[index].appendChild(s);
+
+    od.onclick = function(eve){
+        var e = eve || window.event;
+        e.stopPropagation();
+        olist.style.display = "block";
+        isShow = true;
+        // 19. 初始打开下拉菜单，保证键盘的索引为初始值
+        if(keyIndex !== undefined){
+            ali[keyIndex].className = "";
+            keyIndex = undefined;
+        }
+    }
+
+    document.onclick = function(){
+        olist.style.display = "none";
+        isShow = false;
+    }
+
+    for(var i=0;i<ali.length;i++){
+        ali[i].xuhao = i;
+        ali[i].onclick = function(){
+            od.innerText = this.children[0].innerText;
+            ali[index].children[1].remove();
+            var s = document.createElement("span");
+            s.innerText = "√";
+            this.appendChild(s);
+            index = this.xuhao;
+        }
+        ali[i].onmouseover = function(){
+            // 16. 鼠标进入某个选项后，如果之前操作过键盘，要清除键盘的keyIndex对应的选项的高亮
+            if(keyIndex !== undefined){
+                ali[keyIndex].className = "";
+            }
+            
+            this.className = "hover";
+            // 15. 为了【如果鼠标放置在其中一个选项，按上或下以鼠标当前悬停的这个选项作为起始项，向上或向下】，所以，在鼠标进入某个选项后，将当前选项的索引设置给键盘的keyIndex
+            keyIndex = this.xuhao;
+        }
+        ali[i].onmouseout = function(){
+            this.className = "";
+            // 17. 鼠标离开某个选项时，如果之前操作过键盘，要清除键盘的keyIndex对应的选项的高亮
+            if(keyIndex !== undefined){
+                ali[keyIndex].className = "";
+                // 18. 鼠标离开导致选项的高亮被清除之后，应该将键盘的keyIndex设置为初始值undefined，因为此时已经没有选项被选中了，键盘应该重新开始
+                keyIndex = undefined;
+            }
+        }
+    }
+
+    // 点击显示区域，打开下拉菜单
+    // - 上：初始按上，先到最后一个，然后再依次向上，直到第一个停止
+    // - 下：初始按下，先到第一个，然后再依次向下，直到最后一个停止
+    // - 回车：将当前高亮的选项设置为选中的内容
+
+    // - 如果鼠标放置在其中一个选项，按上或下以鼠标当前悬停的这个选项作为起始项，向上或向下
+    // - 如果鼠标放置在其中一个选项，会改变键盘当前选中的选项，下次按键盘再以键盘的规则改变
+    // - 只要没有选项被选中，直接按下键盘方向键，都以最初始的规则进行
+
+    var keyIndex;
+
+    document.onkeydown = function(eve){
+        // 2. 绑定键盘事件，立即判断下拉菜单是否显示，未显示，不执行事件功能
+        if( !isShow ) return;
+        var e = eve || window.event;
+        var code = e.keyCode || e.which;
+        // 3. 显示下拉菜单，正常执行事件功能
+        // 上
+        if(code === 38){
+            // 4. 根据keyIndex的值，判断是否是第一次按下
+            if(keyIndex === undefined){
+                // 5. 第一次按下，将keyIndex设置为最后一个选项的索引
+                keyIndex = ali.length-1;
+            }else if(keyIndex === 0){
+                // 6. 如果keyIndex为第一个选项的索引，停止
+                keyIndex = 0;
+            }else{
+                // 7. 如果keyIndex非初始，非第一个，那就一直减少
+                keyIndex--;
+                // 9. 同时，取消之前选项的样式
+                ali[keyIndex+1].className = "";
+            }
+            // 8. 给当前keyIndex对应的选项添加样式
+            ali[keyIndex].className = "hover";
+        }
+        // 下
+        if(code === 40){
+            if(keyIndex === undefined){
+                keyIndex = 0;
+            }else if(keyIndex === ali.length-1){
+                keyIndex = ali.length-1;
+            }else{
+                keyIndex++;
+                ali[keyIndex-1].className = "";
+            }
+            ali[keyIndex].className = "hover";
+        }
+        // 回车
+        if(code === 13){
+            // 10. 将当前keyIndex对应的选项的内容设置到显示区域
+            od.innerText = ali[keyIndex].children[0].innerText;
+            // 11. 删除上一个选中的选项内的对号（因为上一个选中的选项的索引可能为鼠标确定，所以此处沿用鼠标的index）
+            ali[index].children[1].remove();
+            // 12. 创建一个新的对号元素
+            var s = document.createElement("span");
+            s.innerText = "√";
+            // 13. 将对号元素放置在本次选中的选项内
+            ali[keyIndex].appendChild(s);
+            // 14. 将本次选中的选项的序号设置给下次要删除对号的选项的索引
+            index = ali[keyIndex].xuhao;
+
+            // 20. 隐藏下拉菜单
+            olist.style.display = "none";
+            isShow = false;
+        }
+    }
+
+
+</script>
+</html>

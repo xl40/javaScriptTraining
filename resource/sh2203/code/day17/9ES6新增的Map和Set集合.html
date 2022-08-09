@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // Map
+    // const m = new Map();
+
+    // m.set("name","admin");
+    // m.set("name","root");
+    // m.set("age",18);
+    // m.set("sex","男");
+
+    // console.log(m);
+    // console.log(m.size);
+
+    // console.log(m.length);
+    // console.log(m.name);
+    // console.log(m.age);
+    // console.log(m.sex);
+    // console.log(m[0]);
+    // console.log(m[1]);
+    // console.log(m[2]);
+
+    // console.log(m.get("name"));
+    // console.log(m.get("age"));
+    // console.log(m.get("sex"));
+
+    // for(let i in m){
+    //     console.log(i);
+    // }
+    // for-in遍历的是对象的键
+
+    // for-of遍历的是值
+    // for(let i of m){
+    //     console.log(i);
+    // }
+    // console.log(m.keys());
+    // for(let i of m.keys()){
+    //     console.log(i);
+    // }
+    // console.log(m.values());
+    // for(let i of m.values()){
+    //     console.log(i);
+    // }
+
+
+    // ==============
+
+    // Set
+    // const s = new Set();
+    // s.add("hello");
+    // s.add(5);
+    // s.add(4);
+    // s.add("hello");
+    // s.add("hello");
+
+    // console.log(s);
+    // console.log(s[0]);
+    // console.log(s.size);
+
+    // for(let i of s){
+    //     console.log(i);
+    // }
+    // console.log(s.keys());
+    // console.log(s.values());
+
+
+    // const arr = [12,3,6,4,32,12,6,4,21];
+    // const s = new Set(arr);
+    // console.log(...s);
+
+
+    // 极简的数组去重
+    const arr = [12,3,6,4,32,12,6,4,21];
+
+    const a = noRepeat(arr);
+
+    console.log(arr);
+    console.log(a);
+
+    function noRepeat(myarr){
+        return [...new Set(myarr)];
+    }
+
+
+
+</script>
+</html>

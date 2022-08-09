@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // - 创建日期对象时
+    //     - new Date(...)
+
+    // 参数
+        // 字符
+            // 一个参数
+            // 没有设置的部分，清0
+            // 超出某个部分的上限，Invalid Date
+            // 月份的范围：1~12
+    // var d = new Date("2020.5.12 8:8:8");
+    // var d = new Date("2020.5.12");
+    // var d = new Date("2020-5-12");
+    // var d = new Date("2020/5/12");
+    // var d = new Date("2020,5,12");
+    // var d = new Date("2020.5.34");
+    // console.log(d)
+    
+        // 数值
+            // 多个参数
+            // 没有设置的部分，清0
+            // 超出某个部分的上限，向前一位进1
+            // 月份的范围：0~11
+    // var d = new Date(2020, 5, 21);
+    // var d = new Date(2020, 5, 21, 8, 10, 6);
+    // var d = new Date(2020, 5, 35, 8, 10, 6);
+    // console.log(d)
+
+
+    // - 创建日期对象后：日期对象的set系列
+    //     - var d = new Date()
+    //     - d.setxxxx()
+    // setxxx系列方法的参数：
+        // 数值
+        // 没有设置的部分，按照当前日期为准
+        // 月份的范围：0~11
+        // 超出某个部分的上限，向前一位进1
+        // 不能设置星期几！
+
+    // var d = new Date();
+
+    // d.setFullYear(2021);
+    // d.setMonth(5);
+    // d.setDate(40);
+
+    // d.setHours(8);
+    // d.setMinutes(9);
+    // d.setSeconds(10);
+    // d.setMilliseconds(666);
+
+    // console.log(d);
+    // console.log(d.getMilliseconds());
+
+    // 创建后，设置时间戳
+    // var d = new Date();
+    // d.setTime(1000000000000);
+    // 设置，从1970.1.1 0:0:0过去了多少毫秒
+    // console.log(d);
+
+</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="button" value="开始" id="btn">
+</body>
+<script>
+    // const s1 = Symbol();
+    // const s2 = Symbol();
+
+    // console.log(typeof s1);
+    // console.log(s1);
+    // console.log(s2);
+
+    // console.log(s2 === s1);
+
+
+    // ==========
+
+
+    const btn = document.getElementById("btn");
+
+    const type = {
+        start:Symbol(0),
+        stop:Symbol(0)
+    }
+
+    let a = type.start;
+
+    btn.onclick = function(){
+        if(a === type.start){
+            this.value = "暂停";
+            a = type.stop;
+        }else{
+            this.value = "开始";
+            a = type.start;
+        }
+    }
+
+
+    // ==========
+
+    
+    // 对象的键不允许重复
+    // const obj = {
+    //     name:"admin",
+    //     name:"root"
+    // }
+    // console.log(obj);
+    // const n1 = Symbol("name");
+    // const n2 = Symbol("name");
+    // const obj2 = {
+    //     [n1]:"admin",
+    //     [n2]:"root"
+    // }
+    // console.log(obj2);
+    // console.log(obj2[n1]);
+    // console.log(obj2[n2]);
+
+</script>
+</html>

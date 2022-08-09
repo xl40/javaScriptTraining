@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        hello
+    </div>
+    <input type="checkbox" id="check" checked>
+</body>
+<script>
+    var obox = document.querySelector(".box");
+    var ocheck = document.getElementById("check");
+    console.log(obox);
+
+    // html属性 - 内置
+    obox.id = "cont";
+    console.log(obox.id);
+
+    // html属性 - 自定义
+    obox.setAttribute("abc", "这是自定义的html属性abc")
+    obox.setAttribute("qwe", "html属性qwe")
+    obox.setAttribute("zxc", "html属性zxc")
+
+    obox.setAttribute("qwe", "hahaha")
+
+    obox.removeAttribute("abc")
+
+    console.log(obox.getAttribute("qwe"))
+    console.log(obox.getAttribute("abc"))
+    console.log(obox.getAttribute("zxc"))
+
+
+    // js属性 - 内置
+    obox.className = "world abc qwe asd zxc";
+    console.log(obox.className);
+    console.log(obox.classList);
+
+    console.log(obox.tagName);
+
+    ocheck.checked = true;
+    ocheck.onchange = function(){
+        console.log(ocheck.checked)
+    }
+
+
+    // js属性 - 自定义
+    obox.abc = "hello";
+
+
+
+    console.log(obox.abc);
+
+</script>
+</html>

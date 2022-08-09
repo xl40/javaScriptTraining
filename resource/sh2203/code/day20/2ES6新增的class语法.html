@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    function Fn(n){
+        // 构造函数部分，用来加工属性或执行方法
+        this.name = n;
+        this.show();        // admin
+    }
+    // 原型部分，用来定义方法
+    Fn.prototype.show = function(){
+        console.log(this.name);
+    }
+    // console.dir(Fn);
+    // const f1 = new Fn("admin");
+    // console.log(f1);
+    // f1.show();      // admin
+
+    console.log("======");
+    // ES6的所有语法自动处于严格模式
+    // class声明的变量，不存在提升，不能重复声明，不会绑定到window，块级作用域
+
+    // 语法极简
+
+    class Fun{
+        // 对应原来的构造函数部分，用来加工属性或执行方法
+        constructor(n){
+            this.name = n;
+            this.show();        // root
+        }
+        // 以下都是对应原来的原型部分，用来定义方法
+        show(){
+            console.log(this.name);
+        }
+    }
+    // console.dir(Fun);
+    // const f2 = new Fun("root");
+    // console.log(f2);
+    // f2.show();      // root
+</script>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="text" id="search" autocomplete="off">
+    <ul class="list">
+    </ul>
+</body>
+<script>
+    class TaobaoSearch{
+        constructor(){
+            // 1. 选择元素，准备url
+            this.search = document.getElementById("search");
+            this.list = document.querySelector(".list");
+            this.url = "https://suggest.taobao.com/sug";
+            // 2. 绑定事件
+            this.addEvent()
+        }
+        addEvent(){
+            const that = this;
+            this.search.oninput = function(){
+                that.key = this.value;
+                // 3. 开启jsonp请求
+                that.jsonp();
+            }
+        }
+        jsonp(){
+            const that = this;
+            // 在局部作用域如何定义全局函数
+            window.liyang = function(res){
+                // 4. 请求成功，解析数据
+                that.msg = res.result;
+                // 5. 生成下拉菜单
+                that.createList()
+            }
+            // 添加一个script标签
+            const s = document.createElement("script");
+            // url拼接数据
+            this.url = this.url + "?" + this.objTquery();
+            // 设置src属性为请求url
+            s.src = this.url;
+            // script标签添加到页面
+            document.body.appendChild(s);
+        }
+        objTquery(){
+            // 将对象数据解析成query数据的工具
+            const data = {
+                k: 1,
+                area: "c2c",
+                q: this.key,
+                code: "utf-8",
+                ts: 1652512732893,
+                callback: "liyang"
+            }
+            let str = ""
+            for(let i in data){
+                str += `${i}=${data[i]}&`;
+            }
+            return str.slice(0,-1);
+        }
+        createList(){
+            // 生成下拉菜单
+            // console.log(this.msg);
+            let str = "";
+            this.msg.forEach(val=>{
+                // console.log(val[0])
+                str += `<li>${val[0]}</li>`
+            })
+            this.list.innerHTML = str;
+        }
+    }
+    new TaobaoSearch();
+
+</script>
+</html>

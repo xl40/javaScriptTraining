@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    ajaxGet("/a").then(res1=>{
+        return ajaxGet("/b");
+    }).catch(code1=>{
+        return ajaxGet("/c");
+    })
+
+    // 可能会产生的执行情况
+    // 1: a成功->b失败->c
+    // 2: a成功->b成功
+    // 3: a失败->c
+
+    function ajaxGet(url){
+        return new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                const msg = `这是来自${url}的成功`;
+                // 请求成功
+                resolve(msg);
+            }, Math.random()*10);
+
+            setTimeout(() => {
+                const msg = `这是来自${url}的失败`;
+                // 请求失败
+                reject(msg);
+            }, Math.random()*10);
+        })
+    }
+
+</script>
+</html>

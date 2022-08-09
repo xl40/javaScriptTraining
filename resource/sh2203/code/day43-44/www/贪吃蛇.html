@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .map{width: 800px;height: 400px;background: #efefef;position: relative;}
+        /* .food{width:20px;height:20px;position: absolute;background: red;left:0;top:0;} */
+    </style>
+</head>
+<body>
+    <div class="map">
+    </div>
+</body>
+<script>
+    // 计划将地图划分成n多个20 * 20的格子
+    // 因为地图尺寸为800 * 400
+    // 所以网格的数量为：40 * 20
+    // 在程序中涉及到的位置计算为网格的计算，并不是真正的像素
+    // 设置给实际的元素时，需要将网格转换成像素：格子数 * 20，得到具体的像素位置
+
+    const food = {
+        map: document.querySelector(".map"),
+        x: 6,
+        y: 3,
+        create(){
+            this.ele = document.createElement("div");
+            this.ele.style.cssText = `width:20px;height:20px;background:${randomColor()};position:absolute;left:${this.x * 20}px;top:${this.y * 20}px;`;
+            this.map.appendChild(this.ele);
+            food.randomPos();
+        },
+        randomPos(){
+            this.x = random(0, 39);
+            this.y = random(0, 19);
+            this.ele.style.left = this.x * 20 + "px";
+            this.ele.style.top = this.y * 20 + "px";
+        }
+    }
+
+    const snake = {
+        map: document.querySelector(".map"),
+        body: [{x:5,y:4,ele:null},{x:4,y:4,ele:null},{x:3,y:4,ele:null}],
+        direct: "right",
+        create(){
+            for(let i=0;i<this.body.length;i++){
+                if(!this.body[i].ele){
+                    this.body[i].ele = document.createElement("div");
+                    this.map.appendChild(this.body[i].ele);
+                }
+                this.body[i].ele.style.cssText = `width:20px;height:20px;background:#ccc;position:absolute;left:${this.body[i].x * 20}px;top:${this.body[i].y * 20}px;`
+            }
+            this.body[0].ele.style.background = "yellow";
+
+            setTimeout(() => {
+                this.move();
+            }, 100);
+        },
+        move(){
+
+            for(let i=this.body.length-1; i>0; i--){
+                this.body[i].x = this.body[i-1].x;
+                this.body[i].y = this.body[i-1].y;
+            }
+
+            switch(this.direct){
+                case "left":
+                    this.body[0].x--;break;
+                case "right":
+                    this.body[0].x++;break;
+                case "top":
+                    this.body[0].y--;break;
+                case "bottom":
+                    this.body[0].y++;break;
+            }
+
+
+            if(this.body[0].x < 0 || this.body[0].y < 0 || this.body[0].x > 39 || this.body[0].y > 19){
+                alert("撞墙死");
+                return;
+            }
+
+            for(let i=1;i<this.body.length;i++){
+                if(this.body[i].x === this.body[0].x && this.body[i].y === this.body[0].y){
+                    alert("撞自己死");
+                    return;
+                }
+            }
+
+            this.eat();
+            
+            this.create();
+        },
+        eat(){
+            console.log(food.x);
+            console.log(food.y);
+            if(this.body[0].x === food.x && this.body[0].y === food.y){
+                this.body.push({
+                    x: this.body[this.body.length-1].x,
+                    y: this.body[this.body.length-1].y,
+                    ele: null
+                })
+                food.randomPos();
+            }
+        },
+        setDirect(code){
+            this.code = code;
+            switch(this.code){
+                case 37:
+                    this.direct !== "right" && (this.direct = "left");
+                    break;
+                case 38:
+                    this.direct !== "bottom" && (this.direct = "top");
+                    break;
+                case 39:
+                    this.direct !== "left" && (this.direct = "right");
+                    break;
+                case 40:
+                    this.direct !== "top" && (this.direct = "bottom");
+                    break;
+            }
+        }
+    }
+
+    food.create();
+    snake.create();
+
+    document.onkeydown = function(eve){
+        snake.setDirect(eve.keyCode)
+    }
+
+
+    // 初始创建每个蛇节（create），延迟移动（move），吃食物（往蛇节中添加一个新对象）（eat），根据新蛇节重新创建元素和位置（create），延迟移动（move），吃食物（eat），创建（create），......
+    
+
+    function random(max,min){
+        return Math.round(Math.random()*(max-min)+min)
+    }
+    function randomColor(max,min){
+        return `rgb(${random(100,155)},${random(100,155)},${random(0,255)})`
+    }
+
+</script>
+</html>

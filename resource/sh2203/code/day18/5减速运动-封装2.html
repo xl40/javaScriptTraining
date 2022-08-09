@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .cont1{width: 100px;height: 600px;border:solid 1px black;position: relative;float:left;margin: 0 10px;}
+        .cont2{width: 100px;height: 600px;border:solid 1px black;position: relative;float:left;margin: 0 10px;}
+        .box1{width: 50px;height:50px;background: red;position: absolute;left:25px;top:0;border-radius: 50%;}
+        .box2{width: 50px;height:50px;background: green;position: absolute;left:25px;top:550px;border-radius: 50%;}
+    </style>
+</head>
+<body>
+    <div class="cont1">
+        <div class="box1"></div>
+    </div>
+    <div class="cont2">
+        <div class="box2">
+            文字
+        </div>
+    </div>
+</body>
+<script>
+    const ocont1 = document.querySelector(".cont1");
+    const ocont2 = document.querySelector(".cont2");
+    const obox1 = document.querySelector(".box1");
+    const obox2 = document.querySelector(".box2");
+
+    ocont1.onclick = function(){
+        move(obox1, "width", 550);
+    }
+    ocont2.onclick = function(){
+        move(obox2, "font-size", 100);
+    }
+
+    // 注意：
+    // 只能处理数值类属性，如：width，height，margin，padding，left，top，opacity，fontSize
+    // 无法处理非数值类属性，如：background
+
+
+    // 本次封装功能：不同元素，不同目标，不同属性
+
+    // 前瞻性的思考：
+        // 有可能传margin，padding，fontSize，opacity
+
+    function move(ele, attr, target){
+        if(ele.t === undefined){
+            ele.t = setInterval(() => {
+                // 缓冲运动
+                // 步长每次执行时都比上次减少
+                // （剩下的距离：目标-当前）的10分之一
+                // 100 - 10
+                // 90 - 9
+                // 81 - 8
+                // 73 - 7
+                // 66 - 7
+                // 59 - 6
+                // 53 -
+                // ...
+                // 0 - 0
+
+                // 利用获取非行内样式的操作，获取对应的属性
+                const now = parseInt(getStyle(ele, attr));
+
+                let speed = (target - now) / 10;
+                if(speed < 0){
+                    speed = Math.floor(speed);
+                }else{
+                    speed = Math.ceil(speed);
+                }
+
+                if(now === target){
+                    clearInterval(ele.t);
+                }else{
+                    ele.style[attr] = now + speed + "px";
+                }
+            }, 30);
+        }
+    }
+
+
+    // 快速获取属性，不好用了，获取不到某些属性了，不要用了
+    // 直接获取css，自己处理成想要的数据
+
+    // 获取非行内样式的兼容封装
+    function getStyle(ele, attr){
+        if(getComputedStyle){
+            return getComputedStyle(ele)[attr];
+        }else{
+            return ele.currentStyle[attr];
+        }
+    }
+
+</script>
+</html>

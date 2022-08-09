@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    正在测试ajax的基本使用
+    <br>
+    文件传输协议：file:///Users/liyang/Desktop/sh2203/code/day24/static/ajax_test.html
+    <br>
+    超文本传输协议：http://localhost:3000/ajax_test.html
+</body>
+<script>
+
+    const url = "http://localhost:3000/api?type=login";
+
+    // - 创建载体对象xhr（有手机）
+    const xhr = new XMLHttpRequest();
+    // - 设置请求方式，准备请求地址，同步异步（准备拨号，同时计划开免提听筒，打电话时要不要再干点其他事）
+    xhr.open("get", url, false);
+    // - 事件监听，根据不同的状态执行不同的功能（观察通话状态）
+    // xhr.onreadystatechange = function(){
+    //     if(xhr.readyState === 4 && xhr.status === 200){
+    //         console.log("请求成功");
+    //     }else if(xhr.readyState === 4 && xhr.status !== 200){
+    //         console.log("请求失败");
+    //     }
+    // }
+    xhr.onload = function(){
+        // 只有当xhr的readyState绝对为4时才会触发
+        if(xhr.status === 200){
+            console.log(xhr.responseText);
+        }else{
+            console.log("请求失败");
+        }
+    }
+    // - 发送数据（说话）
+    xhr.send(null);
+</script>
+</html>

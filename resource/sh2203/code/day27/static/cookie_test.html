@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    正在测试cookie的基本语法
+</body>
+<script>
+    // - cookie是document对象下的一个属性
+    //     - document.cookie = 要设置的cookie的内容
+    // - 要设置的cookie的内容：（增，改，删）
+    //     - 必须是字符
+    //     - 一次只能操作一条cookie
+    //     - 格式，如："key=value"
+    //         - 设置了一条当前路径，会话级的cookie
+    //     - cookie设置之后，可以紧跟一些修饰，之间用分号隔开
+    //         - 设置有效期：expires
+    //             - 如："key=value;expires="+日期对象
+    //         - 设置路径：path
+    //             - 如："key=value;path=/abc"
+    //         - 设置有效期和路径
+    //             - 如："key=value;path=/abc;expires="+日期对象
+    // - 查：document.cookie
+
+
+    // 存
+
+    // 当前路径的会话级cookie
+    // document.cookie = "a=10";
+    // document.cookie = "name=admin";
+    // document.cookie = "msg=hello world";
+
+
+    // 指定有效期的cookie
+    // const d1 = new Date();
+    // 当前日期的3天之后的日期对象
+    // 获取今天是几号
+    // const date = d1.getDate() + 3;
+    // 设置回去
+    // d1.setDate(date);
+    // document.cookie = "a=10;expires=" + d1;
+
+    // const d2 = new Date();
+    // d2.setDate(d2.getDate() + 7);
+    // document.cookie = "b=20;expires=" + d2;
+
+    // 修改
+    // document.cookie = "a=30";
+
+    // 有效期改为过去的日期，就是删除cookie
+    // const d3 = new Date();
+    // d3.setDate(d3.getDate()-1);
+    // document.cookie = "a=sdb;expires=" + d3;
+    // document.cookie = "b=sdb;expires=" + d3;
+    // document.cookie = "msg=sdb;expires=" + d3;
+
+    // const cookie = document.cookie
+    // 查：如果没有cookie，查询到的是空字符
+    // console.log(cookie);
+
+    // console.log(cookie === "");
+
+
+
+    // ========
+
+
+    // 路径的规则测试
+    // document.cookie = "a=10;path=/abc";
+    // document.cookie = "c=30;path=/qwe";
+
+</script>
+</html>

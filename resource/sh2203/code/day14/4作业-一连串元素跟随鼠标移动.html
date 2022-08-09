@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{width: 20px;height:20px;border-radius: 50%;background: #000;color: #fff;text-align: center;line-height: 20px;position: absolute;left:0;top:0;display: none;}
+    </style>
+</head>
+<body>
+    <div>0</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+</body>
+<script>
+    var adiv = document.querySelectorAll("div");
+
+    document.onmousemove = function(eve){
+        var e = eve || window.event;
+        // page相对于页面的坐标
+        // 怎么设置给元素？
+        // 需要依次将后一个元素设置到前一个元素的位置
+        for(var i=adiv.length-1;i>0;i--){
+            if(getComputedStyle(adiv[i]).display === "none"){
+                adiv[i].style.display = "block";
+            }
+            adiv[i].style.left = adiv[i-1].offsetLeft + "px";
+            adiv[i].style.top = adiv[i-1].offsetTop + "px";
+        }
+
+        // 最后再操作第一个元素，设置为鼠标的位置
+        if(getComputedStyle(adiv[0]).display === "none"){
+            adiv[0].style.display = "block";
+        }
+        adiv[0].style.left = e.pageX + "px";
+        adiv[0].style.top = e.pageY + "px";
+    }
+
+</script>
+</html>

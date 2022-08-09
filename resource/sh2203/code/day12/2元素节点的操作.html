@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+    </div>
+</body>
+<script>
+    // 创建元素
+    var p1 = document.createElement("p");
+    console.log(p1);
+    // 插入元素
+    var obox = document.querySelector(".box");
+    obox.appendChild(p1);
+    // 设置内容
+    p1.innerText = "hello";
+
+    // 删除自身
+    // p1.remove();
+    // obox.remove();
+    // 根据父元素删除子元素
+    // obox.removeChild(p1);
+
+    // console.log(obox.outerHTML)
+    // console.log(obox.innerHTML)
+
+    // 修改元素
+    obox.outerHTML = "<ul>"+ obox.innerHTML +"</ul>";
+
+
+</script>
+</html>

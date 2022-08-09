@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{display: flex;justify-content: center;align-items: center;}
+        .box1{width: 400px;height: 400px;background: red;}
+        .box2{width: 300px;height: 300px;background: green;}
+        .box3{width: 200px;height: 200px;background: blue;}
+        .box4{width: 100px;height: 100px;background: yellow;}
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2">
+            <div class="box3">
+                <div class="box4"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    
+    var obox1 = document.querySelector(".box1");
+    var obox2 = document.querySelector(".box2");
+    var obox3 = document.querySelector(".box3");
+    var obox4 = document.querySelector(".box4");
+
+    obox1.addEventListener("click", function(){
+        alert("冒泡的red");
+    }, false);
+    obox1.addEventListener("click", function(){
+        alert("捕获的red");
+    }, true);
+
+    obox2.addEventListener("click", function(){
+        alert("冒泡的green");
+    }, false);
+    obox2.addEventListener("click", function(){
+        alert("捕获的green");
+    }, true);
+
+    obox3.addEventListener("click", function(){
+        alert("冒泡的blue");
+    }, false);
+    obox3.addEventListener("click", function(){
+        alert("捕获的blue");
+    }, true);
+
+    obox4.addEventListener("click", function(){
+        alert("冒泡的yellow");
+    }, false);
+    obox4.addEventListener("click", function(){
+        alert("捕获的yellow");
+    }, true);
+
+</script>
+</html>

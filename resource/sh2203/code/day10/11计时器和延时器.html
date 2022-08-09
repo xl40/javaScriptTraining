@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="button" id="btn1" value="开启计时器">
+    <input type="button" id="btn2" value="关闭计时器">
+
+    <input type="button" id="btn3" value="开启延时器">
+    <input type="button" id="btn4" value="关闭延时器">
+</body>
+<script>
+
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var btn3 = document.getElementById("btn3");
+    var btn4 = document.getElementById("btn4");
+
+    var t1;
+    var t2;
+
+    btn1.onclick = function(){
+        t1 = setInterval(function(){
+            console.log("hello");
+        }, 1000);
+    }
+    btn2.onclick = function(){
+        clearInterval( t1 );
+    }
+
+
+    btn3.onclick = function(){
+        t2 = setTimeout(function(){
+            console.log("world");
+        }, 3000);
+    }
+    btn4.onclick = function(){
+        clearTimeout( t2 );
+    }
+
+
+</script>
+</html>

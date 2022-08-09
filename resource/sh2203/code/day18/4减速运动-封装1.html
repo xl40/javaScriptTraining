@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .cont1{width: 100px;height: 600px;border:solid 1px black;position: relative;float:left;margin: 0 10px;}
+        .cont2{width: 100px;height: 600px;border:solid 1px black;position: relative;float:left;margin: 0 10px;}
+        .box1{width: 50px;height:50px;background: red;position: absolute;left:25px;top:0;border-radius: 50%;}
+        .box2{width: 50px;height:50px;background: green;position: absolute;left:25px;top:0;border-radius: 50%;}
+    </style>
+</head>
+<body>
+    <div class="cont1">
+        <div class="box1"></div>
+    </div>
+    <div class="cont2">
+        <div class="box2"></div>
+    </div>
+</body>
+<script>
+    const ocont1 = document.querySelector(".cont1");
+    const ocont2 = document.querySelector(".cont2");
+    const obox1 = document.querySelector(".box1");
+    const obox2 = document.querySelector(".box2");
+
+    ocont1.onclick = function(){
+        move(obox1, 550);
+    }
+    ocont2.onclick = function(){
+        move(obox2, 550);
+    }
+
+    function move(ele, target){
+        // 因为将来可能会存在多个元素同时运动的情况，每个元素之间的运动应该互不干扰，保证每个元素的计时器都是不相干的
+            // 将计时器的唯一标志，存在当前元素对象身上：ele.t
+        // 为了防止计时器被重复开启，保证每个元素只能有一个计时器，所以需要在计时器开启之前先判断是否存在
+        if(ele.t === undefined){
+            ele.t = setInterval(()=>{
+                let speed = (target - ele.offsetTop) / 30;
+                if(speed < 0){
+                    speed = Math.floor(speed);
+                }else{
+                    speed = Math.ceil(speed);
+                }
+                if(ele.offsetTop === target){
+                    clearInterval(ele.t);
+                }else{
+                    ele.style.top = ele.offsetTop + speed + "px";
+                }
+            }, 30);
+        }
+    }
+
+    // 不同元素，不同目标
+
+</script>
+</html>

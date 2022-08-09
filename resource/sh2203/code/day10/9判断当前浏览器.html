@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    var str = navigator.userAgent;
+    
+    // console.log(str);
+
+    // 谷歌
+    // AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.109 Safari/537.36
+
+    // 苹果
+    // AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.3 Safari/605.1.15
+
+    // 火狐
+    // rv:98.0) Gecko/20100101 Firefox/98.0
+
+    if(str.indexOf("Firefox") !== -1){
+
+        console.log("这是火狐浏览器");
+
+    }else if(str.indexOf("Chrome") !== -1){
+
+        console.log("这是谷歌浏览器");
+
+    }else if(str.indexOf("Safari") !== -1){
+
+        console.log("这是Safari浏览器");
+
+    }else{
+
+        console.log("其他浏览器");
+
+    }
+
+    
+
+</script>
+</html>

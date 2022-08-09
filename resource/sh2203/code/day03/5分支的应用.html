@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{border: solid 1px black;padding:10px;margin:10px;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        身高：<input type="text" id="height"><br>
+        体重：<input type="text" id="strong"><br>
+        <input type="button" id="btn1" value="计算"><br>
+        结果为：<input type="text" id="result1">
+    </div>
+    <div class="box">
+        数字：<input type="text" id="day"><br>
+        <input type="button" id="btn2" value="计算"><br>
+        结果为：<input type="text" id="result2">
+    </div>
+    <div class="box">
+        月份：<input type="text" id="month"><br>
+        <input type="button" id="btn3" value="计算"><br>
+        结果为：<input type="text" id="result3">
+    </div>
+</body>
+<script>
+    
+    // - 根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者体重是否合适
+    var height = document.getElementById("height");
+    var strong = document.getElementById("strong");
+    var btn1 = document.getElementById("btn1");
+    var res1 = document.getElementById("result1");
+
+    btn1.onclick = function(){
+        var h = Number(height.value);
+        var s = Number(strong.value);
+        // 根据公式列出身材标准的公式，进行判断
+        if((h-108)*2 >= s-10 && (h-108)*2 <= s+10){
+            res1.value = "当前身高体重合适";
+        }else if((h-108)*2 < s-10){
+            // 如果身材不标准，如何不标准？偏胖？
+            res1.value = "当前体重偏胖";
+        }else if((h-108)*2 > s+10){
+            // 如果身材不标准，如何不标准？偏瘦？
+            res1.value = "当前体重偏瘦";
+        }
+    }
+
+
+    // - 输入数字，显示星期几
+    // 0：星期日
+    // 1：星期一
+    // ...
+    // 6：星期六
+
+    var day = document.getElementById("day");
+    var btn2 = document.getElementById("btn2");
+    var res2 = document.getElementById("result2");
+
+    btn2.onclick = function(){
+        var d = Number(day.value);
+        switch(d){
+            case 0:
+                res2.value = "星期日";break;
+            case 1:
+                res2.value = "星期一";break;
+            case 2:
+                res2.value = "星期二";break;
+            case 3:
+                res2.value = "星期三";break;
+            case 4:
+                res2.value = "星期四";break;
+            case 5:
+                res2.value = "星期五";break;
+            case 6:
+                res2.value = "星期六";break;
+            default:
+                res2.value = "输入错误，请输入0~6之间的整数";break;
+        }
+    }
+
+
+    // - 输入月份，显示当月的天数（利用switch的case穿透简化代码）
+    var month = document.getElementById("month");
+    var btn3 = document.getElementById("btn3");
+    var res3 = document.getElementById("result3");
+
+    btn3.onclick = function(){
+        var m = Number(month.value);
+
+        switch(m){
+            case 1:
+            case 10:
+            case 12:
+            case 3:
+            case 8:
+            case 5:
+            case 7:
+                res3.value = "31天";break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                res3.value = "30天";break;
+            case 2:
+                res3.value = "28天";break;
+            default:
+                res3.value = "月份输入错误";
+        }
+
+    }
+
+</script>
+</html>

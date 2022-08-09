@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 400px;height: 300px;border: solid 1px black;margin: 50px auto;}
+        .box ul{margin: 0;padding: 0;list-style: none;display: flex;height: 40px;line-height: 40px;border-bottom: solid 1px black;}
+        .box ul li{flex: 1;text-align: center;background: #ccc;margin:0 1px;cursor: pointer}
+        .box .cont .item{width: 400px;height: 259px;color: #fff;font-size:50px;display: none;}
+        .item:nth-child(1){background: #199;}
+        .item:nth-child(2){background: #919;}
+        .item:nth-child(3){background: #991;}
+        .item:nth-child(4){background: #191;}
+
+        .box ul li.active{background: red;color: #fff;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>办公系统</li>
+            <li>教学系统</li>
+            <li>工单系统</li>
+            <li>招生系统</li>
+        </ul>
+        <div class="cont">
+            <div class="item">
+                这是办公系统
+            </div>
+            <div class="item">
+                这是教学系统
+            </div>
+            <div class="item">
+                这是工单系统
+            </div>
+            <div class="item">
+                这是招生系统
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // OOA：选项卡切换
+    // 布局：html+css
+    // 选择元素
+    // 设置默认项
+    // 给每个选项绑定索引
+    // 绑定事件
+        // 取消上一个选项的样式
+        // 隐藏上一个选项对应的内容
+        // 给当前点击的选项添加样式
+        // 显示当前点击的选项对应的内容
+        // 当前点击的选项是下一次点击时要取消的"上一个"
+
+    // OOD：高内聚，低耦合
+    // function Tab(){
+    //     // 选择元素
+    //     // this
+    //     // 绑定事件
+    //     this.addEvent();
+    //     // 给每个选项绑定索引
+    //     this.setIndex();
+    //     // 设置默认项
+    //     this.setActive();
+    // }
+    // Tab.prototype.setActive = function(){
+    //     // 实现设置默认项的功能
+    //     // ...
+    // }
+    // Tab.prototype.setIndex = function(){
+    //     // 实现给每个选项绑定索引的功能
+    //     // ...
+    // }
+    // Tab.prototype.addEvent = function(){
+    //     // 实现绑定事件的功能
+    //     // ...
+    //         // 显示当前对应
+    //         this.show();
+    //         // 取消上一个
+    //         this.hide();
+    // }
+    // Tab.prototype.hide = function(){
+    //     // 实现取消上一个的功能
+    //     // ...
+    // }
+    // Tab.prototype.show = function(){
+    //     // 实现显示当前对应的功能
+    //     // ...
+    // }
+    // new Tab();
+
+    // OOP：
+    function Tab(){
+        // 选择元素
+        this.li = document.querySelectorAll(".box li");
+        this.item = document.querySelectorAll(".box .item");
+
+        // 默认索引
+        this.index = 0;
+
+        // 绑定事件
+        this.addEvent();
+        // 给每个选项绑定索引
+        this.setIndex();
+        // 设置默认项
+        this.setActive();
+    }
+    Tab.prototype.setActive = function(){
+        // 实现设置默认项的功能
+        this.li[this.index].className = "active";
+        this.item[this.index].style.display = "block";
+    }
+    Tab.prototype.setIndex = function(){
+        // 实现给每个选项绑定索引的功能
+        for(let i=0;i<this.li.length;i++){
+            this.li[i].xuhao = i;
+        }
+    }
+    Tab.prototype.addEvent = function(){
+        const that = this;
+        // 实现绑定事件的功能
+        for(let i=0;i<this.li.length;i++){
+            this.li[i].onclick = function(){
+                // console.log(this.xuhao);
+                // 取消上一个
+                that.hide();
+                // 显示当前对应
+                that.show(this);
+                // 当前点击的选项是下一次点击时要取消的"上一个"
+                that.index = this.xuhao;
+            }
+        }
+    }
+    Tab.prototype.hide = function(){
+        // 实现取消上一个的功能
+        this.li[this.index].className = "";
+        this.item[this.index].style.display = "none";
+    }
+    Tab.prototype.show = function(now){
+        // 实现显示当前对应的功能
+        // console.log(now.xuhao);
+        now.className = "active";
+        this.item[now.xuhao].style.display = "block";
+    }
+    new Tab();
+
+
+</script>
+</html>

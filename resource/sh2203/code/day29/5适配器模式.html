@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    // 电子厂
+    // 生产 手机 和 平板
+    // 公用一套测试模块
+
+    // 手机：打电话，玩游戏
+    // 平板：玩游戏
+
+    // 测试模式：
+    // 能不能打电话
+    // 能不能玩游戏
+
+    class Phone{
+        constructor(){
+            this.name = "手机"
+        }
+        call(){
+            console.log(this.name + "打电话");
+        }
+        game(){
+            console.log(this.name + "玩游戏")
+        }
+    }
+
+    class Pad{
+        constructor(){
+            this.name = "平板"
+        }
+        game(){
+            console.log(this.name + "玩游戏")
+        }
+    }
+    
+    function test(o){
+        o.call();
+        o.game();
+    }
+
+    const p1 = new Phone();
+    const p2 = new Pad();
+
+    function adapter(o){
+        if(!o.call){
+            o.call = function(){
+                console.log("这是一个"+o.name+"，没有打电话功能")
+            }
+        }
+        if(!o.game){
+            o.game = function(){
+                console.log("这是一个"+o.name+"，没有玩游戏功能")
+            }
+        }
+        return o;
+    }
+
+    // test( adapter(p1) );
+    test( adapter(p2) );
+
+
+
+</script>
+</html>

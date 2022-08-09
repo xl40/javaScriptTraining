@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 100px;height: 100px;background: red;position: absolute;left:0;top:0;}
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    class Drag{
+        constructor(){
+            this.box = document.querySelector(".box");
+            this.addEvent();
+            this.setPosition();
+        }
+        setPosition(){
+            let p = sessionStorage.getItem("pos")
+            p = p ? JSON.parse(p) : {};
+            console.log(p);
+            this.box.style.left = p.x + "px";
+            this.box.style.top = p.y + "px";
+        }
+        addEvent(){
+            const that = this;
+            this.box.onmousedown = function(eve){
+                that.downE = eve || window.event;
+                that.down();
+            }
+        }
+        down(){
+            const that = this;
+            document.onmousemove = function(eve){
+                that.moveE = eve || window.event;
+                that.move();
+            }
+            document.onmouseup = function(){
+                that.up();
+            }
+        }
+        move(){
+            this.box.style.left = this.moveE.pageX - this.downE.offsetX + "px";
+            this.box.style.top = this.moveE.pageY - this.downE.offsetY + "px";
+        }
+        up(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+            sessionStorage.setItem("pos", JSON.stringify({
+                x: this.box.offsetLeft,
+                y: this.box.offsetTop
+            }))
+        }
+    }
+
+    new Drag();
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <form action="http://localhost:3000/api" method="get" autocomplete="off">
+        你想干什么：
+        <select name="type">
+            <option value="login">登录</option>
+            <option value="register">注册</option>
+            <option value="getGoods">获取商品信息</option>
+            <option value="getCart">获取购物车信息</option>
+        </select>
+        <br>
+        用户名：<input type="text" name="username" value=""><br>
+        密码：<input type="text" name="password" value=""><br>
+        <input type="submit" value="get方式提交">
+    </form>
+    
+    <form action="http://localhost:3000/api" method="post" autocomplete="off">
+        你想干什么：<input type="text" name="type" value=""><br>
+        用户名：<input type="text" name="username" value=""><br>
+        密码：<textarea type="text" name="password"></textarea><br>
+        <input type="submit" value="post方式提交">
+    </form>
+</body>
+<script>
+    
+</script>
+</html>

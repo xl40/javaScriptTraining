@@ -1,0 +1,179 @@
+// 1. 注释
+// 双斜杠注释，单行注释，不被编译
+/*
+    多行注释，会被编译
+*/
+
+// 2. 变量
+// 单值变量：变量必须使用$开头
+// $color: red;
+// .box1{
+//     color: $color;
+// }
+// .box2{
+//     color: $color;
+// }
+
+// 多值变量
+// $colors: red green blue yellow;
+// .box1{
+//     color: nth($colors, 1);
+// }
+// .box2{
+//     color: nth($colors, 2);
+// }
+// .box3{
+//     color: nth($colors, 3);
+// }
+// .box4{
+//     color: nth($colors, 4);
+// }
+
+// 复杂变量-list
+// $list:(1, 100px, red)(2, 200px, green)(3, 300px, yellow);
+// each循环遍历list变量
+// @each $a, $b, $c in $list {
+//     .box#{$a}{
+//         width: $b;
+//         color: $c;
+//         background: $b;
+//         height: 200px;
+//     }
+// }
+
+// 复杂变量-map
+// $map:(h1:40px,h2:30px,h4:10px);
+// @each $key,$val in $map{
+//     #{$key}{
+//         font-size: $val;
+//         color: #000;
+//         font-weight: normal;
+//     }
+// }
+
+// 3. 嵌套
+// 选择器嵌套
+// ul.list
+//     li>link1
+//     li.list-item>link2
+//     li>link3
+//     li.last>link4
+// &获取上层选择器
+// .list{
+//     margin:0;
+//     padding:0;
+//     li{
+//         border:solid 1px black;
+//         &:hover{
+//             color:pink;
+//         }
+//     }
+//     .last{
+//         border:none;
+//     }
+//     &-item{
+//         color:red
+//     }
+//     &:hover{
+//         color:pink;
+//     }
+//     >.box1{
+//         color:yellow;
+//         h3{
+//             font-size: 10px;
+//         }
+//     }
+//     ~span{
+//         display:block;
+//     }
+// }
+
+// 属性嵌套
+// .box{
+//     border:{
+//         left:{
+//             color:red;
+//             style: solid;
+//             width: 10px;
+//         }
+//         right:{
+//             color:yellow;
+//             width:13px;
+//             style:double;
+//         }
+//     }
+// }
+
+// 4. 混合（代码段）mixin，不支持返回值
+// @mixin flex($j, $a){
+//     display: flex;
+//     justify-content: $j;
+//     align-items: $a;
+// }
+// .box1{
+//     @include flex(center, center);
+// }
+// .box2{
+//     @include flex(flex-end, flex-end);
+// }
+// .box3{
+//     @include flex(flex-start, center);
+// }
+
+// 5. 运算
+// .box{
+//     width: 100px / 10px * 1rem;
+//     color: red - 10;
+//     background: #232323 - #111111;
+//     border-color: yellow - red;
+//     height: 200px / 13px * 1vw;
+// }
+
+// 6. 函数：支持返回值
+// @function fn(){
+//     @return solid;
+// }
+// .box{
+//     border: fn() 1px red;
+// }
+
+// $fs: 30px;
+// html{
+//     font-size: $fs;
+// }
+// body{
+//     font-size: 16px;
+// }
+// // px转成rem
+// @function pxTrem($px){
+//     @return $px / $fs * 1rem;
+// }
+// .box{
+//     width:pxTrem(90px);
+//     height:pxTrem(64px);
+// }
+
+// 7. 继承
+// .box1{
+//     width:100px;
+//     height:100px;
+//     background:red;
+// }
+// .box2{
+//     @extend .box1, .box3;
+//     background:yellow;
+// }
+// .box3{
+//     color:red;
+// }
+
+// 8. 导入：将另一个scss的内容导入到当前文件
+// @import "./public.scss";
+
+// .box{
+//     width:100px;
+//     @import "./public.scss";
+// }
+
+
+

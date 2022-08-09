@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="button" id="btn1" value="按钮1">
+    <input type="button" id="btn2" value="按钮2">
+    <input type="button" id="btn3" value="按钮3">
+</body>
+<script>
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var btn3 = document.getElementById("btn3");
+
+    // 事件源.on事件类型 = 函数值
+    btn1.onclick = sayHello;
+
+    function sayHello(){
+        console.log("hello");
+    }
+
+    // 事件源.on事件类型 = 函数值
+    btn2.onclick = function(){
+        console.log("world")
+    }
+
+
+    
+    btn3.ondblclick = function(){
+        console.log("触发了双击事件")
+    }
+    
+
+</script>
+</html>

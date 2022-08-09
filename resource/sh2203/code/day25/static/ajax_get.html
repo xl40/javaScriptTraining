@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    正在测试ajax的get封装
+</body>
+<script>
+
+    // ajaxGet("http://localhost:3000/api", function(res){
+    //     console.log(res);
+    // })
+    ajaxGet("http://localhost:3000/api", {
+        type:"login"
+    }, function(res){
+        console.log(res);
+    })
+
+    function ajaxGet(url, data, success){
+        // - 处理默认参数，当没有发送请求数据时的回调函数的处理
+        if(typeof data !== "object"){
+            success = data;
+            data = {};
+        }
+        // - 处理请求数据，拼接到url身上
+        let str = "";
+        for(let i in data){
+            str += `${i}=${data[i]}&`
+        }
+        url = url + "?" + str.slice(0,-1);
+        // - 开启ajax
+        const xhr = new XMLHttpRequest();
+        xhr.open("get", url);
+        xhr.onload = function(){
+            // - onload事件内，根据状态执行请求成功的回调函数
+            if(xhr.status === 200){
+                // - 将接收到的响应数据传参给回调函数
+                success(xhr.responseText);
+            }
+        }
+        xhr.send();
+    }
+</script>
+</html>

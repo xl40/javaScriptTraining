@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 2. 定义一个30项的数组，数组的每一项要求都是1~9之间的随机数，每间隔5个数字，求出这五个数的平均值
+    var arr = new Array(30);
+    for(var i=0;i<arr.length;i++){
+        arr[i] = random(1, 9);
+    }
+    console.log(arr);
+    // 0~5
+    // 5~10
+    // 10~15
+    // 15~20
+    // ...
+    for(var i=0;i<arr.length;i+=5){
+        var sArr = arr.slice(i, i+5);
+        console.log(avg(sArr));
+    }
+
+    function avg(myarr){
+        var sum = 0;
+        for(var i=0;i<myarr.length;i++){
+            sum += myarr[i];
+        }
+        return sum / myarr.length;
+    }
+
+    console.log("==============")
+
+    // 3. 通过循环制造一个5 x 5的二维数组，这个数组中的数据是1~9之间的随机数，试编程
+
+    var bigArr = [];
+    for(var i=0;i<5;i++){
+        var sArr = [];
+        for(var j=0;j<5;j++){
+            sArr.push( random(1,9) );
+        }
+        bigArr.push(sArr);
+    }
+    console.log(bigArr)
+
+    console.log("==============")
+
+    // 4. 编写函数，功能为：生成4位(每位都是0~9之间随机)数字的随机验证码，并生成10次，同时将结果存入数组，返回出来
+
+    function randomNumber(){
+        var arr = [];
+        for(var j=0;j<10;j++){
+            // 1, 9
+            var str = "";
+            for(var i=0;i<4;i++){
+                str += random(0, 9);
+            }
+            arr.push(str);
+        }
+        return arr;
+    }
+
+    // console.log(randomNumber());
+
+
+
+    function random(max,min){
+        return Math.round(Math.random()*(max-min)+min);
+    }
+
+</script>
+</html>

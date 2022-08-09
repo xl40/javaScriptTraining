@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr = ["hello", 9, 5, 2, 7, "world"];
+    console.log(arr);
+
+    // ==============
+
+    // 查单个
+    // console.log(arr[0]);
+    // console.log(arr[3]);
+    // console.log(arr[arr.length-1]);
+
+    // 查所有
+    // for(var i=0;i<arr.length;i++){
+    //     console.log(arr[i])
+    // }
+
+    // ==============
+
+    // 改：重新赋值，覆盖！
+    // arr[3] = "贰";
+    // for(var i=0;i<arr.length;i++){
+    //     arr[i] = "修改之后的值"
+    // }
+
+    // ==============
+
+    // 增：默认情况，只能在数组的尾部新增
+    // console.log(arr.length);
+    // console.log(arr[5]);
+    // console.log(arr[6]);
+    
+    // arr[6] = "hahaha";
+    // console.log(arr[6]);
+
+    // console.log(arr[-1]);
+    // arr[-1] = true;
+
+    // arr[10] = "hahaha";
+
+    // 中间新增，插队机制：
+    // 6个人排队做核酸：
+    // 张三，李四，王二，赵五，钱六，周一
+    // 0    1    2    3    4    5
+    // 吴七想插队到王二和赵五中间
+
+    // 从最后一个人开始，向后挪一位
+    // 一直到要插入的位置
+
+    // 张三，李四，王二，吴七，赵五，钱六，周一
+    // 0    1    2    3    4    5    6
+
+    // 手动操作
+    // arr[6] = arr[5];
+    // arr[5] = arr[4];
+    // arr[4] = arr[3];
+    // arr[3] = "吴七";
+
+    // 循环自动操作
+    // for(var i=6;i>0;i--){
+    //     arr[i] = arr[i-1];
+    // }
+    // arr[0] = "吴七";
+
+    // insert(要操作的数组, 要插入数据的索引, 要插入的数据)
+    function insert(myarr, index, data){
+        // 要操作的数组：myarr
+        // 要插入数据的索引：index
+        // 要插入的数据：data
+        for(var i=myarr.length;i>index;i--){
+            myarr[i] = myarr[i-1];
+        }
+        myarr[index] = data;
+    }
+    // insert(arr, 2, "好");
+    // insert(arr, 4, "张三");
+
+    // ==============
+
+    // 删：其实就是减少数组的长度，默认只能从尾部开始删除
+    // console.log(arr.length);
+    // arr.length = 4;
+
+    // 中间删除，掉队机制：
+    // 6个人排队做核酸：
+    // 张三，李四，王二，赵五，钱六，周一
+    // 0    1    2    3    4    5
+    // 王二自测阳性被发现，立即拉走
+
+    // 从要删除的位置的后一位，向前覆盖
+    // 一直到数组的最后，然后减少数组的长度
+
+    // 张三，李四，赵五，钱六，周一
+    // 0    1    2    3    4
+
+    // 手动操作
+    // arr[2] = arr[3];
+    // arr[3] = arr[4];
+    // arr[4] = arr[5];
+    // arr.length = arr.length - 1;
+
+    // 循环自动操作
+    // for(var i=4;i<arr.length-1;i++){
+    //     arr[i] = arr[i+1];
+    // }
+    // arr.length = arr.length - 1;
+
+    // del(要删除数据的数组, 要删除的数据索引)
+    function del(myarr, index){
+        // 要删除数据的数组：myarr
+        // 要删除的数据索引：index
+        for(var i=index;i<myarr.length-1;i++){
+            myarr[i] = myarr[i+1];
+        }
+        myarr.length = myarr.length - 1;
+    }
+    // del(arr, 2);
+    // del(arr, 1);
+
+
+    console.log(arr);
+</script>
+</html>

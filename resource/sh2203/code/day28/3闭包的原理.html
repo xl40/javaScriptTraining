@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    const f = (function(){
+        let a = 0;
+        return function(){
+            a++;
+            console.log(a);
+        }
+    })();
+
+    f();
+    f();
+    f();
+    f();
+    f();
+
+    setTimeout(function(){
+        f();
+    },2000)
+
+    document.onclick = f;
+
+    // 原理：
+        // 从计算机的角度分析：利用了计算机的垃圾回收机制
+        //     计算机的垃圾回收机制：将原本要删除的数据，先保存到一个临时空间中，如果需要再次使用，可以重复使用，如果确定不用了，再做最终删除
+        // 从js自身的特性分析：利用了函数的定义作用域，和函数的执行上下文
+        //     不管函数在哪执行，函数都可以操作自身定义作用域中存在的数据
+    
+
+
+</script>
+</html>

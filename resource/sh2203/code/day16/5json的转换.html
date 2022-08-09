@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 语法规则：
+    // 1. 必须是单引号包裹的字符，双引号都不行
+    // 2. 基本语法必须遵守js中对象或数组的语法
+    // 3. 如果是对象语法，要求键必须使用双引号包裹
+    // 4. 都不允许出现多余的逗号
+    // 5. 都不允许出现函数，undefined，NaN
+
+    // var json = 'hello world';           // 2
+    // Unexpected token h in JSON at position 0
+
+    // var json = "hello world";           // 1,2
+    // Unexpected token h in JSON at position 0
+
+    // var json = '{name:"admin"}';        // 3
+    // Unexpected token n in JSON at position 1
+
+    // var json = {"name":"admin"};        // 1
+    // Unexpected token o in JSON at position 1
+
+    // var json = '{"name":"admin",}';     // 4
+    // Unexpected token } in JSON at position 16
+
+    // var json = '[2,3,4,5,]';            // 4
+    // Unexpected token ] in JSON at position 9
+
+    // var json = '[3,NaN,4,function(){}]';// 5
+    // Unexpected token N in JSON at position 3
+
+    // var json = '{"show":function(){}}'; // 5
+    // Unexpected token u in JSON at position 9
+
+    // var json = '{"show":undefined}'; // 5
+    // Unexpected token u in JSON at position 8
+
+    // 如果某个数据不是json，那么在使用json的转换方法进行转换时，会报什么错！！！报错信息，记下来！！！
+    // var obj = JSON.parse(json);
+    // console.log(obj);
+
+    
+    // var json = '{"age":18}';
+    // var json = '{"show":"function(){}"}';
+    // var json = '["hello","NaN"]';
+    // var json = '[{"name":"admin"},{"name":"root"}]';
+    // console.log(JSON.parse(json));
+
+
+
+    // ================
+
+
+
+    // 对象转json
+    // var obj = {
+    //     name:"admin",
+    //     age:18,
+    //     show:function(){},
+    //     abc:undefined,
+    //     qwe:NaN,
+    //     asd:null,
+    //     zxc:"hahah",
+    // };
+    // var obj = ["hello", function(){}, undefined, NaN, null,"world",];
+    var obj = "hello";
+    var json = JSON.stringify(obj);
+    console.log(json)
+
+
+    
+
+</script>
+</html>

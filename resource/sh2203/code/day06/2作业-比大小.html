@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{margin: 20px;padding: 20px;border: solid 1px black;}
+        .box input[type=text]{width: 70px;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" id="txt1">
+        <input type="text" id="txt2">
+        <input type="text" id="txt3">
+        <input type="button" id="btn" value="=">
+        <input type="text" id="result" readonly>
+    </div>
+</body>
+<script>
+    
+    // 2. 编写一个函数，计算三个不同数字的大小，按从小到大顺序打印
+    //     - 穷举法
+    
+    var txt1 = document.getElementById("txt1");
+    var txt2 = document.getElementById("txt2");
+    var fh = document.getElementById("fh");
+    var btn1 = document.getElementById("btn");
+    var res1 = document.getElementById("result");
+
+    btn1.onclick = function(){
+        var n1 = Number(txt1.value);
+        var n2 = Number(txt2.value);
+        var n3 = Number(txt3.value);
+        // 调用比较大小的函数，并将返回的数据，放在结果输入框中
+        res1.value = size(n1, n2, n3);
+    }
+
+    // 穷举法：列出所有可能性，使用代码表示这种可能
+    function size(q, w, e){
+        // q
+        if(q<w && q<e){
+            // w,e
+            if(w < e){
+                return q + "~" + w + "~" + e;
+            }else{
+                return q + "~" + e + "~" + w;
+            }
+        }else if(w<q && w<e){   // w
+            // q,e
+            if(q < e){
+                return w + "~" + q + "~" + e;
+            }else{
+                return w + "~" + e + "~" + q;
+            }
+        }else if(e<q && e<w){   // e
+            // q,w
+            if(q < w){
+                return e + "~" + q + "~" + w;
+            }else{
+                return e + "~" + w + "~" + q;
+            }
+        }
+    }
+
+</script>
+</html>

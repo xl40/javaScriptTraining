@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // console.log(fn);
+    // fn();
+    // function fn(){
+    //     console.log("hello")
+    // }
+    // console.log(fn);
+    // fn();
+
+    // 声明提升，提升的是变量的声明语句
+    // 原位赋值
+
+    // console.log(a);
+    // var a = 10;
+    // console.log(a);
+
+    // var声明的变量，会提前到作用域最开始的位置被创建。原位赋值
+    // function声明的函数，会整体提升到作用域最开始的位置
+
+    // js的解析器，必然会先提升var声明的变量
+    // 然后处理function的提升
+    // 鸠占鹊巢
+    // console.log(fn);
+    // function fn(){
+    //     console.log(123);
+    // }
+    // var fn = "hellow";
+    // console.log(fn);
+
+    // console.log(fn);
+    // var fn = function(){}
+    // console.log(fn);
+
+// ============
+
+    // js的解析器，必然会先提升var声明的变量
+    // 然后处理function的提升，所以function声明的函数生效
+    // 鸠占鹊巢
+
+    // ;(function(){
+    //     console.log(a);         // ?
+    //     var a = "h";
+    //     console.log(a);         // ?
+    //     function a(){ 1 }
+    //     console.log(a);         // ?
+    //     function a(){ 2 }
+    //     console.log(a);         // ?
+    //     var a = function(){ 3 }
+    //     console.log(a);         // ?
+    //     a = "w";
+    //     console.log(a);         // ?
+    //     function a(){ 4 }
+    //     console.log(a);         // ?
+    // })();
+    // ↑↑↑等价于↓↓↓
+    // ;(function(){
+    //     var a;
+    //     var a;
+    //     function a(){ 1 }
+    //     function a(){ 2 }
+    //     function a(){ 4 }
+    //     console.log(a);         // f4
+    //     a = "h";
+    //     console.log(a);         // h
+    //     console.log(a);         // h
+    //     console.log(a);         // h
+    //     a = function(){ 3 }
+    //     console.log(a);         // f3
+    //     a = "w";
+    //     console.log(a);         // w
+    //     console.log(a);         // w
+    // })();
+
+    // js的解析器，必然会先提升var声明的变量
+    // 然后处理function的提升，所以function声明的函数生效
+    // 鸠占鹊巢
+    // ;(function(){
+    //     console.log(a);         // ?
+    //     function a(){ 1 };
+    //     console.log(a);         // ?
+    //     var a = "h";
+    //     console.log(a);         // ?
+    //     function a(){ 2 };
+    //     console.log(a);         // ?
+    //     var a = "w";
+    //     console.log(a);         // ?
+    //     a = function(){ 3 }
+    //     console.log(a);         // ?
+    //     function a(){ 4 }
+    //     console.log(a);         // ?
+    // })();
+    // ↑↑↑等价于↓↓↓
+    // ;(function(){
+    //     var a;
+    //     var a;
+    //     function a(){ 1 };
+    //     function a(){ 2 };
+    //     function a(){ 4 }
+    //     console.log(a);         // f4
+    //     console.log(a);         // f4
+    //     a = "h";
+    //     console.log(a);         // h
+    //     console.log(a);         // h
+    //     a = "w";
+    //     console.log(a);         // w
+    //     a = function(){ 3 }
+    //     console.log(a);         // f3
+    //     console.log(a);         // f3
+    // })();
+
+
+
+</script>
+</html>

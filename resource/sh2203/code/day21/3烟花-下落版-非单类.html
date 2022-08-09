@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #container{
+			width: 80%;
+			height: 600px;
+			border: 2px solid red;
+			background: #000;
+			margin:20px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		.fire{
+			width: 10px;
+			height:10px;
+			position: absolute;
+			bottom: 0;
+		}
+		.small-fire{
+			width: 10px;
+			height:10px;
+			position: absolute;
+			border-radius: 50%;
+		}
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+<script src="../move.js"></script>
+<script>
+    class Fire{
+        constructor(abc){
+            this.x = abc.x;
+            this.y = abc.y;
+
+            this.cont = document.getElementById("container")
+            this.createFire()
+        }
+        createFire(){
+            this.ele = document.createElement("div");
+            this.ele.className = "fire";
+            this.ele.style.background = randomRGB();
+            this.cont.appendChild(this.ele);
+            this.ele.style.left = this.x + "px";
+            this.move();
+        }
+        move(){
+            move(this.ele, {
+                top: this.y
+            }, ()=>{
+                this.ele.remove();
+                const num = random(10, 20);
+                for(let i=0;i<num;i++){
+                    new SmallFire({
+                        x: this.x,
+                        y: this.y
+                    });
+                }
+            })
+        }
+    }
+
+    class SmallFire{
+        constructor(pos){
+            this.cont = document.getElementById("container")
+            this.x = pos.x;
+            this.y = pos.y;
+            this.createFire()
+        }
+        createFire(){
+            this.ele = document.createElement("div");
+            this.ele.className = "small-fire";
+            this.ele.style.background = randomRGB();
+            this.cont.appendChild(this.ele);
+            this.ele.style.left = this.x + "px";
+            this.ele.style.top = this.y + "px";
+            this.move();
+        }
+        move(){
+            // 加速运动
+            // 随机步长
+            const speedX = random(-15, 15);
+            let speedY = random(-20, 10);
+            // 开启计时器
+            this.t = setInterval(() => {
+                // 垂直方向的加速
+                speedY++;
+                // 将元素的left和top根据步长进行增加
+                this.ele.style.left = this.ele.offsetLeft + speedX + "px";
+                this.ele.style.top = this.ele.offsetTop + speedY + "px";
+                // 判断元素是否超出容器界限
+                if(this.ele.offsetTop > this.cont.offsetHeight){
+                    // 删除元素
+                    this.ele.remove();
+                    // 清除计时器
+                    clearInterval(this.t);
+                }
+            }, 30);
+        }
+    }
+
+
+    const ocont = document.getElementById("container");
+    ocont.onclick = function(eve){
+        const e = eve || window.event;
+        const pos = {
+            x: e.offsetX,
+            y: e.offsetY
+        }
+        // 创建烟花功能
+        new Fire(pos);
+    }
+
+    // 自动触发
+    // const ocont = document.getElementById("container");
+    // setInterval(() => {
+    //     const pos = {
+    //         x: random(0, ocont.offsetWidth - 20),
+    //         y: random(0, ocont.offsetHeight - 20)
+    //     }
+    //     new Fire(pos);
+    // }, 1000);
+
+
+
+
+    function random(max,min){
+        return Math.round(Math.random()*(max-min)+min);
+    }
+    function randomRGB(){
+        return "rgb("+ random(0,255) +","+ random(0,255) +","+ random(0,255) +")";
+    }
+
+
+</script>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{margin: 20px;padding: 20px;border: solid 1px black;}
+        .box input[type=text]{width: 70px;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" id="txt1">
+        <select id="fh">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="text" id="txt2">
+        <input type="button" id="btn1" value="=">
+        <input type="text" id="result1" readonly>
+    </div>
+</body>
+<script>
+    // 1. 编写一个函数，计算两个数字的和／差／积／商，返回结果
+    //     - 要求：使用传参的方式
+    var txt1 = document.getElementById("txt1");
+    var txt2 = document.getElementById("txt2");
+    var fh = document.getElementById("fh");
+    var btn1 = document.getElementById("btn1");
+    var res1 = document.getElementById("result1");
+
+    btn1.onclick = function(){
+        var n1 = Number(txt1.value);
+        var n2 = Number(txt2.value);
+        var f = fh.value;
+
+        // 未封装函数
+        // var sum = 0;
+        // switch(f){
+        //     case "+":
+        //         sum = n1 + n2;
+        //         break;
+        //     case "-":
+        //         sum = n1 - n2;
+        //         break;
+        //     case "*":
+        //         sum = n1 * n2;
+        //         break;
+        //     case "/":
+        //         sum = n1 / n2;
+        //         break;
+        //     case "%":
+        //         sum = n1 % n2;
+        //         break;
+        // }
+        // res1.value = sum;
+
+        res1.value = computed(f, n1, n2);
+    }
+
+    // 封装函数
+    function computed(a, b, c){
+        switch(a){
+            case "+":
+                return b + c;
+            case "-":
+                return b - c;
+            case "*":
+                return b * c;
+            case "/":
+                return b / c;
+            case "%":
+                return b % c;
+        }
+    }
+
+</script>
+</html>

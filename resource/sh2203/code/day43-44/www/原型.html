@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li>link1</li>
+        <li>link2</li>
+        <li>link3</li>
+        <li>link4</li>
+        <li>link5</li>
+        <li>link6</li>
+        <li>link7</li>
+        <li>link8</li>
+    </ul>
+</body>
+<script>
+    
+    // function Fn(a,b,c){}
+
+    // 函数的原型方法，用来改变当前函数实例的this指向
+    // console.log(Fn.call)
+    // console.log(Fn.apply)
+    // console.log(Fn.bind)
+
+    // 函数实例的属性，表示原型属性，用来给将来自身被new创建出来的实例做公共方法库(原型链)使用
+    // console.log(Fn.prototype)
+
+    // Fn.prototype.abc = {};
+
+    // console.dir(Fn.abc);
+
+    // const f1 = new Fn();
+    // const f2 = new Fn();
+    // const f3 = new Fn();
+    // const f4 = new Fn();
+    // const f5 = new Fn();
+    // console.log(f1.abc);
+    // console.log(f2.abc);
+    // console.log(f3.abc);
+    // console.log(f4.abc);
+    // console.log(f5.abc);
+    // console.log(f5.abc === f2.abc);
+    // console.log(f5.abc === f4.abc);
+
+    // console.log(f2.__proto__ === Fn.prototype);
+    // console.log(f2.abc === Fn.prototype.abc);
+    // console.log(f2.__proto__.abc === Fn.prototype.abc);
+
+    // ----------------
+
+
+    // 所有函数（除了箭头函数）都有原型属性
+    // Array函数
+    // Array.prototype.show = function(){
+    //     // console.log("hi 我是个数组", this);
+    //     console.log(this.toString())
+    // }
+    // Array.prototype.re = function(){
+    //     return this.reverse();
+    // }
+    // Array.prototype.norepeat = function(){
+    //     return [...new Set(this)];
+    // }
+
+
+    // 所有对象都是原型链
+    // 数组对象
+    // const arr1 = ["a","b","b","a",1,2,3,4,3,2,1];
+    // const arr2 = ["hello", 5,6,7,6,5,4,3,6,5,4,3,3,3];
+    // const arr3 = [1,2,3,5,6,4,5,3,4,2,4,5,1];
+    // const arr4 = [true,false,true,false,false];
+
+    // console.log(arr1.re());
+
+    // console.log(arr1.norepeat())
+    
+    // console.log(arr2.norepeat())
+    // console.log(arr3.norepeat())
+    // console.log(arr4.norepeat())
+
+
+
+    // ------------------
+
+
+    // 原功能：push最后一位新增，修改原数组，返回值是新增之后的数组的总长度
+    // 改写后：push最后一位新增，修改原数组，返回值新增的数据
+    // Array.prototype.push = function(){
+    //     // console.log(arguments);
+    //     let a = "";
+    //     for(let i=0;i<arguments.length;i++){
+    //         this[this.length] = arguments[i];
+    //         a += arguments[i] + ", ";
+    //     }
+    //     return a.slice(0, -2);
+    // }
+
+    // const arr1 = [1,2,3];
+    // console.log(arr1.push("hello", 123, 436));
+    // console.log(arr1.push("world"));
+    // console.log(arr1)
+
+
+    
+    // ----------------
+
+    
+    // const arr = [1,2,3];
+    // console.log(Array.prototype.push.call(arr, "hello", "world"));
+    // console.log(arr);
+    
+    // console.log(Array.prototype.slice);
+
+    const arr = [4,5,6,4,3,2,1];
+    console.log(arr.slice(2,5));
+
+    const olist = document.querySelectorAll(".list li")
+    console.log(olist);
+    // olist.slice(2, 5);
+    // olist.forEach(()=>{})
+    // olist.filter(()=>{})
+    // olist.some(()=>{})
+    // olist.every(()=>{})
+    
+    // 伪数组转真数组
+    const list = Array.prototype.slice.call(olist)
+    console.log(list);
+    list.push("hello");
+    console.log(list);
+    // list.filter(()=>{})
+    // list.some(()=>{})
+    // list.every(()=>{})
+
+
+
+
+
+    
+
+</script>
+</html>

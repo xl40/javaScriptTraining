@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // const obj = {
+    //     callback:"ajshgajsd",
+    //     name:"callback"
+    // }
+    // window[obj[obj.name]] = function(){
+    //     console.log("hahah-day43")
+    // };
+    // console.log(ajshgajsd);
+    // ajshgajsd();
+
+    
+    function 后端(res){
+        // res = eval(res);
+        // console.log(res);
+        res = JSON.parse(res);
+        console.log(res);
+        // 数组的遍历
+        res.forEach(val=>{
+            // 获取对象的属性
+            console.log(val.title)
+            // 数组的遍历
+            val.items.forEach(i=>{
+                // 获取对象的属性
+                console.log(i.title)
+                console.log(i.msg)
+            })
+        })
+    }
+
+    
+
+
+    
+</script>
+
+
+
+
+
+<script>
+后端('[{"title":"大菜","items":[{"title":"红烧肉","msg":"红烧肉的具体做法..."},{"title":"酸菜鱼","msg":"酸菜鱼的做法..."}]},{"title":"中菜","items":[{"title":"小炒肉","msg":"小炒肉的做法..."}]},{"title":"小菜","items":[{"title":"拍黄瓜","msg":"新鲜黄瓜一根，拍两下..."}]}]');
+</script>
+</html>

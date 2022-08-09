@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // var str = "hello world";
+    // console.log(str)
+
+    // 查单个
+    // console.log(str[0])
+    // console.log(str[1])
+    // console.log(str[2])
+    // console.log(str.length)
+    // 查所有
+    // for(var i=0;i<str.length;i++){
+    //     console.log(str[i])
+    // }
+
+    // 无法修改和删除
+    // str[3] = "啊";
+    // str.length = 5;
+    // str[12] = "哈";
+    
+    // console.log(str)
+
+
+    // =================
+
+
+    // - 根据数据查索引：str.indexOf(要查询的数据, 指定开始位置)
+    // var str = "hello world";
+    // console.log(str);
+    // var res = str.indexOf("l");
+    // var res = str.indexOf("l", 3);
+    // var res = str.indexOf("l", 4);
+    // var res = str.indexOf("l", 10);
+    // console.log(res);
+    // console.log(str);
+
+    // - 根据索引查数据：str.charAt(要查询的索引)
+    // var str = "hello world";
+    // console.log(str);
+    // var res = str.charAt(3);
+    // var res = str[3];
+    // console.log(res);
+    // console.log(str);
+
+    // - 截取：str.slice(开始截取的位置, 结束截取的位置)
+    // var str = "hello world";
+    // console.log(str);
+    // var res = str.slice(3, 8);
+    // console.log(res);
+    // console.log(str);
+    
+    // - 截取：str.substr(开始截取的位置, 要截取的个数)
+    // var str = "hello world";
+    // console.log(str);
+    // var res = str.substr(3, 7);
+    // console.log(res);
+    // console.log(str);
+    
+    // - 截取：str.substring(开始截取的位置, 结束截取的位置)
+    // var str = "hello world";
+    // console.log(str);
+    // var res = str.substring(3, 7);
+    // console.log(res);
+    // console.log(str);
+    
+    // - 合并：str.concat(要合并的字符)
+    // var str = "hello world";
+    // console.log(str);
+    // var res = str.concat("hahah");
+    // var res = str + "hahah";
+    // console.log(res);
+    // console.log(str);
+
+    // - 按照指定字符分割成数组：str.split(按照指定字符分割)
+    // var str = "2022.4.20";
+    // console.log(str);
+    // var res = str.split();
+    // var res = str.split("");
+    // var res = str.split(".");
+    // console.log(res);
+    // console.log(str);
+
+    // - 替换：str.replace(要替换的老字符, 要替换成的新字符)
+    // var str = "2022.4.20";
+    // console.log(str);
+    // var res = str.replace(".", "-");
+    // var res = str.replace(".", "");
+    // console.log(res);
+    // console.log(str);
+
+    // 敏感词过滤，重复替换
+    var str = "20.22.4.20.123.45.4.1.3..........";
+    // 假设，整个字符串中全是敏感词
+    for(var i=0;i<str.length;i++){
+        str = str.replace(".", "-");
+    }
+    console.log(str);
+
+    // - 转小写：str.toLowerCase()
+    // var str = "HELLO world";
+    // console.log(str);
+    // var res = str.toLowerCase();
+    // console.log(res);
+    // console.log(str);
+    
+    // - 转大写：str.toUpperCase()
+    // var str = "HELLO world";
+    // console.log(str);
+    // var res = str.toUpperCase();
+    // console.log(res);
+    // console.log(str);
+
+</script>
+</html>

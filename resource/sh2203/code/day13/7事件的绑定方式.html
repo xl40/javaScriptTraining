@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 100px;height: 100px;background: red;}
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    var obox = document.querySelector(".box")
+    // 赋值式绑定事件（DOM0级绑定），不能给同一个元素，重复绑定相同事件
+    // obox.onclick = function(){
+    //     console.log(1);
+    // }
+    // obox.onclick = function(){
+    //     console.log(2);
+    // }
+    // 赋值式删除事件：重复赋值，会覆盖
+    // obox.onclick = null;
+
+    
+
+    // 监听式绑定事件（DOM2级绑定），可以给同一个元素，重复绑定相同事件
+    // obox.addEventListener("click", fn1);
+    // function fn1(){
+    //     console.log(1);
+    // }
+
+    // obox.addEventListener("click", fn2);
+    // function fn2(){
+    //     console.log(2);
+    // }
+    // 监听式删除事件
+    // obox.removeEventListener("click", fn1);
+
+
+
+    // 监听式绑定和删除事件的兼容处理
+
+    // 绑定
+
+    // obox.attachEvent("onclick");
+    // console.log(obox.attachEvent);
+    // console.log(obox.addEventListener);
+
+    function fn1(){
+        console.log(1);
+    }
+    function fn2(){
+        console.log(2);
+    }
+    function fn3(){
+        console.log("hello");
+    }
+
+    function addEvent(ele, type, f){
+        if(ele.attachEvent){
+            ele.attachEvent("on"+type, f);
+        }else{
+            ele.addEventListener(type, f);
+        }
+    }
+    addEvent(obox, "click", fn1);
+    addEvent(obox, "mousemove", fn2);
+    addEvent(obox, "click", fn3);
+
+    function removeEvent(ele, type, f){
+        if(ele.detachEvent){
+            ele.detachEvent("on"+type, f);
+        }else{
+            ele.removeEventListener(type, f);
+        }
+    }
+
+    // removeEvent(obox, "click", fn1);
+    // removeEvent(obox, "mousemove", fn2);
+
+
+
+    // 课外阅读：浏览器渲染页面的顺序
+
+</script>
+</html>

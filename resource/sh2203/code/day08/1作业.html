@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 2. 编写函数 map(arr)，把数组中的每一位数字都增加30%
+    function map(myarr){
+        for(var i=0;i<myarr.length;i++){
+            // myarr[i] *= 1.3;
+            myarr[i] = Number((myarr[i] * 1.3).toFixed(3))
+        }
+    }
+    // var arr = [2,3,4,5,6,7];
+    // console.log(arr);
+    // map(arr);
+    // console.log(arr);
+
+
+    // 3. 编写函数 has(arr, 60)，判断数组中是否存在60这个数据，返回布尔值
+    function has(myarr, data){
+        // 遍历数组拿到所有数据
+        for(var i=0;i<myarr.length;i++){
+            // 比较
+            if(myarr[i] === data){
+                // 符合，返回true，同时结束函数
+                return true;
+            }
+        }
+        // 如果代码执行到这个位置，说明之前没有执行到返回true，意味着没找到相同数据，可以返回false了
+        return false;
+    }
+    // var arr = [2,3,4,5,6,7];
+    // var res = has(arr, 5);
+    // console.log(res);
+    // console.log(arr);
+
+
+    // 4. 编写函数 norepeat(arr)，将数组的重复数据去掉，并返回新的数组
+
+    // 倒腾购物车：
+    // 一个老数组：oldArr = [6,7,2,4,5,4,3,2,7,7,7,7]
+    // 创建一个新的空数组：newArr = []
+    // 判断新数组newArr中是否存在老数组oldArr中的数据
+    //     如果不存在，就增加到新数组中
+    //     如果存在，就略过，继续查看老数组的下一个数据
+
+    function norepeat(myarr){
+        // 创建一个新的空数组
+        var newArr = [];
+        // 遍历老数组
+        for(var i=0;i<myarr.length;i++){
+            // 判断一个数组中是否包含某个数据：上一题的has函数
+            if(!has(newArr, myarr[i])){
+                // 如果不存在，就增加到新数组中
+                newArr.push(myarr[i]);
+            }
+        }
+        // 返回去重之后的新数组
+        return newArr;
+    }
+    // var arr = [6,7,2,4,5,4,3,2,7,7,7,7];
+    // console.log(arr);
+    // var a = norepeat(arr);
+    // console.log(a);
+    // console.log(arr);
+
+    // 5. 编写函数 insert(arr, 4)，arr是一个从小到大排好序的数组。现输入一个数，要求按原来的规律将它插入数组中
+
+    function insert(myarr, data){
+        // 随便插
+        myarr.push(data);
+        // 插完之后重新排序即可
+        myarr.sort(function(a,b){
+            return a-b;
+        })
+    }
+    // var arr = [3,6,8,9];
+    // console.log(arr);
+    // insert(arr, 20);
+    // console.log(arr);
+
+
+
+</script>
+</html>

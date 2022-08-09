@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // promise的基本语法
+
+    // 开启一个异步程序
+        // Promise的回调函数中的程序表示正在执行(同步)...
+        // Promise的回调函数的两个参数所表示的函数(then的回调函数，或catch的回调函数)，只能执行一个，另一个会被自动忽略，相对于正在执行中属于异步执行
+
+    // 开启一个异步的程序，将来会确定执行结果
+    //     当前的正在执行时...
+    //     将来之后
+    //         成功的结果：resolve
+    //         失败的结果：reject
+
+    // console.log(1);
+    // const p = new Promise((resolve, reject)=>{
+    //     console.log(2);
+    //     reject("hahaha");
+    //     resolve("heihiehie");
+    // })
+    // p.then((res)=>{
+    //     console.log(3)
+    //     console.log("hello " + res);
+    // }, (res)=>{
+    //     console.log(4)
+    //     console.log("world " + res);
+    // })
+    // console.log(5);
+
+
+
+
+
+    // promise的基本语法 - 链式调用
+
+    // const p1 = new Promise((resolve,reject)=>{
+    //     console.log("p1正在进行时...");
+    //     reject("p1-error");
+    //     resolve("p1-ok");
+    // })
+    // const p2 = new Promise((resolve,reject)=>{
+    //     console.log("p2正在进行时...");
+    //     reject("p2-error");
+    //     resolve("p2-ok");
+    // })
+    // const p3 = new Promise((resolve,reject)=>{
+    //     console.log("p3正在进行时...");
+    //     resolve("p3-ok");
+    //     reject("p3-error");
+    // })
+
+    // p1.then(res=>{
+    //     console.log(res, "then的第一个回调函数1");
+    //     return p2;
+    // }).then(res=>{
+    //     console.log(res, "then的第一个回调函数2");
+    //     return p3;
+    // }).catch(res=>{
+    //     console.error(res, "catch的回调函数1");
+    //     return p1;
+    // }).catch(res=>{
+    //     console.error(res, "catch的回调函数2");
+    //     return p2;
+    // }).then(res=>{
+    //     console.log(res, "then的第一个回调函数3");
+    //     return p3;
+    // }).catch(res=>{
+    //     console.error(res, "catch的回调函数3");
+    // })
+
+
+    // 每一个请求都会产生两种状态，成功或失败
+    //     每一个请求的成功后可以继续开启下一个请求，下一个请求又会产生两种状态
+    //         ...
+    //     每一个请求的失败后可以继续开启下一个请求，下一个请求又会产生两种状态
+    //         ...
+
+
+
+
+
+    // promise的基本语法 - 批处理
+
+    // const p1 = new Promise((resolve,reject)=>{
+    //     console.log("p1正在进行时...");
+    //     reject("p1-error");
+    //     resolve("p1-ok");
+    // })
+    // const p2 = new Promise((resolve,reject)=>{
+    //     console.log("p2正在进行时...");
+    //     reject("p2-error");
+    //     resolve("p2-ok");
+    // })
+    // const p3 = new Promise((resolve,reject)=>{
+    //     console.log("p3正在进行时...");
+    //     reject("p3-error");
+    //     resolve("p3-ok");
+    // })
+
+
+    // Promise.all([p1,p2,p3]).then(res=>{
+    //     console.log(res, "then的第一个回调函数");
+    // }).catch(res=>{
+    //     console.error(res, "catch的回调函数");
+    // })
+
+    // 不管先结束的是成功还是失败，race只取第一个结果
+    // Promise.race([p1, p2, p3]).then(res=>{
+    //     console.log(res, "then的第一个回调函数");
+    // }).catch(res=>{
+    //     console.error(res, "catch的回调函数");
+    // })
+
+    
+</script>
+</html>

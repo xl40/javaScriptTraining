@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width:300px;height:200px;background: #ccc;position: absolute;left:0;top:0;}
+        .box h2{background: #222;color: #fff;margin: 0;padding: 10px 0;cursor: move;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>这是盒子的标题</h2>
+        <div class="cont">
+            这是各种内容
+        </div>
+    </div>
+</body>
+<script>
+    var obox = document.querySelector(".box");
+    var oh2 = document.querySelector(".box h2");
+
+    var clientW = document.documentElement.clientWidth;
+    var clientH = document.documentElement.clientHeight;
+
+    // 拖拽需要经过哪些行为：
+        // 按下
+            // 移动：获取鼠标坐标，设置给元素
+            // 抬起
+    
+    oh2.onmousedown = function(eve){
+        var downE = eve || window.event;
+        // 阻止默认事件，放置选中拖拽过程中选中页面上的文字
+        downE.preventDefault();
+        // 防止鼠标移动速度过快，元素跟不上，所以把移动事件加给document
+        document.onmousemove = function(eve){
+            var moveE = eve || window.event;
+            // 计算元素的位置：鼠标相对于页面的坐标 - 按下的一瞬间在原生身上的坐标
+            var l = moveE.pageX - downE.offsetX;
+            var t = moveE.pageY - downE.offsetY;
+
+            // 对计算好的元素的位置进行边界限定
+            if(l < 0){
+                l = 0;
+            }
+            if(t < 0){
+                t = 0;
+            }
+            if(l > clientW - obox.offsetWidth){
+                l = clientW - obox.offsetWidth
+            }
+            if(t > clientH - obox.offsetHeight){
+                t = clientH - obox.offsetHeight
+            }
+            // 将位置设置给元素
+            obox.style.left = l + "px";
+            obox.style.top = t + "px";
+        }
+        document.onmouseup = function(){
+            // 抬起鼠标时，清除移动事件
+            document.onmousemove = null;
+            // 为了节省性能，清除抬起
+            document.onmouseup = null;
+        }
+    }
+
+    
+
+
+</script>
+</html>

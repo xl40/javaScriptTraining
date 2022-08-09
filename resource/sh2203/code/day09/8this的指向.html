@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+</body>
+<script>
+    // 当前函数的执行对象
+
+    function fn(){
+        console.log(this);
+    }
+    // 如果this所在的函数没执行，无法确定this的指向！！！
+
+    // 没有明确隶属对象的函数被直接执行时，内部的this指向window
+    fn();
+
+    
+    var btn = document.getElementById("btn");
+    btn.onclick = fn;
+
+
+    // 函数是一种特殊的对象，是一种引用专递的数据（复杂数据）
+    // 简单赋值，属于浅拷贝，拷贝的是地址
+
+    var obj = {
+        name: "obj",
+        show: fn
+    }
+    obj.show();
+
+
+
+</script>
+</html>

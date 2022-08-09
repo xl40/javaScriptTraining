@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 1. 根据数据查索引
+    //     - arr.indexOf(要查询的数据, 从哪个位置开始查询)
+    // var arr = [4,5,6,5,4,3,4,5,6];
+    // console.log(arr);
+    // var res = arr.indexOf(5);
+    // var res = arr.indexOf(5, 2);
+    // var res = arr.indexOf(5, 4);
+    // var res = arr.indexOf(5, 8);
+    // var res = arr.indexOf(1);
+    // console.log(res);
+    // console.log(arr);
+
+    // 2. 遍历数据的方法
+    //     - arr.forEach(function(val, idx, self){})
+    //         - val：遍历到的数据
+    //         - idx：每个数据对应的索引
+    //         - self：数组自身
+    // var arr = [31,42,53,64,75];
+    // console.log(arr);
+    // var res = arr.forEach(function(val, idx, self){
+    //     console.log(val, idx, self);
+    // })
+    // console.log(res);
+    // console.log(arr);
+
+    // 3. 遍历并修改数据的方法
+    //     - arr.map(function(val, idx, self){ ... })
+    //         - 基本功能同forEach
+    //         - 返回值：修改之后的新数组，新数组内的数据由每次回调函数的返回值组成
+    // var arr = [31,42,53,64,75];
+    // console.log(arr);
+    // var res = arr.map(function(val, idx, self){
+    //     console.log(val, idx, self);
+    //     return val *= 1.3;
+    // })
+    // console.log(res);
+    // console.log(arr);
+    // console.log(res === arr);
+
+    // 4. 遍历并过滤数据的方法
+    //     - arr.filter(function(val, idx, self){ ... })
+    //         - 基本功能同forEach
+    //         - 返回值：过滤之后符合条件的数据组成的新数组，新数组内的数据为某个返回true的回调函数遍历到的数据
+    // var arr = [31,42,53,64,75];
+    // console.log(arr);
+    // var res = arr.filter(function(val, idx, self){
+    //     console.log(val, idx, self);
+    //     return val%2 === 1;
+    // })
+    // console.log(res);
+    // console.log(arr);
+    // console.log(res === arr);
+
+    // 5. 遍历并变着花样的过滤数据的方法
+    //     - arr.some(function(val, idx, self){ ... })
+    //         - 基本功能同forEach
+    //         - 返回值：只要查询到数组中有一个数据符合要求，就返回true，否则false
+    // var arr = [31,42,53,64,75];
+    // console.log(arr);
+    // var res = arr.some(function(val, idx, self){
+    //     console.log(val, idx, self);
+    //     return val%2 === 0;
+    // })
+    // console.log(res);
+    // console.log(arr);
+    // console.log(res === arr);
+
+    // 6. 遍历并变着花样的过滤数据的方法
+    //     - arr.every(function(val, idx, self){ ... })
+    //         - 基本功能同forEach
+    //         - 返回值：数组中所有数据必须全部符合要求，才返回true，否则false
+    // var arr = [31,42,53,"a",64,75];
+    // console.log(arr);
+    // var res = arr.every(function(val, idx, self){
+    //     console.log(val, idx, self);
+    //     return typeof val === "number";
+    // })
+    // console.log(res);
+    // console.log(arr);
+    // console.log(res === arr);
+
+    // ==============
+
+    // 7. 遍历并归并数据的方法
+    //     - arr.reduce(function(prev, val, idx, self){ ... })
+    //         - 参数中的val, idx, self同forEach
+    //         - prev表示上一个回调函数执行的返回值
+    //         - 返回值：最后一次回调函数的返回值
+
+    // var arr = [31,42,53,64,75];
+    // console.log(arr);
+    // var res = arr.reduce(function(prev, val, idx, self){
+    //     // console.log(prev, val, idx, self);
+    //     // return "hello";
+    //     return prev + val;
+    // })
+    // console.log(res);
+    // console.log(arr);
+    // console.log(res === arr);
+</script>
+</html>

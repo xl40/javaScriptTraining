@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 1000px;border: solid 1px black;display: flex;flex-wrap: wrap;}
+        .box .item{width: 250px;border: solid 1px black;box-sizing: border-box;text-align: center;}
+        .box .item img{width: 80%;}
+        .box .item p{margin: 10px 0;}
+        .box .item p:nth-child(3){height: 40px;line-height: 20px;overflow: hidden;}
+    </style>
+</head>
+<body>
+    <input type="text" id="search"><input type="button" id="btn" value="确定">
+    <br>
+    <div class="box">
+    </div>
+</body>
+<script>
+    // http://icodeilife.club:3000/api/pro/search
+    // get请求
+    // sKey要搜索的关键字：手机
+
+    class GoodsList{
+        constructor(key){
+            // 1. 获取要创建商品列表的类型关键字
+            this.key = key;
+            // 2. 获取元素，设置默认url
+            this.box = document.querySelector(".box");
+            this.url = "http://icodeilife.club:3000/api/pro/search";
+            // 3. 开启请求
+            this.load();
+        }
+        load(){
+            ajaxGet(this.url, {
+                sKey: this.key
+            }, res=>{
+                // console.log(res);
+                // 4. 请求成功之后，解析数据，根据数据内容作出不同处理
+                this.res = JSON.parse(res);
+                if(this.res.code === 200){
+                    // 5-1. 有数据的处理
+                    this.msg = this.res.msg;
+                    this.createHtml()
+                }else{
+                    // 5-2. 没有数据的处理
+                    this.box.innerHTML = `<p>不好意思，没有${this.key}数据</p>`;
+                }
+            })
+        }
+        createHtml(){
+            // 有数据时的创建页面结构
+            let str = "";
+            this.msg.forEach(val=>{
+                str += `<div class="item">
+                            <img src="${val.img}" alt="">
+                            <p>${val.price}</p>
+                            <p>${val.proName}</p>
+                        </div>`
+            });
+            this.box.innerHTML = str;
+        }
+    }
+    new GoodsList("手表");
+
+
+    // 外部功能
+    const obtn = document.getElementById("btn");
+    const osearch = document.getElementById("search");
+    obtn.onclick = function(){
+        new GoodsList(osearch.value);
+    }
+
+
+
+    function ajaxGet(url, data, success){
+        if(typeof data !== "object"){
+            success = data;
+            data = {};
+        }
+        let str = "";
+        for(let i in data){
+            str += `${i}=${data[i]}&`
+        }
+        url = url + "?" + str.slice(0,-1);
+        const xhr = new XMLHttpRequest();
+        xhr.open("get", url);
+        xhr.onload = function(){
+            if(xhr.status === 200){
+                success(xhr.responseText);
+            }
+        }
+        xhr.send();
+    }
+</script>
+</html>

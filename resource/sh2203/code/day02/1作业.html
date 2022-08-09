@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        span{font-size: 30px;}
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 1. 计算一个半径为80cm的圆的面积。打印到页面上。
+    //     - pai * r * r
+    //     - 3.1415
+    var r = 80;
+    var pai = 3.1415;
+    var s = pai * r * r;
+    document.write("半径为<b>80cm</b>的圆的面积为：<span>" + s + "</span>");
+    document.write("<br>")
+
+    // 2. 圆的周长
+    //     - 2 * pai * r
+    var c = 2 * pai * r;
+    document.write("半径为<b>80cm</b>的圆的周长为：<span>" + c + "</span>")
+    document.write("<br>")
+
+    // 3. 角度转弧度
+    //     - jiao = (180 / pai) * hu
+    var jiao = 90;
+    var hu = jiao / (180 / pai);
+    document.write("90度的角度转为弧度为：" + hu);
+    document.write("<br>")
+    
+    // 4. 为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+    var h = 89;
+    var hour = h % 24;
+    var day = (h - hour) / 24;
+    document.write("89小时一共是"+day+"天零"+hour+"小时");
+    document.write("<br>");
+
+    // 5. 小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。
+    // 它需要一个程序将华氏温度（80度）转换为摄氏度，并以华氏度和摄氏度为单位分别显示该温度。
+    //     - 提示：摄氏度与华氏度的转换公式为：摄氏度 = 5/9.0 * (华氏度-32)
+    var h = 80;
+    var s = 5/9.0 * (h-32);
+    document.write(h+"华氏度，转成了"+s+"摄氏度");
+
+</script>
+</html>

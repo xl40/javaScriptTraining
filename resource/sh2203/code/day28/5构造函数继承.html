@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // function Parent(msg){
+    //     this.msg = msg;
+    //     this.show = function(){
+    //         console.log(this.msg);
+    //     }
+    // }
+    // Parent.prototype.init = function(){
+    //     console.log("init")
+    // }
+
+    // function Child(msg){
+    //     // 修改Parent的this指向为当前Child的this即可
+    //     Parent.call(this, msg);
+    //     // Parent.apply(this, [msg]);
+    //     // Parent.bind(this, msg)();
+    // }
+
+    // const p = new Parent("hello");
+    // console.log(p);
+    // p.show();
+    // p.init();
+
+    // const c = new Child("hi");
+    // console.log(c);
+    // c.show();
+    // c.init();
+
+
+
+    // 多继承
+    // function MyCall(){
+    //     this.c = function(){
+    //         console.log(this.name + "打电话")
+    //     }
+    // }
+    // function MySendMsg(){
+    //     this.s = function(){
+    //         console.log(this.name + "发短信")
+    //     }
+    // }
+    // function MyGame(){
+    //     this.g = function(){
+    //         console.log(this.name + "玩游戏")
+    //     }
+    // }
+
+    // function Phone(name){
+    //     this.name = name;
+    //     MyCall.call(this);
+    //     MySendMsg.call(this);
+    //     MyGame.call(this);
+    // }
+
+    // const p = new Phone("华为");
+    // console.log(p)
+    // p.c();
+    // p.s();
+    // p.g();
+
+    
+</script>
+</html>

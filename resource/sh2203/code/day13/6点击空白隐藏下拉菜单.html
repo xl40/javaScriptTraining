@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 200px;height: 30px;margin: 50px auto;}
+        .box .display{display: block;border: solid 1px black;line-height: 30px;}
+        .box .list{margin: 0;padding:0;list-style: none;border: solid 1px black;border-top:none;line-height: 30px;text-indent: 4px;background: #fafafa;display: none;}
+    </style>
+</head>
+<body>
+    <select name="" id="">
+        <option value="">1</option>
+        <option value="">2</option>
+        <option value="">3</option>
+    </select>
+    <div class="box">
+        <span class="display">北京</span>
+        <ul class="list">
+            <li>北京</li>
+            <li>上海</li>
+            <li>广州</li>
+            <li>深圳</li>
+            <li>杭州</li>
+            <li>南京</li>
+            <li>成都</li>
+        </ul>
+    </div>
+</body>
+<script>
+    
+    var od = document.querySelector(".display");
+    var olist = document.querySelector(".list");
+
+    od.onclick = function(eve){
+        var e = eve || window.event;
+        // 阻止事件冒泡，以防冒泡到document身上
+        e.stopPropagation();
+        olist.style.display = "block";
+    }
+
+    document.onclick = function(){
+        olist.style.display = "none";
+    }
+
+</script>
+</html>

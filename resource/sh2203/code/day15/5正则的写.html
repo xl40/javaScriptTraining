@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // - reg.test(str)
+        // - 验证str是否符合reg的要求，符合true，不符合false
+        // - 默认只验证字符串的局部
+
+        // 为了让test验证字符串的整体：
+            // 需要在正则的开头加上^表示从字符串的开始的位置验证
+            // 需要在正则的末尾加上$表示验证到字符串的结束位置
+
+
+    // - qq号验证：纯数字，不允许0开头，长度6~12之间
+    // var str = "704206198";
+    // var str = "704206a198";
+    // var str = "0704206198";
+    // var str = "666666666";
+    // var reg = /^[1-9]\d{5,11}$/;
+    // console.log( reg.test(str) );
+
+
+    // - 手机号：首位1，第二位3~9，其他为任意数字，共11位
+    // var str = "17600901915";
+    // var str = "176009019151";
+    // var str = "1760090191";
+    // var str = "12600901915";
+    // var str = "13600901915";
+    // var str = "23600901915";
+    // var reg = /^1[3-9]\d{9}$/;
+    // console.log( reg.test(str) );
+
+
+    // - 固话：固定电话：三部分：区号-电话号-分机号。区号和分机号可省略，区号必须0开头，3到4位；电话号不允许0开头，任意数字，7到8位；分机号，任意数字，1到4位
+    // var str = "0370-1234567-666";
+    // var str = "0370-1234567";
+    // var str = "1234567";
+    // var str = "1234567-666";
+    // var str = "371-1234567";
+    // var reg = /^(0\d{2,3}-)?[1-9]\d{6,7}(-\d{1,4})?$/;
+    // console.log( reg.test(str) );
+
+
+    // - 复杂邮箱：用户名@域名。用户名：数字字母下划线中划线1到12位；@；域名：数字字母下划线中划线2到14位 . 任意字母2到6位
+    // var str = "liyang@1000phone.com";
+    // var str = "704206198@qq.com";
+    // var str = "li_yang-h5@1000_phone-sh.com";
+    // var str = "li_yang-h513@1000_phone-sh.c";
+    // var reg = /^[\w-]{1,12}@[\w-]{2,14}\.[a-z]{2,6}$/;
+    // console.log( reg.test(str) );
+
+    // - 网址：
+    // var str = "https://www.baidu.com";
+    // var str = "http://www.baidu.com";
+    // var str = "www.baidu.com";
+    // var str = "baidu.com";
+    // var str = "mp3.baidu.com";
+    // var str = "https://baidu.com";
+    // var str = "httpss://baidu.com";
+    // var reg = /^(https?:\/\/)?([a-z0-9]{1,10}\.)?[\w-]{2,14}\.[a-z]{2,6}$/;
+    // console.log( reg.test(str) );
+    
+</script>
+</html>

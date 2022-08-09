@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .cont1{width: 100px;height: 600px;border:solid 1px black;position: relative;float:left;margin: 0 10px;}
+        .box1{width: 50px;height:50px;background: red;position: absolute;left:25px;top:0;}
+    </style>
+</head>
+<body>
+    <div class="cont1">
+        <div class="box1"></div>
+    </div>
+</body>
+<script>
+    const ocont1 = document.querySelector(".cont1");
+    const obox1 = document.querySelector(".box1");
+
+    ocont1.onclick = function(){
+        move(obox1, {
+            width: 300,
+            height: 60
+        });
+    }
+    
+    // 不同元素，多个不同属性，不同目标
+    // 将多个属性打包成对象，进行传参
+    function move(ele, data){
+        if(ele.t === undefined){
+            ele.t = setInterval(() => {
+                // 在需要使用属性和目标时，遍历对象，解析出需要的数据
+                for(let i in data){
+                    const now = parseInt(getStyle(ele, i));
+                    let speed = (data[i] - now) / 10;
+                    if(speed < 0){
+                        speed = Math.floor(speed);
+                    }else{
+                        speed = Math.ceil(speed);
+                    }
+                    if(now === data[i]){
+                        clearInterval(ele.t);
+                    }else{
+                        ele.style[i] = now + speed + "px";
+                    }
+                }
+            }, 30);
+        }
+    }
+    // bug：当不同属性的目标不同时，只要有一个属性先到终点了，计时器就被清了，导致有些属性还没到终点
+
+
+    function getStyle(ele, attr){
+        if(getComputedStyle){
+            return getComputedStyle(ele)[attr];
+        }else{
+            return ele.currentStyle[attr];
+        }
+    }
+
+</script>
+</html>

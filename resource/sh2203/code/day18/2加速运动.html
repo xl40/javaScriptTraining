@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .cont{width: 400px;height: 600px;border:solid 1px black;position: relative;}
+        .box{width: 50px;height:50px;background: red;position: absolute;left:0;top:0;border-radius: 50%;}
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="box"></div>
+    </div>
+</body>
+<script>
+    const obox = document.querySelector(".box");
+
+    const target = 550;
+    let speed = 1;
+
+    let t = setInterval(()=>{
+        // 随着时间的变化，不断增加步长
+        speed++;
+
+        if(target - obox.offsetTop < speed){
+            clearInterval(t)
+            obox.style.top = target + "px";
+        }else{
+            obox.style.top = obox.offsetTop + speed + "px";
+        }
+    }, 30);
+
+
+</script>
+</html>

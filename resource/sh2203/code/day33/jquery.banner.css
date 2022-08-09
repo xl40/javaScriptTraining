@@ -1,0 +1,15 @@
+.cont{width: 500px;height: 150px;position: relative;background: #ccc;margin: 20px auto;overflow: hidden;}
+.cont .imgbox{width: 500px;height: 150px;}
+.cont .imgbox a{display: block;position: absolute;left: 500px;}
+.cont .imgbox a img{width: 500px;height: 150px;}
+
+.cont .btns input{position: absolute;width: 20px;height: 20px;top: 65px;background: rgba(200,200,200,0.7);border: none;cursor: pointer;}
+.cont .btns input:hover{background: rgba(150,150,255,0.7);color: #fff;}
+.cont .btns input:active{background: rgba(0,0,255,0.7);color: #fff;}
+.cont .prev{left:0}
+.cont .next{right:0}
+
+.cont .list{display: flex;background: rgba(255,255,255,0.5);position: absolute;bottom: 0;left:0;right:0;height: 20px;}
+.cont .list span{flex: 1;margin: 0 1px;text-align: center;line-height: 20px;font-size: 14px;cursor: pointer;}
+.cont .list span:hover{background: rgba(150,150,255,0.7);color: #fff;}
+.cont .list span:active{background: rgba(0,0,255,0.7);color: #fff;}

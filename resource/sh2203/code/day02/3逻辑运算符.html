@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // ||：两边只要有一边为true，结果就是true
+    // console.log( true || false );
+    // console.log( false || true );
+    // console.log( true || true );
+    // console.log( false || false );
+
+    // &&：两边只要有一边为false，结果就是false
+    // console.log( true && false );
+    // console.log( false && true );
+    // console.log( true && true );
+    // console.log( false && false );
+
+    // !：非，取反，非true为false，非false为true
+    // console.log( !true );
+    // console.log( !false );
+
+    // 逻辑运算符两边也可以不直接放置布尔值，可能会放置能得到布尔值的其他表达式
+    
+    // 需求：判断一个年份是否是闰年
+    // 闰年：两种情况
+    // 情况1：年份能被4整除，但是不能被100整除
+    // 情况2：年份可以直接被400整除
+
+    var year = 1700;
+
+    var flag = (year%4 === 0 && year%100 !== 0) || year%400 === 0;
+
+    console.log( flag );
+
+    // 运算规则：算术 > 关系 > 逻辑 > ... > 赋值
+
+
+</script>
+</html>

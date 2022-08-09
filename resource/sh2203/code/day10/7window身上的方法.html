@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="button" id="btn1" value="打开">
+    <input type="button" id="btn2" value="关闭">
+</body>
+<script>
+    // var res1 = alert("hello");
+    // console.log(res1);
+
+    // var res2 = confirm("world");
+    // console.log(res2)
+
+    // var res3 = prompt("hahaha");
+    // console.log(res3);
+
+
+    var btn1 = document.getElementById("btn1")
+    var btn2 = document.getElementById("btn2")
+
+    btn1.onclick = function(){
+        open("https://www.baidu.com","_blank","width=300,height=300,left=200,top=100");
+    }
+
+    btn2.onclick = function(){
+        if(confirm("你真的要关闭当前页面吗")){
+            close();
+        }
+    }
+
+</script>
+</html>

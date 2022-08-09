@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 100px;height: 100px;background: red;position: absolute;left:0;top:0;}
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    var obox = document.querySelector(".box")
+    
+    // 键盘事件只能添加给可以获取焦点的元素
+    // 不能获取焦点，无法触发键盘事件
+    // 如果页面上没有表单元素，感觉好像没有能获取焦点的元素了
+    // 如果页面上没有表单元素，那么整个页面就会获取焦点
+    // 如果页面上没有表单元素，可以把键盘事件添加给docuemnt
+    
+    document.onkeydown = function(eve){
+        var e = eve || window.event;
+
+        // 键码
+        // console.log(e.keyCode);
+        // console.log(e.which);
+        var code = e.keyCode || e.which;
+        // console.log(code);
+
+        // 按键对应的键码：
+        // 字母范围：65~90
+        // 空格：32
+        // 回车：13
+        // 方向键：左37，上38，右39，下40
+        // esc键：
+        // 退格键：8
+
+        if(code === 37){
+            obox.style.left = obox.offsetLeft - 10 + "px";
+        }
+        if(code === 38){
+            obox.style.top = obox.offsetTop - 10 + "px";
+        }
+        if(code === 39){
+            obox.style.left = obox.offsetLeft + 10 + "px";
+        }
+        if(code === 40){
+            obox.style.top = obox.offsetTop + 10 + "px";
+        }
+    }
+    
+
+</script>
+</html>

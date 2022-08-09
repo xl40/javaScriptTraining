@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #container{
+			width: 80%;
+			height: 600px;
+			border: 2px solid red;
+			background: #000;
+			margin:20px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		.fire{
+			width: 10px;
+			height:10px;
+			position: absolute;
+			bottom: 0;
+		}
+		.small-fire{
+			width: 10px;
+			height:10px;
+			position: absolute;
+			border-radius: 50%;
+		}
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+<script src="../move.js"></script>
+<script>
+    class Fire{
+        constructor(ops){
+            this.x = ops.x;
+            this.y = ops.y;
+            this.className = ops.className;
+            this.target = ops.target;
+
+            this.cont = document.getElementById("container")
+            this.createFire()
+        }
+        createFire(){
+            this.ele = document.createElement("div");
+            this.ele.className = this.className;
+            this.ele.style.background = randomRGB();
+            this.cont.appendChild(this.ele);
+            this.ele.style.left = this.x + "px";
+            if(this.className === "small-fire"){
+                this.ele.style.top = this.y + "px";
+            }
+            this.move();
+        }
+        move(){
+            move(this.ele, {
+                left: this.target.x,
+                top: this.target.y
+            }, ()=>{
+                this.ele.remove();
+
+                if(this.className === "small-fire"){
+                    return;
+                }
+                // 个数
+                const num = random(10, 20);
+                // 半径
+                const r = random(100, 200);
+                for(let i=0;i<num;i++){
+                    // 每个元素的角度
+                    const deg = 360 / num * i;
+                    // 角度对应的弧度
+                    const h = deg / (180 / Math.PI);
+                    // 根据半径和弧度，重新计算小元素的位置（利用了三角函数）
+                    const tar = {
+                        x: parseInt(Math.cos(h) * r + this.x),
+                        y: parseInt(Math.sin(h) * r + this.y)
+                    }
+                    
+                    new Fire({
+                        x: this.x,
+                        y: this.y,
+                        className: "small-fire",
+                        target:tar
+                    });
+                }
+            })
+        }
+    }
+    
+    const ocont = document.getElementById("container");
+    ocont.onclick = function(eve){
+        const e = eve || window.event;
+        const pos = {
+            x: e.offsetX,
+            y: e.offsetY,
+            className:"fire",
+            target:{
+                x: e.offsetX,
+                y: e.offsetY,
+            }
+        }
+        new Fire(pos);
+    }
+
+    // 自动触发
+    // const ocont = document.getElementById("container");
+    // setInterval(() => {
+        // const pos = {
+        //     x: random(0, ocont.offsetWidth - 20),
+        //     y: random(0, ocont.offsetHeight - 20)
+        // }
+    //     new Fire(pos);
+    // }, 1000);
+
+
+
+
+    function random(max,min){
+        return Math.round(Math.random()*(max-min)+min);
+    }
+    function randomRGB(){
+        return "rgb("+ random(0,255) +","+ random(0,255) +","+ random(0,255) +")";
+    }
+
+
+</script>
+</html>

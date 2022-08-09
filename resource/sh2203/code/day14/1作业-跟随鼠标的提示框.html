@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 400px;border: solid 1px black;margin: 50px auto;}
+        .box .item{background:#ccc;position: relative}
+        .box .item h2{padding: 15px 0;}
+        .box .item p{position: absolute;left: 0;top:0;margin: 0;width: 200px;font-size: 14px;background: #aaa;z-index: 1;display: none;}
+        .box .item em{position: absolute;left:0;top:0;right:0;bottom:0;z-index: 2;background: red;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="item">
+            <h2>这是新闻标题1新闻标题1新闻标题</h2>
+            <em></em>
+            <p>这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新</p>
+        </div>
+        <div class="item">
+            <h2>这是新闻标题222222</h2>
+            <em></em>
+            <p>这是新闻摘要222222摘要222222摘要222222摘要222222摘要222222摘要222222是新闻摘要2是新闻摘要2是新闻摘要2</p>
+        </div>
+    </div>
+    <!-- <div class="box">
+        <div class="item">
+            <h2>这是新闻标题1新闻标题1新闻标题</h2>
+            <p>这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新闻摘要1这是新</p>
+        </div>
+        <div class="item">
+            <h2>这是新闻标题222222</h2>
+            <p>这是新闻摘要222222摘要222222摘要222222摘要222222摘要222222摘要222222是新闻摘要2是新闻摘要2是新闻摘要2</p>
+        </div>
+    </div> -->
+</body>
+<script>
+    // 方式一：利用到了布局
+    var aem = document.querySelectorAll(".box .item em");
+    for(var i=0;i<aem.length;i++){
+        aem[i].onmouseover = function(){
+            this.nextElementSibling.style.display = "block";
+        }
+        aem[i].onmouseout = function(){
+            var a = this;
+            setTimeout(function(){
+                a.nextElementSibling.style.display = "none";
+            },100)
+        }
+        aem[i].onmousemove = function(eve){
+            var e = eve || window.event;
+            var p = this.nextElementSibling;
+            // offset相对于事件目标
+            p.style.left = e.offsetX + "px";
+            p.style.top = e.offsetY + "px";
+        }
+    }
+
+    // 方式二：有bug
+    // var aitem = document.querySelectorAll(".box .item");
+    // for(var i=0;i<aitem.length;i++){
+    //     aitem[i].onmouseenter = function(){
+    //         this.children[1].style.display = "block";
+    //     }
+    //     aitem[i].onmouseleave = function(){
+    //         this.children[1].style.display = "none";
+    //     }
+    //     aitem[i].onmousemove = function(eve){
+    //         var e = eve || window.event;
+    //         var p = this.children[1];
+    //         // page相对于页面
+    //         p.style.left = e.pageX - this.offsetLeft + "px";
+    //         p.style.top = e.pageY - this.offsetTop + "px";
+    //     }
+    // }
+
+</script>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 400px;height: 300px;border: solid 1px black;margin: 50px auto;}
+        .box ul{margin: 0;padding: 0;list-style: none;display: flex;height: 40px;line-height: 40px;border-bottom: solid 1px black;}
+        .box ul li{flex: 1;text-align: center;background: #ccc;margin:0 1px;cursor: pointer}
+        .box .cont .item{width: 400px;height: 259px;color: #fff;font-size:50px;display: none;}
+        .item:nth-child(1){background: #199;}
+        .item:nth-child(2){background: #919;}
+        .item:nth-child(3){background: #991;}
+        .item:nth-child(4){background: #191;}
+
+        .box ul li.active{background: red;color: #fff;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>办公系统</li>
+            <li>教学系统</li>
+            <li>工单系统</li>
+            <li>招生系统</li>
+        </ul>
+        <div class="cont">
+            <div class="item">
+                这是办公系统
+            </div>
+            <div class="item">
+                这是教学系统
+            </div>
+            <div class="item">
+                这是工单系统
+            </div>
+            <div class="item">
+                这是招生系统
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 点击不同的li，切换不同的item显示
+
+    // 1. 获取元素
+    var ali = document.querySelectorAll(".box ul li");
+    var aitem = document.querySelectorAll(".box .cont .item");
+
+    // 4. 设置初始值和默认项（默认展示的选项卡的索引）
+    var index = 2;
+    ali[index].className = "active";
+    aitem[index].style.display = "block";
+
+    // console.log(ali);
+    // console.log(aitem);
+
+    // 2. 解析出所有的li
+    for(var i=0;i<ali.length;i++){
+        // 7. 在事件外，给每个li绑定序号，是自身对应的索引
+        // console.log(i);
+        ali[i].xuhao = i;
+        // 3. 给所有li绑定事件
+        ali[i].onclick = function(){
+            // 如何获取当前点击的li，
+            // 事件发生时，循环的计数器已经是循环结束之后的值了
+            // 无法通过i拿到当前点击的li
+            // console.log(i);
+            // 利用this关键字，获取当前点击的元素
+            // console.log(this);
+
+            // 5. 清除上一个元素的class
+            ali[index].className = "";
+            aitem[index].style.display = "none";
+
+            // 6. 给当前点击的li添加class
+            this.className = "active";
+            aitem[this.xuhao].style.display = "block";
+
+            // 8. 将本次点击的li的索引设置给index，以备下次用来清除
+            // console.log(this.xuhao);
+            index = this.xuhao;
+        }
+    }
+    
+    // 循环内绑定事件，在事件处理函数内，无法获取循环每次的计数器
+        // 循环瞬时执行
+        // 事件需要触发执行
+        // 什么时候触发事件，触发事件时，循环执行完了么？肯定执行完了
+
+    // 今天是明天的昨天
+    // 本次点击的li，是下次点击li时，要清除的li
+
+
+
+
+</script>
+</html>

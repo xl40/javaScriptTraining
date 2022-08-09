@@ -1,0 +1,102 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		
+	$(function(){
+
+
+		$(document).ajaxStart(function(){
+
+			$Img = $("<img src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488433789960&di=aed91615f003559ac1549b908d7b57a9&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01368e57c51bba0000018c1be96be9.gif'>")
+			$(".tip").children().html($Img);
+
+		})
+
+		$("#reg_btn").click(function(){
+
+			//验证略;
+
+			var user = $("input[name=user]").val();
+			var password = $("input[name=password]").val();
+
+
+			//ajax请求接口;
+
+			$.ajax({
+
+				url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+				type:"POST",
+				data:{
+					status:"register",
+					userID:user,
+					password:password
+				},
+				success:function(res){
+
+					//成功之后做什么;
+
+					res = Number(res);
+
+					switch(res){
+
+						case 0 : $(".tip").find("span").html("用户名重名了,请重新设置用户名");
+						break;
+						case 1:  $(".tip").find("span").html("恭喜注册成功!我么将在3秒之后为您跳转登陆页面");	
+
+
+							setTimeout(function(){
+
+								window.location.href = "login.html";
+
+							}, 3000);
+
+
+						break;
+						case 2: $(".tip").find("span").html("我数据库出了点问题,请耐心等待呦!");
+						break;
+
+					}
+
+
+				},
+				error:function(){
+
+					alert("你特么把我服务器用坏了! 赔钱!")
+
+				},
+
+
+			})
+
+
+		})
+
+	})	
+
+
+	</script>
+
+
+
+</head>
+<body>
+	
+	<div class="register">
+			
+			<h2>注册</h2>
+	
+			<p>账号:<input type="text" name="user"></p>
+			<p>密码:<input type="password" name="password"></p>
+			<p class="tip">提示: <span></span> </p>
+			<input type="button" value="确认注册" id="reg_btn">
+	
+	</div>
+
+
+
+</body>
+</html>

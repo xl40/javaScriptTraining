@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .cont{width: 400px;height: 600px;border:solid 1px black;position: relative;}
+        .box{width: 50px;height:50px;background: red;position: absolute;left:0;top:0;border-radius: 50%;}
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="box"></div>
+    </div>
+</body>
+<script>
+    const obox = document.querySelector(".box");
+
+    const target = 550;
+
+    // 最大的步长应该是剩下的距离：target - 当前
+    // let speed = 550;
+
+    let t = setInterval(()=>{
+        
+        // 最大的步长应该是剩下的距离：target - 当前
+        // 最小的步长应该是无限接近0，但不能取到0
+
+        // 如何处理能让一个数字无限接近0，但不能取到0
+        // 除以另外一个非0的数字，可以让被除数无限接近与0，但不为0
+
+        // 如：西瓜，每次吃剩下的n分之一，问什么时候能吃完？永远都吃不完
+
+        let speed = (target - obox.offsetTop) / 10;
+        // 因为页面无法识别小于1的像素，主动将小于1的像素转成1像素
+        // 根据步长的正负，决定向上或向下取整
+        if(speed < 0){
+            speed = Math.floor(speed);
+        }else{
+            speed = Math.ceil(speed);
+        }
+
+        // 因为减速运动的步长最终必然是1，所以绝对可以等于目标
+        if(obox.offsetTop === target){
+            clearInterval(t);
+        }else{
+            obox.style.top = obox.offsetTop + speed + "px";
+        }
+    }, 30);
+
+
+</script>
+</html>

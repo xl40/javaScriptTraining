@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 200px;height: 30px;margin: 50px auto;}
+        .box .display{display: block;border: solid 1px black;line-height: 30px;}
+        .box .list{margin: 0;padding:0;list-style: none;border: solid 1px black;border-top:none;line-height: 30px;text-indent: 4px;background: #fafafa;display:none;}
+        .box .list li span{float: right;margin-right: 10px;}
+        .box .list li em{font-style: normal;}
+
+        .box .list li.hover{background: blue;color: #fff;}
+    </style>
+</head>
+<body>
+    <div class="box" ly-selected="1">
+        <span class="display">请选择</span>
+        <ul class="list">
+        </ul>
+    </div>
+</body>
+<script>
+
+    function DownDragMenu(){
+        this.box = document.querySelector(".box");
+        this.display = document.querySelector(".display");
+        this.list = document.querySelector(".list");
+
+        // 22. 获取DOM结构中设定的默认选中的菜单索引
+        this.index = this.box.getAttribute("ly-selected")-0;
+
+        // 4. 下拉菜单的状态库
+        this.status = {
+            show:Symbol(),
+            hide:Symbol()
+        };
+        // 5. 将显示作为默认状态
+        this.type = this.status.show;
+        // 9. 设定键盘控制下拉菜单时的默认索引
+        this.keyIndex;
+        // 1. 加载数据
+        this.load();
+        // 3. 初始的显示隐藏功能
+        this.init();
+    }
+    DownDragMenu.prototype.init = function(){
+        const that = this;
+        this.display.onclick = function(eve){
+            eve.stopPropagation();
+            if(that.type === that.status.show){
+                that.list.style.display = "block";
+                that.type = that.status.hide;
+                // 21. 保证下拉菜单的所有状态都是默认值
+                // 取消所有菜单的高亮
+                that.selectHover(that.li, null);
+                // 将键盘索引设置为默认值
+                that.keyIndex = undefined;
+            }else{
+                that.list.style.display = "none";
+                that.type = that.status.show;
+            }
+        }
+        document.onclick = function(){
+            that.list.style.display = "none";
+            that.type = that.status.show;
+        }
+    }
+    DownDragMenu.prototype.load = function(){
+        ajax("http://localhost:4000/api?type=menu").then(res=>{
+            this.res = JSON.parse(res);
+            // 2. 渲染下拉菜单的页面结构
+            this.render();
+        })
+    }
+    DownDragMenu.prototype.render = function(){
+        let str = "";
+        this.res.lingshi.forEach(val=>{
+            str += `<li><em>${val}</em></li>`;
+        })
+        this.list.innerHTML = str;
+        this.li = this.list.children;
+
+        // 23. 根据默认索引修改选中状态为默认元素的内容
+        this.selectActive(this.li, this.li[this.index]);
+
+        // 6. 渲染完成后产生的元素的事件绑定
+        this.addEvent();
+    }
+    DownDragMenu.prototype.addEvent = function(){
+        const that = this;
+        // 7. 绑定鼠标进入离开点击事件
+        for(let i=0;i<this.li.length;i++){
+            // this.li[i].xuhao = i;
+            this.li[i].onmouseover = function(){
+                // 24. 鼠标进入取消所有菜单的高亮，只给当前元素添加高亮
+                that.selectHover(that.li, this);
+                // 25. 鼠标进入当前菜单后，将当前菜单的索引设置为键盘的索引
+                // console.log(i)
+                that.keyIndex = i;
+            }
+            this.li[i].onmouseout = function(){
+                this.className = "";
+            }
+            this.li[i].onclick = function(){
+                // 8. 点击时，修改选中状态为当前元素
+                that.selectActive(that.li, this);
+            }
+        }
+        // 10. 键盘事件
+        document.onkeydown = function(eve){
+            // 26. 如果下拉菜单没有显示，不应该执行键盘事件处理函数
+            if(that.type === that.status.show) return;
+            // 上
+            if(eve.keyCode === 38){
+                // 11. 如果是第一次按下键盘
+                if(that.keyIndex === undefined){
+                    // 12. 键盘的索引为最后一个菜单的索引
+                    that.keyIndex = that.li.length-1;
+                }else if(that.keyIndex === 0){  // 13. 键盘的索引为第0个菜单
+                    // 14. 一直为第0个菜单
+                    that.keyIndex = 0;
+                }else{  // 15. 既不是第一次按下键盘，也不是第0个索引
+                    // 16. 在自身的基础上不断--
+                    that.keyIndex--;
+                }
+                // 17. 根据索引，设置菜单的高亮
+                that.selectHover(that.li, that.li[that.keyIndex]);
+            }
+            // 下（参考：上）
+            if(eve.keyCode === 40){
+                if(that.keyIndex === undefined){
+                    that.keyIndex = 0;
+                }else if(that.keyIndex === that.li.length-1){
+                    that.keyIndex = that.li.length-1;
+                }else{
+                    that.keyIndex++;
+                }
+                that.selectHover(that.li, that.li[that.keyIndex]);
+            }
+            // 回车
+            if(eve.keyCode === 13){
+                // 18. 确保已经按了上或下键
+                if(that.keyIndex !== undefined){
+                    // 19. 修改选中状态为当前元素
+                    that.selectActive(that.li, that.li[that.keyIndex]);
+                    // 20. 隐藏下拉菜单
+                    that.list.style.display = "none";
+                    that.type = that.status.show;
+                }
+            }
+        }
+    }
+    // 修改高亮状态的功能
+    DownDragMenu.prototype.selectHover = function(allEle, ele){
+        [...allEle].forEach(val=>{
+            val.className = "";
+        });
+        ele && (ele.className = "hover");
+    }
+    // 修改选中状态的功能
+    DownDragMenu.prototype.selectActive = function(allEle, ele){
+        // 点击后，将点击的菜单的内容设置到显示区域
+        this.display.innerText = ele.children[0].innerText;
+        [...allEle].forEach(val=>{
+            val.children[1] && val.children[1].remove();
+        });
+        const span = document.createElement("span");
+        span.innerText = "√";
+        ele.appendChild(span);
+    }
+    
+    new DownDragMenu();
+
+
+    
+    function ajax(url){
+        return new Promise((resolve, reject)=>{
+            // 开启ajax请求
+            const xhr = new XMLHttpRequest();
+            xhr.open("get", url, true);
+            xhr.onload = function(){
+                if(xhr.status === 200){
+                    resolve(xhr.responseText);
+                }else{
+                    reject(xhr.status);
+                }
+            }
+            xhr.send();
+        })
+    }
+
+</script>
+</html>

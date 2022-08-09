@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    
+// - 完成一个梯形打印功能 - 双层循环
+//        **
+//       ****
+//      ******
+//     ********
+//    **********
+//   ************
+//  **************
+// ****************
+
+
+for(var i=0;i<8;i++){
+
+    // 空格
+    for(var j=8;j>i;j--){
+        document.write("a");
+    }
+
+    // *号
+    for(var k=0;k<=i;k++){
+        document.write("*");
+    }
+
+    // *号
+    for(var k=0;k<=i;k++){
+        document.write("*");
+    }
+
+    // 换行
+    document.write("<br>");
+}
+
+    
+// - 有一个棋盘，有64个方格，在第一个方格里面放1粒芝麻，第二个里面放2粒，第三个里面放4，第四个里面放8，每个重量是0.00001kg，棋盘上放的所有芝麻的重量 - 双层循环
+
+// 每个格子是前一个格子的数量*2
+
+// 多行多列的计算结构
+// 1：1        +
+// 2：1*2      +
+// 3：1*2*2    +
+// 4：1*2*2*2  +
+
+var sum = 0;
+for(var i=0;i<64;i++){
+    var cj = 1;
+    for(var j=0;j<i;j++){
+        cj *= 2;
+    }
+    sum += cj;
+}
+console.log(sum * 0.00001);     // 184467440737095.53
+
+
+
+</script>
+</html>

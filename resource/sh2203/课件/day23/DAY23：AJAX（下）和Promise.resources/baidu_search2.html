@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+
+
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+
+
+		#search{
+			width: 600px;
+			margin:0 auto;	
+			margin-top: 300px;
+			position: relative;
+		}
+		#search input{
+
+			width: 480px;
+			height: 100%;
+			border: 1px solid #b6b6b6;
+			height: 20px;
+		    padding: 9px 7px;
+		    font: 16px arial;
+		    border: 1px solid #b8b8b8;
+		    border-bottom: 1px solid #ccc;
+		    border-right: 0;
+		    vertical-align: top;
+		    outline: none;
+		    box-shadow: none;
+		    -webkit-appearance: textfield;
+		    background-color: white;
+		    -webkit-rtl-ordering: logical;
+		    user-select: text;
+
+		}
+
+		#search button{
+			cursor: pointer;
+			box-sizing: border-box;
+		    width: 97px;
+		   	height: 40px;
+		    line-height: 38px;
+		    padding: 0;
+		    border: 0;
+		    background: none;
+		    background-color: #38f;
+		    font-size: 16px;
+		    color: white;
+		    box-shadow: none;
+		    font-weight: normal;
+		 	margin-left: -20px;
+		}
+		
+		.result{
+			position: absolute;
+			
+			padding: 9px 7px;
+			background: #ddd;
+
+		}
+
+		.search-res{
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 480px;
+			border: 1px solid #b6b6b6;
+			border-top: none;
+		}
+
+		.search-res li{
+			list-style-type: none;
+			line-height: 20px;
+			padding: 2px 5px;
+			border-bottom: 1px solid #b6b6b6;
+		}
+	
+	</style>
+
+	<script>
+		
+	window.onload = function(){
+
+		var oButton = $("#search").children[0];
+		var oText = $("#search").children[0];
+		var timerOut;
+		oText.onkeyup = function(){
+			//获取数据
+			//延时获取; >> 防止事件多次触发请求冗余过多;
+			clearTimeout(timerOut);	
+			timerOut = setTimeout(function(){
+				getRes(oText.value);//获取数据;
+			},500)
+		}
+	}
+	function getRes(val){
+		var script = document.createElement("script");
+		script.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+val+"&json=1&p=3&sid=22084_1436_13548_21120_22036_22073&req=2&csor=0&cb=callback";
+		document.getElementsByTagName("head")[0].appendChild(script);
+	}
+	function callback(res){//回调函数;
+		console.log(res.s);//回调数组 中都是关键词字符串;
+		var str = "";
+		for(var i = 0 ;i < res.s.length ; i++){
+			str += "<li>"+res.s[i]+"</li>";
+		}
+		$(".search-res").innerHTML = str;
+	}
+	function $(select){
+		return document.querySelector(select);
+	}
+
+	</script>
+
+</head>
+<body>
+	
+	<div id="search">
+		<input type="text">
+		<button>嗖嗖嗖一下</button>
+		<ul class="search-res">
+		
+		</ul>
+	</div>
+
+	
+	
+</body>
+</html>

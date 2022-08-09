@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    该文件是在利用jsonp的原理，配合js的函数传参，实现跨域获取数据
+    <br>
+    后端和前端，通过在url上拼接get数据的方式，统一用来传参的函数名
+</body>
+<script>
+    function abc(res){
+        console.log(res)
+    }
+</script>
+<script src="http://localhost:3000/api?type=jsonp3&callback=abc"></script>
+</html>

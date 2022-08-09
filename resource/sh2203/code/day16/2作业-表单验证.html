@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    用户名：<input type="text" id="username"><em></em><br>
+    密码：<input type="text" id="password"><em></em><br>
+    重复密码：<input type="text" id="password2"><em></em><br>
+    <input type="button" value="提交" id="submit">
+</body>
+<script>
+    // 1. 用户名           用户名仅支持中文、字母、数字、“-”“_”的组合，4-20个字符
+    // 2. 密码的规则        数字字母特殊字符，一种类型，弱。两种类型为中，三种类型为强
+    // 3. 重复密码            跟第一次输入 密码一致
+    // 4. 手机号的验证      第一位必须为1，后面再加10位数字
+    // 5. 邮箱                数字大小写字母_- 3到12位   @  数字字母 2到9位  . 字母2到5位
+    // 6. 提交按钮的时候，判断所有输入数据是否符合。符合跳转，否，不跳
+
+    var oun = document.getElementById("username");
+    var opw = document.getElementById("password");
+    var opw2 = document.getElementById("password2");
+    var osubmit = document.getElementById("submit");
+
+    // 提前准备变量，用来存储每个输入框的验证结果，以便将来提交时进行整体验证
+    var un = pw = pw2 = false;
+
+    // 用户名的验证
+    oun.oninput = function(){
+        var reg = /^[\u2E80-\u9FFF\w\-]{4,20}$/;
+        if(reg.test(this.value)){
+            this.nextElementSibling.innerText = "符合";
+            un = true;
+        }else{
+            this.nextElementSibling.innerText = "不符合，用户名仅支持中文、字母、数字、“-”“_”的组合，4-20个字符";
+            un = false;
+        }
+    }
+
+    // 密码
+    opw.oninput = function(){
+        if(this.value === ""){
+            pw = false;
+            this.nextElementSibling.innerText = "";
+            return;
+        }
+        var a=b=c=0;
+        // 因为只需要验证字符中是否出现了某种类型，所以正则不需要整体验证，只需要局部验证即可
+        var numReg = /\d/;
+        if(numReg.test(this.value)){
+            a=1;
+        }
+        var azReg = /[a-z]/i;
+        if(azReg.test(this.value)){
+            b=1;
+        }
+        var tsReg = /[^\da-z]/i;
+        if(tsReg.test(this.value)){
+            c=1;
+        }
+        switch(a+b+c){
+            case 1:this.nextElementSibling.innerText = "弱";    break;
+            case 2:this.nextElementSibling.innerText = "中";    break;
+            case 3:this.nextElementSibling.innerText = "强";    break;
+        }
+        pw = true;
+        // 在密码中，如果发现重复密码不为空，也要对重复密码进行验证
+        if(opw2.value === "") return;
+        if(opw2.value === this.value){
+            opw2.nextElementSibling.innerText = "一致";
+            pw2 = true;
+        }else{
+            opw2.nextElementSibling.innerText = "不一致";
+            pw2 = false;
+        }
+    }
+
+    // 重复密码
+    opw2.oninput = function(){
+        if(opw.value === this.value){
+            this.nextElementSibling.innerText = "一致";
+            pw2 = true;
+        }else{
+            this.nextElementSibling.innerText = "不一致";
+            pw2 = false;
+        }
+    }
+
+    // 提交
+    osubmit.onclick = function(){
+        // 判断之前记录的每个输入框的验证结果
+        if(un && pw && pw2){
+            alert("提交成功")
+        }else{
+            alert("提交失败")
+        }
+    }
+
+
+
+    // 函数防抖
+    // 函数节流
+
+</script>
+</html>

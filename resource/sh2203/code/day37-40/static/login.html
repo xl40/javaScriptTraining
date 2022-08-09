@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米账号 - 注册/登录</title>
+    <link rel="stylesheet" href="./css/Puplic.css">
+    <link rel="stylesheet" href="./css/Login.css">
+</head>
+<body>
+    <div class="account-content">
+        <div class="account-wrap">
+            <div class="account-scroll">
+                <div class="user-account">
+
+                    <!-- 头部 -->
+                    <div class="mi_header">
+                        <div class="mi-title fl">
+                            <img src="../images/logo-mi.png" alt="">
+                            小米帐号
+                        </div>
+                        <div class="mi-nav fr">
+                            <a href="javascript:;">用户协议</a>
+                            <a href="javascript:;">隐私政策</a>
+                            <a href="javascript:;">帮助中心</a>
+                            <div class="mi-nav-line"></div>
+                            <div class="mi-nav-item">
+                                <div class="chinese">
+                                    中文(简体)
+                                </div>
+                                <i class="iconfont down-arrow">&#xe647;</i>
+                                <div class="chinese-menu">
+                                    <ul>
+                                        <li class="">中文(简体)</li>
+                                        <li>中文(繁體)</li>
+                                        <li>English</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 主体 -->
+                    <div class="mi-container">
+                        <dl class="mi-card">
+                            <dt class="mi-corner">
+                                <div class="btn-tab img-pvg"></div>
+                            </dt>
+
+                            <dd class="login-register">
+                                <ul class="lore">
+                                    <li class="tab-active tab-log">
+                                        <a href="javascript:;">登录</a>
+                                        <div class="tabs-bot"></div>
+                                    </li>
+                                    <li class="tab-register">
+                                        <a href="javascript:;">注册</a>
+                                    </li>
+                                </ul>
+                                <!-- <div class="tabs-bot"></div> -->
+
+                                <div class="tabs-content">
+                                    <div class="tabs-login tabs-active">
+                                        <form class="mi-form">
+                                            <div class="login_account">
+                                                <input id="xiaomi_id" type="text" >
+                                            </div>
+
+                                            <div class="login_password">
+                                                <input id="xiaomi_password" type="password">
+                                            </div>
+        
+                                            <div class="checkbox-wrapper">
+                                                <input type="checkbox" class="mi-checkbox">
+                                                <span>
+                                                    已阅读并同意小米帐号
+                                                    <a href="javascript:;">用户协议</a>
+                                                    和
+                                                    <a href="javascript:;">隐私政策</a>
+                                                </span>
+                                            </div>
+        
+                                            <input type="button" class="mi-button" value="登录" id="login">
+                                        </form>
+                                    </div>
+
+                                    <div class="tabs-register">
+                                        <form class="mi-form">
+                                            <div class="phone-wrap">
+                                                <input name="phone" id="phone">
+                                            </div>
+                                            <span class="phone-correct">请输入正确的手机号</span>
+                                            <span class="phone-Empty">手机号不得为空</span>
+                                            <div class="setPassword-wrap">
+                                                <input type="password" id="setpassword">
+                                            </div>
+                                            <span class="alphabetic-Characters">请使用字母、数字和字符三种组合，8-20个字符</span>
+    
+                                            <div class="setPassword-wrap">
+                                                <input type="text" id="checkCode" placeholder="请输入右侧的验证码">
+                                            </div>
+                                            <span class="alphabetic-Characters checkCode" style="display:inline">6666</span>
+    
+                                            <button type="submit" class="mi-button" id="register">立即注册</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <!-- footer -->
+                    <div class="mi-copyright">
+                        小米公司版权所有-京ICP备10046444-
+                        <a href="javascript:;">京公网安备11010802020134号</a>
+                        -京ICP证110507号
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./libs/jquery.js"></script>
+<script>
+    // 生成验证码
+    // 四位数字的随机验证码
+    // 范围随机数
+    function random(max,min){
+        return Math.round(Math.random()*(max-min)+min);
+    }
+
+    // 随机4位数字的验证码
+    function randomNumber(){
+        var str = "";
+        for(var i=0;i<4;i++){
+            str += random(0, 9);
+        }
+        return str;
+    }
+
+    const cc = randomNumber();
+
+    $(".checkCode").html(cc);
+
+    // 注册的选项卡
+    function registerTab(){
+        $("#xiaomi_id").val("");
+        $("#xiaomi_password").val("");
+        $(".tab-register").toggleClass("tab-active");
+        $(".tab-log").removeClass("tab-active")
+        $(".tabs-register").show();
+        $(".tabs-login").hide();
+    }
+    // 登录的选项卡
+    function loginTab(){
+        $("#phone").val("");
+        $("#setpassword").val("");
+        $(".tab-log").addClass("tab-active");
+        $(".tab-register").removeClass("tab-active")
+        $(".tabs-register").hide();
+        $(".tabs-login").show();
+    }
+    // 初始显示注册选项卡
+    registerTab();
+
+    // 点击切换登录选项卡
+    $(".tab-log").click(function(){
+        loginTab();
+    })
+    // 点击切换注册选项卡
+    $(".tab-register").click(function(){
+        registerTab();
+    })
+
+
+    // ===========
+
+    // 点击注册按钮，开始注册功能
+    $("#register").click(function(){
+        if($("#checkCode").val() !== cc){
+            alert("验证码不对");
+            return false;
+        }
+        
+        // 发起ajax请求，将表单中的用户信息提交给后端
+        $.ajax({
+            url:"http://localhost:3000/api",
+            data:{
+                type:"register",
+                username: $("#phone").val(),
+                password: $("#setpassword").val()
+            },
+            success:res=>{
+                // 请求成功后，解析数据，根据后端提示，添加不同的交互功能
+                res = JSON.parse(res);
+                if(res.code === 3){
+                    // 成功后的交互
+                    if(confirm("注册成功，是否跳转到登录")){
+                        // 所谓的跳转到登录（切换选项卡）
+                        loginTab();
+                    }
+                }else{
+                    // 失败后的交互
+                    alert("注册失败，" + res.title);
+                    $("#phone").val("");
+                    $("#phone")[0].focus();
+                }
+            }
+        })
+        return false;
+    })
+
+
+
+    // 点击登录按钮，开始登录功能
+    $("#login").click(function(){
+        // 发起ajax请求，将表单中的用户信息提交给后端
+        $.ajax({
+            url:"http://localhost:3000/api",
+            type:"post",
+            data:{
+                type:"login",
+                username: $("#xiaomi_id").val(),
+                password: $("#xiaomi_password").val()
+            },
+            success:res=>{
+                // 请求成功后，解析数据，根据后端提示，添加不同的交互功能
+                res = JSON.parse(res);
+                // console.log(res);
+                if(res.code === 1){
+
+                    // 将登录成功的状态存储到本地存储
+                    localStorage.setItem("token","ok");
+                    localStorage.setItem("username", res.data.username);
+
+                    if(confirm("登录成功，是否跳转到首页")){
+                        location.assign("http://localhost:3000/index.html");
+                        // ...
+                    }
+                }else if(res.code === 2){
+                    alert(res.title);
+                    $("#xiaomi_password").val("");
+                    $("#xiaomi_password")[0].focus();
+                }else if(res.code === 3){
+                    if(confirm("登录失败，" + res.title + "是否去注册")){
+                        registerTab();
+                    }
+                }
+            }
+        })
+        return false;
+    })
+
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    // 6. 十进制转其他进制：数值转字符
+    //     - 十进制.toString(n)
+    var num = 30;
+    console.log( num.toString(2) );
+    console.log( num.toString(8) );
+    console.log( num.toString(10) );
+    console.log( num.toString(16) );
+
+    // 7. 其他进制转十进制：字符转数值
+    //     - parseInt(其他进制, n)
+    console.log( parseInt("11011010", 2) );
+    console.log( parseInt("357", 8) );
+    console.log( parseInt("365", 10) );
+    console.log( parseInt("1abc", 16) );
+
+
+    // 其他转其他
+    // 二进制转八进制：先转成十进制，然后在转成八进制
+    var str = "1000111";
+    console.log(parseInt(str, 2).toString(8));
+
+</script>
+</html>

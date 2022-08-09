@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 篮球从5米高的地方掉下来，每次弹起的高度是原来的30%，经过几次弹起，篮球的高度小于0.1米。
+
+    // 不确定次数的需求，原则上来说，永远不断的在弹起，无限接近于0，而不为0
+    // 写出一个死循环
+    // for(;true;){}
+    // while(true){}
+
+    // while循环更适合处理不确定次数的循环
+    // for循环更适合处理确定次数的循环
+
+    var i = 1;
+    var h = 5;
+    while(true){
+        h = h * 0.3;
+        if(h < 0.1){
+            // 停止循环
+            break;
+        }
+        i++;
+    }
+    console.log(i);
+
+    
+    // break
+    // for(var i=0;i<10;i++){
+    //     if(i === 5){
+    //         console.log("hello");
+    //         break;
+    //         console.log("world");
+    //     }
+    //     console.log(i);
+    // }
+
+    // continue
+    // for(var i=0;i<10;i++){
+    //     if(i === 5){
+    //         console.log("hello");
+    //         continue;
+    //         console.log("world");
+    //     }
+    //     console.log(i);
+    // }
+
+    // 测试continue的时候，注意避免产生死循环
+    // 注意：这是一个死循环
+    // var i=0;
+    // while(i<10){
+    //     if(i === 5){
+    //         continue;
+    //     }
+    //     console.log(i);
+    //     i++;
+    // }
+    
+    // 注意continue跳过了什么
+    // var i=0;
+    // while(i<10){
+    //     i++;
+    //     if(i === 5){
+    //         continue;
+    //     }
+    //     console.log(i);
+    // }
+
+
+
+
+</script>
+</html>

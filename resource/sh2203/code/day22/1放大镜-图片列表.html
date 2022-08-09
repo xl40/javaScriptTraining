@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .m_box{width: 350px;height: 350px;position: relative;}
+        .m_box img{width: 350px;height: 350px;}
+        .m_box span{position: absolute;left:0;top:0;background: rgba(255,100,100,0.5);display: none;}
+        .m_box em{position: absolute;left: 0;top:0;right:0;bottom: 0;z-index: 1;}
+
+        .list ul{margin: 0;padding: 0;list-style: none;width:350px;height: 50px;display: flex;}
+        .list li{margin: 0 5px;border: solid 2px transparent;width: 50px;height: 50px;}
+        .list li:hover{border-color: blue;}
+
+        .l_box{position: absolute;width: 350px;height: 350px;left: 450px;top: 0;overflow: hidden;display: none;}
+        .l_box img{width: 1050px;height: 1050px;position: absolute;left:0;top:0;}
+    </style>
+</head>
+<body>
+    <div class="m_box">
+        <img src="./imgs/m0.jpg" alt="">
+        <span></span>
+        <em></em>
+    </div>
+    <div class="list">
+        <ul>
+            <li><img src="./imgs/s0.jpg" alt=""></li>
+            <li><img src="./imgs/s1.jpg" alt=""></li>
+            <li><img src="./imgs/s2.jpg" alt=""></li>
+        </ul>
+    </div>
+    <div class="l_box">
+        <img src="./imgs/l0.jpg" alt="">
+    </div>
+</body>
+<script>
+    class BigImgMove{
+        constructor(){
+            this.mBox = document.querySelector(".m_box");
+            this.mImg = document.querySelector(".m_box img");
+            this.mSpan = document.querySelector(".m_box span");
+            this.lBox = document.querySelector(".l_box");
+            this.lImg = document.querySelector(".l_box img");
+            // 1. 选择元素，准备数据
+            this.list = document.querySelectorAll(".list li");
+            this.imgList = [{
+                small:"./imgs/s0.jpg",
+                middle:"./imgs/m0.jpg",
+                large:"./imgs/l0.jpg"
+            },{
+                small:"./imgs/s1.jpg",
+                middle:"./imgs/m1.jpg",
+                large:"./imgs/l1.jpg"
+            },{
+                small:"./imgs/s2.jpg",
+                middle:"./imgs/m2.jpg",
+                large:"./imgs/l2.jpg"
+            }]
+
+            this.addEvent();
+        }
+        addEvent(){
+            const that = this;
+            this.mBox.addEventListener("mouseover", function(){
+                that.show()
+            })
+            this.mBox.addEventListener("mouseout", function(){
+                that.hide()
+            })
+            this.mBox.addEventListener("mousemove", function(eve){
+                const e = eve || window.event;
+                that.move(e);
+            })
+            // 2. 绑定事件，绑定索引
+            for(let i=0;i<this.list.length;i++){
+                this.list[i].index = i;
+                this.list[i].onclick = function(){
+                    // 3. 获取当前元素，根据索引找到图片数据，设置给对应标签
+                    that.changeImg(this);
+                }
+            }
+        }
+        changeImg(ele){
+            // 根据索引找到图片数据，设置给对应标签
+            // console.log(this.imgList[ele.index].small);
+            this.mImg.src = this.imgList[ele.index].middle;
+            this.lImg.src = this.imgList[ele.index].large;
+        }
+        hide(){
+            this.lBox.style.display = "none";
+            this.mSpan.style.display = "none";
+        }
+        show(){
+            this.lBox.style.display = "block";
+            this.mSpan.style.display = "block";
+            this.mSpan.style.width = this.lBox.offsetWidth / this.lImg.offsetWidth * this.mBox.offsetWidth + "px";
+            this.mSpan.style.height = this.lBox.offsetHeight / this.lImg.offsetHeight * this.mBox.offsetHeight + "px";
+        }
+        move(e){
+            let l = e.offsetX - this.mSpan.offsetWidth/2;
+            let t = e.offsetY - this.mSpan.offsetHeight/2;
+            if(l < 0) l=0;
+            if(t < 0) t=0;
+            if(l > this.mBox.offsetWidth - this.mSpan.offsetWidth){
+                l = this.mBox.offsetWidth - this.mSpan.offsetWidth
+            }
+            if(t > this.mBox.offsetHeight - this.mSpan.offsetHeight){
+                t = this.mBox.offsetHeight - this.mSpan.offsetHeight
+            }
+            this.mSpan.style.left = l + "px";
+            this.mSpan.style.top = t + "px";
+            const x = l / (this.mBox.offsetWidth - this.mSpan.offsetWidth);
+            const y = t / (this.mBox.offsetHeight - this.mSpan.offsetHeight);
+            this.lImg.style.left = -x * (this.lImg.offsetWidth - this.lBox.offsetWidth) + "px"
+            this.lImg.style.top = -y * (this.lImg.offsetHeight - this.lBox.offsetHeight) + "px"
+        }
+    }
+    new BigImgMove();
+</script>
+</html>

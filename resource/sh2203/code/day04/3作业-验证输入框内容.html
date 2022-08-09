@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="text" id="txt1"><input type="button" id="btn1" value="判断是否是纯数字"><input type="text" id="result1" readonly><br>
+    <input type="text" id="txt2"><input type="button" id="btn2" value="判断是否为空"><input type="text" id="result2" readonly><br>
+    <input type="text" id="txt3"><input type="button" id="btn3" value="判断是整数还是小数"><input type="text" id="result3" readonly><br>
+</body>
+<script>
+
+    var txt1 = document.getElementById("txt1");
+    var txt2 = document.getElementById("txt2");
+    var txt3 = document.getElementById("txt3");
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var btn3 = document.getElementById("btn3");
+    var result1 = document.getElementById("result1");
+    var result2 = document.getElementById("result2");
+    var result3 = document.getElementById("result3");
+
+    btn1.onclick = function(){
+        // 输入框的内容是否为纯数字
+        if(parseFloat(txt1.value) == txt1.value){
+        // if( !isNaN(txt1.value) ){
+            result1.value = "是纯数字";
+        }else{
+            result1.value = "不是纯数字";
+        }
+    }
+
+    btn2.onclick = function(){
+        // 输入框的内容是否为空
+        if( txt2.value === "" ){
+            result2.value = "不允许为空";
+        }else{
+            result2.value = "不为空";
+        }
+    }
+
+    btn3.onclick = function(){
+        // 输入框的内容是整数还是小数
+        if( txt3.value % 1 === 0 ){
+            result3.value = "是整数";
+        }else{
+            result3.value = "是小数";
+        }
+    }
+
+
+</script>
+</html>

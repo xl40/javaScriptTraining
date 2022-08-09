@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    const url1 = "/a";
+    const url2 = "/b";
+    const url3 = "/c";
+    const url4 = "/d";
+
+    // 需求：按照顺序依次获取到来自以上四个地址的数据
+    // ajaxGet(url1).then(res=>{
+    //     console.log(res)
+    // })
+    // ajaxGet(url2).then(res=>{
+    //     console.log(res)
+    // })
+    // ajaxGet(url3).then(res=>{
+    //     console.log(res)
+    // })
+    // ajaxGet(url4).then(res=>{
+    //     console.log(res)
+    // })
+
+    // - Promise实例的then方法的返回值
+        // - 如果then方法的回调函数内，没有主动返回新的Promise实例，那么此时then方法的返回值是当前Promise实例
+        // - 否则，就是新的Promise实例
+
+    // const p1 = ajaxGet(url1);
+    // p1.then(res1=>{
+    //     console.log(res1);
+    //     return ajaxGet(url2);
+    // }).then(res2=>{
+    //     console.log(res2);
+    //     return ajaxGet(url3);
+    // }).then(res3=>{
+    //     console.log(res3);
+    //     return ajaxGet(url4);
+    // }).then(res4=>{
+    //     console.log(res4);
+    // })
+
+    // 需求：同时获取到来自以上四个地址的数据
+    // Promise构造函数自身的批处理方法：all，race
+    const p1 = ajaxGet(url1);
+    const p2 = ajaxGet(url2);
+    const p3 = ajaxGet(url3);
+    const p4 = ajaxGet(url4);
+    // 所有都成功，才会执行then的成功，否则就会执行then的失败或catch的失败
+    Promise.all([p1, p2, p3, p4]).then(res=>{
+        console.log(res);
+    });
+    // 只要第一个结束的请求的结果，如果第一个结束的请求是成功，执行then的成功，第一个结束的请求是失败，执行then的失败或cathc的失败
+    Promise.race([p1, p2, p3, p4]).then(res=>{
+        console.log(res);
+    })
+
+
+
+    function ajaxGet(url){
+        return new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                const msg = `这是来自${url}的请求成功后得到的响应数据`;
+                // 请求成功
+                resolve(msg);
+            }, Math.random()*10);
+        })
+    }
+</script>
+</html>

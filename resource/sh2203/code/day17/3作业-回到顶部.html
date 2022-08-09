@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        span{position: fixed;right: 40px;bottom: 40px;width: 100px;height:40px;line-height: 40px;text-align: center;background: #eee;cursor: pointer}
+        span:hover{background: #99f;color: #fff;}
+        span:active{background: #33f;color: #fff;}
+    </style>
+</head>
+<body>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <p>段落</p>
+    <p>段落</p>
+    <p>段落</p>
+    <p>段落</p>
+    <p>段落</p>
+    <p>段落</p>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <p>段落</p>
+    <p>段落</p>
+    <p>段落</p>
+    <p>段落</p>
+    <p>段落</p>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <p>段落</p>
+    <p>段落</p>
+    <p>段落</p>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <p>段落</p>
+    <p>段落</p>
+    <p>段落</p>
+    <p>段落</p>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <p>段落</p>
+    <p>段落</p>
+    <p>段落</p>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <h2>标题</h2>
+    <span>回到顶部</span>
+</body>
+<script>
+    var ospan = document.querySelector("span");
+
+    // 存储计时器标志
+    var t;
+
+    ospan.onclick = function(){
+        // 判断是否存储过计时器标志，如果没有储存过，说明计时器没有开启
+        if(t === undefined){
+            // 那就开一个计时器
+            t = setInterval(() => {
+                // 判断是否回到顶部
+                if(document.documentElement.scrollTop <= 0){
+                    // 清除计时器
+                    clearInterval(t);
+                    // 初始化计时器标志变量
+                    t = undefined;
+                }else{
+                    // 没有回到顶部，持续减少滚动距离
+                    document.documentElement.scrollTop -= 500;
+                }
+            }, 30);
+        }
+    }
+
+</script>
+</html>

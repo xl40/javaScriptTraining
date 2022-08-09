@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        input{width: 60px;}
+    </style>
+</head>
+<body>
+    <input type="text" id="year">
+    <input type="text" id="month">
+    <input type="text" id="date">
+    <input type="button" id="btn" value="计算">
+    <input type="text" id="result">
+</body>
+<script>
+    // 根据一个数字日期，判断这个日期是这一年的第几天例如： 2016和02和11，计算后结果为42
+
+    var year = document.getElementById("year");
+    var month = document.getElementById("month");
+    var date = document.getElementById("date");
+    var result = document.getElementById("result");
+    var btn = document.getElementById("btn");
+
+    btn.onclick = function(){
+        var y = Number(year.value);
+        var m = Number(month.value);
+        var d = Number(date.value);
+
+        // 2016.2.11
+        // 1月的31天 + 11天
+        // 2016.4.25
+        // 1月的31天 + 2月的29天 + 3月的31天 + 25天
+        // 2016.12.31
+        // 1月 + 2月 + .... + 11月 + 31天
+
+        // 某年m月d号
+        // 从1月开始累加一直加到(m-1月)的总天数 + d天
+
+        // 利用switch的case穿透，将每个月份可能会重复计算的部分，累加
+        // 简化代码
+
+        var sum = 0;
+        switch(m){
+            case 12:
+                sum = sum + 30;
+            case 11:
+                sum = sum + 31;
+            case 10:
+                sum = sum + 30;
+            case 9:
+                sum = sum + 31;
+            case 8:
+                sum = sum + 31;
+            case 7:
+                sum = sum + 30;
+            case 6:
+                sum = sum + 31;
+            case 5:
+                sum = sum + 30;
+            case 4:
+                sum = sum + 31;
+            case 3:
+                if(y % 4 === 0 && y % 100 !== 0 || y % 400 === 0){
+                    sum = sum + 29;
+                }else{
+                    sum = sum + 28;
+                }
+            case 2:
+                sum = sum + 31;
+            case 1:
+                sum = sum + d;
+        }
+        result.value = sum + "天";
+    }
+
+    
+
+
+
+</script>
+</html>

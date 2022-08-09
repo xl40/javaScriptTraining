@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // aabccd去掉重复的字符，使结果显示abcd
+
+    // 参考课上讲过的数组去重，无法就是把数组的操作换成字符的操作
+
+    function norepeat(s){
+        var newStr = "";
+        for(var i=0;i<s.length;i++){
+            if(newStr.indexOf(s[i]) === -1){
+                newStr += s[i];
+            }
+        }
+        return newStr;
+    }
+    var str = "aabccd";
+    var res = norepeat(str);
+    console.log(str);
+    console.log(res);
+
+
+
+</script>
+</html>

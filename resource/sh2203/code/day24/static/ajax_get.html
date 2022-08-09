@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    正在测试ajax的get封装
+    <input type="button" id="btn1" value="登录">
+    <input type="button" id="btn2" value="注册">
+    <input type="button" id="btn3" value="获取信息">
+    <input type="button" id="btn4" value="错误演示">
+</body>
+<script>
+    
+    const obtn1 = document.getElementById("btn1");
+    const obtn2 = document.getElementById("btn2");
+    const obtn3 = document.getElementById("btn3");
+    const obtn4 = document.getElementById("btn4");
+
+    obtn1.onclick = function(){
+        const url = "http://localhost:3000/api";
+        ajaxGet(url, {
+            type:"login",
+            username:"admin",
+            passworld:13123
+        }, function(a){
+            console.log(a);
+        });
+    }
+    
+    obtn2.onclick = function(){
+        const url = "http://localhost:3000/api";
+        ajaxGet(url,{
+            type:"register"
+        }, function(b){
+            alert(b);
+        });
+    }
+
+    obtn3.onclick = function(){
+        const url = "http://localhost:3000/api";
+        ajaxGet(url,{
+            type:"getData"
+        }, function(res){
+            console.log(JSON.parse(res));
+        });
+    }
+
+    obtn4.onclick = function(){
+        const url = "http://localhost:3000/api";
+        ajaxGet(url, function(res){
+            console.log(res);
+        });
+    }
+
+    function ajaxGet(url, obj, success){
+        // 处理默认参数，不需要发送数据时，将回调函数依然存入cb参数
+        if(typeof obj === "function"){
+            success = obj;
+            obj = null;
+        };
+        // 处理要发送请求数据
+        let str = "";
+        for(let i in obj){
+            str += `${i}=${obj[i]}&`
+        }
+        // 拼接到url
+        url = url + "?" + str.slice(0, -1);
+        // 开启ajax
+        const xhr = new XMLHttpRequest();
+        xhr.open("get", url, false);
+        xhr.onload = function(){
+            if(xhr.status === 200){
+                success(xhr.responseText);
+            }
+            // else{
+            //     console.log(xhr.status);
+            // }
+        }
+        xhr.send();
+    }
+
+</script>
+</html>

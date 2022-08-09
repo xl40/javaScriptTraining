@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 1000px;border: solid 1px black;display: flex;flex-wrap: wrap;}
+        .box .item{width: 250px;border: solid 1px black;box-sizing: border-box;text-align: center;}
+        .box .item img{width: 80%;}
+        .box .item p{margin: 10px 0;}
+        .box .item p:nth-child(3){height: 40px;line-height: 20px;overflow: hidden;}
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // 0. 模拟的商品数据
+    var msg = [{
+        src:"https://img11.360buyimg.com/n7/jfs/t1/122491/17/25250/138917/625e7b7dE8ed05090/81de96e566fc8821.jpg",
+        price:"4499.00",
+        name:"荣耀Magic4 全新一代骁龙8 双曲屏设计 LTPO屏幕 潜望式长焦摄像头 7P广角主摄 5G 全网通版  8GB+256GB 亮黑"
+    },{
+        src:"https://img12.360buyimg.com/n7/jfs/t1/128527/3/27147/132209/62469c68E4116a231/b646e4c737859f04.jpg",
+        price:"1199.00",
+        name:"荣耀Play6T 6.74英寸高刷护眼屏 侧边指纹解锁 5000mAh大电池 全网通 5G"
+    },{
+        src:"https://img13.360buyimg.com/n7/jfs/t1/219583/26/7800/151098/61b8a3f2E2879c4f6/9b73c1d24e0abecb.jpg",
+        price:"1699.00",
+        name:"荣耀X30 骁龙6nm疾速5G芯 66W超级快充 120Hz全视屏 全网通版 8GB+128GB 钛空银"
+    }];
+
+
+    // 1. 解析商品数据，拼接页面结构字符串（注意字符串和变量的拼接）
+    var item = "";
+    for(var i=0;i<msg.length;i++){
+        // console.log(msg[i].name)
+        item += '<div class="item"><img src="' + msg[i].src + '" alt=""><p>'+ msg[i].price +'</p><p>'+ msg[i].name +'</p></div>';
+    }
+    var str = '<div class="box">'+ item +'</div>';
+
+    // console.log(item);
+    
+    // 2. 将拼接好的页面结构字符串，填充（渲染）到页面
+    document.write(str);
+</script>
+</html>

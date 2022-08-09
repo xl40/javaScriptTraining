@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    正在测试ajax的post封装
+</body>
+<script>
+
+    ajaxPost("http://localhost:3000/api", {
+        type:"register"
+    }, function(res){
+        console.log(res);
+    })
+
+    function ajaxPost(url, data, success){
+        if(typeof data !== "object"){
+            success = data;
+            data = {};
+        }
+        let str = "";
+        for(let i in data){
+            str += `${i}=${data[i]}&`
+        }
+        // 区别2：post发送的数据，不在url身上拼接
+        // url = url + "?" + str.slice(0,-1);
+        const xhr = new XMLHttpRequest();
+        // 区别1：open的第一个参数
+        xhr.open("post", url);
+        xhr.onload = function(){
+            if(xhr.status === 200){
+                success(xhr.responseText);
+            }
+        }
+        // 区别3：设置请求头的数据格式
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        // 区别4：要发送的数据，填充到send中
+        xhr.send(str.slice(0, -1));
+    }
+</script>
+</html>

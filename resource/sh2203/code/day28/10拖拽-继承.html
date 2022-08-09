@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box1{width: 100px;height: 100px;background: red;position: absolute;left:0;top:0;}
+        .box2{width: 100px;height: 100px;background: green;position: absolute;left:0;top:130px;}
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+<script>
+    class Drag{
+        constructor(ele){
+            this.box = ele;
+            this.addEvent();
+        }
+        addEvent(){
+            const that = this;
+            this.box.onmousedown = function(eve){
+                that.downE = eve || window.event;
+                that.down();
+            }
+        }
+        down(){
+            const that = this;
+            document.onmousemove = function(eve){
+                that.moveE = eve || window.event;
+                that.move();
+            }
+            document.onmouseup = function(){
+                that.up();
+            }
+        }
+        move(){
+            this.box.style.left = this.moveE.pageX - this.downE.offsetX + "px";
+            this.box.style.top = this.moveE.pageY - this.downE.offsetY + "px";
+        }
+        up(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+
+    class SmallDrag extends Drag{
+        constructor(ele){
+            super(ele)
+        }
+        move(){
+            let l = this.moveE.pageX - this.downE.offsetX;
+            let t = this.moveE.pageY - this.downE.offsetY;
+
+            if(l<0) l=0;
+            if(t<0) t=0;
+
+            this.box.style.left = l + "px";
+            this.box.style.top = t + "px";
+        }
+    }
+
+    new Drag(document.querySelector(".box1"));
+
+    new SmallDrag(document.querySelector(".box2"));
+</script>
+</html>

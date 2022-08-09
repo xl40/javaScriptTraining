@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        input{width: 60px;}
+    </style>
+</head>
+<body>
+    <table border="1" width=300 align=center>
+        <tr>
+            <td>DATA</td>
+            <td>DATA</td>
+            <td>DATA</td>
+            <td>DATA</td>
+        </tr>
+        <tr>
+            <td>DATA</td>
+            <td>DATA</td>
+            <td>DATA</td>
+            <td>DATA</td>
+        </tr>
+        <tr>
+            <td>DATA</td>
+            <td>DATA</td>
+            <td>DATA</td>
+            <td>DATA</td>
+        </tr>
+    </table>
+</body>
+<script>
+
+    var otable = document.querySelector("table");
+
+    // 1事件委托绑定事件
+    otable.onclick = function(eve){
+        var e = eve || window.event;
+        var target = e.target || e.srcElement;
+        // 2找到真正触发事件的元素
+        if(target.tagName === "TD"){
+            // console.log(target);
+            // 3创建输入框
+            var ipt = document.createElement("input");
+            // 4设置输入框的内容为原td内容
+            ipt.value = target.innerText;
+            // 5清空原td
+            target.innerText = "";
+            // 6将输入框插入td
+            target.appendChild(ipt);
+            // 7顺手将输入框获取焦点
+            ipt.focus();
+            // 8当输入框失去焦点时
+            ipt.onblur = function(){
+                // 9将输入框的内容设置给td
+                target.innerText = ipt.value;
+            }
+        }
+    }
+
+
+</script>
+</html>

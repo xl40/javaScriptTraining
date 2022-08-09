@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{padding: 10px;margin: 10px;}
+        img{width:100px;}
+    </style>
+</head>
+<body>
+</body>
+<script>
+    // 操作边框的批处理
+
+
+    // 枝对象：使用div模拟枝对象
+    class Team{
+        constructor(c){
+            this.children = [];
+            this.ele = document.createElement("div");
+            this.ele.className = c;
+        }
+        addBorder(){
+            this.ele.style.border = "solid 2px black";
+            this.children.forEach(val=>{
+                val.addBorder();
+            })
+        }
+        removeBorder(){
+            this.ele.style.border = "none";
+            this.children.forEach(val=>{
+                val.removeBorder();
+            })
+        }
+    }
+    // 叶对象：使用img模拟叶对象
+    class Item{
+        constructor(src){
+            this.ele = document.createElement("img");
+            this.ele.src = src;
+        }
+        addBorder(){
+            this.ele.style.border = "solid 2px black";
+        }
+        removeBorder(){
+            this.ele.style.border = "none";
+        }
+    }
+
+    // 组合器
+    class Combiner{
+        add(parent, child){
+            // 组合对象
+            parent.children.push(child);
+            // 组合对象中的元素
+            parent.ele.appendChild(child.ele);
+        }
+        remove(parent, child){
+            // 删除对象
+            let i = 0;
+            const flag = parent.children.some((val,idx)=>{
+                i = idx;
+                return val === child;
+            })
+            if(flag){
+                // 删除parent.children中i位置的数据
+                parent.children.splice(i, 1);
+                // 删除页面上元素
+                child.ele.remove();
+            }
+        }
+    }
+
+    // 创建一些枝对象
+    const box = new Team("box")
+    const xbox = new Team("xbox")
+    const xxbox1 = new Team("xxbox1")
+    const xxbox2 = new Team("xxbox2")
+
+    // 创建一些叶对象
+    const img1 = new Item("https://img2.baidu.com/it/u=2378194771,2509231737&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500");
+    const img2 = new Item("https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png");
+    const img3 = new Item("https://img1.baidu.com/it/u=1197745376,2392125606&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281");
+
+    // 将整个动态的html结构插入到body
+    document.body.appendChild(box.ele);
+
+    // 创建一个组合器
+    const c = new Combiner();
+
+    // div.box
+    //     div.xbox
+    //         div.xxbox1
+    //             img
+    //         div.xxbox2
+    //             img
+    //     img
+
+    // 利用组合器组合页面结构
+    c.add(box, xbox);
+    c.add(xbox, xxbox1);
+    c.add(xbox, xxbox2);
+    c.add(box, img1);
+    c.add(xxbox1, img2);
+    c.add(xxbox2, img3);
+
+    // c.remove(xbox, xxbox1);
+    // c.remove(box, xbox);
+
+    // 开始体验批处理操作
+
+    box.addBorder();
+    // xbox.addBorder();
+    // xxbox1.addBorder();
+    xxbox2.removeBorder();
+
+
+
+
+
+</script>
+</html>

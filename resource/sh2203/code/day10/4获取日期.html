@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // console.log(Date);
+
+    // 作为对象直接使用
+    // 获取时间戳
+    // var time = Date.now();
+    // console.log(time);
+
+    // 被new执行
+    // 获取日期对象
+    var d = new Date()
+    // console.log(typeof d);
+    console.log(d);
+
+    // 获取日期对象的每个部分：日期对象的get系列方法
+    // 用来格式化日期的显示
+    console.log( d.getFullYear() );
+    console.log( d.getMonth()+1 );        // 0~11
+    console.log( d.getDate() );
+
+    console.log( d.getDay() );          // 0~6
+
+    console.log( d.getHours() );
+    console.log( d.getMinutes() );
+    console.log( d.getSeconds() );
+    console.log( d.getMilliseconds() );
+
+    // 获取时间戳
+    console.log( d.getTime() );
+
+
+
+
+
+
+
+
+
+    // 时间戳：从1970.1.1 0:0:0开始，过去了的毫秒数
+    // 课外阅读：为什么计算机的起始时间是从1970.1.1 0:0:0
+
+</script>
+</html>

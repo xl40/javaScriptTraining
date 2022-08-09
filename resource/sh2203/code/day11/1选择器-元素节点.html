@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div id="cont">5</div>
+    <div id="cont">6</div>
+    <div id="cont">7</div>
+    <div id="cont">8</div>
+    <ul class="list">
+        <li>link1</li>
+        <li>link2</li>
+        <li>link3</li>
+        <li>link4</li>
+        <li>link5</li>
+        <li>link6</li>
+        <li>link7</li>
+    </ul>
+    <div class="msg">
+        <div class="xbox">
+            <h3>标题1</h3>
+            <h3>标题2</h3>
+        </div>
+        <h3>标题3</h3>
+        <h3>标题4</h3>
+    </div>
+    <span>9</span>
+    <span>10</span>
+    <span>11</span>
+    <span>12</span>
+    <input type="text" name="username">
+    <input type="text" name="password">
+    <input type="text" name="password">
+</body>
+<script>
+    
+    // id选择器：失明特性
+        // 就算有多个元素符合要求，也只选中第一个符合要求的元素
+        // 选中之后元素节点对象，可以直接被相关DOM方法或属性操作
+    // var oCont = document.getElementById("cont");
+    // console.log(oCont);
+    // oCont.style.background = "red";
+
+    // class选择器：
+        // 选中所有符合要求的元素，就算只有一个符合要求的元素，结果也是以数组的形式呈现
+        // 选中之后的数组对象，不可以直接被相关DOM方法或属性操作
+        // 必须先解析数组，拿到每个独立的节点对象后，再进行DOM操作
+    // var aBox = document.getElementsByClassName("box");
+    // console.log(aBox);
+    // 解析数组
+    // console.log(aBox[0]);
+    // console.log(aBox[1]);
+    // console.log(aBox[2]);
+    // 先解析，再进行DOM操作
+    // aBox[0].style.background = "pink";
+    // aBox[1].style.background = "pink";
+    // aBox[2].style.background = "pink";
+
+    // 标签名选择器：
+    // var aSpan = document.getElementsByTagName("span");
+    // console.log(aSpan);
+
+    // name选择器：
+    // 注意：哪些元素才可以添加name
+    // var aPw = document.getElementsByName("password");
+    // console.log(aPw);
+
+    // ES5新增的选择器：
+    // query选择器：document.querySelector("支持css选择器写法")
+    // var oEle = document.querySelector(".box");
+    // var oEle = document.querySelector("#cont");
+    // var oEle = document.querySelector("span");
+    // var oEle = document.querySelector(".msg h3");
+    // var oEle = document.querySelector(".msg>h3");
+    // console.log(oEle);
+
+
+    // queryAll选择器：document.querySelectorAll("css选择器写法")
+    // var aEle = document.querySelectorAll(".box");
+    // var aEle = document.querySelectorAll("span");
+    // var aEle = document.querySelectorAll(".msg h3");
+    // var aEle = document.querySelectorAll(".msg>h3");
+    // console.log(aEle);
+    
+
+    // 父选子：先选中父元素，根据父元素选中子元素
+    // var oUl = document.querySelector(".list");
+
+    // var aChild = oUl.children;
+    // console.log(aChild);
+
+    // var oFirst = oUl.firstElementChild;
+    // console.log(oFirst);
+
+    // var oLast = oUl.lastElementChild;
+    // console.log(oLast);
+
+    // 子选父：先选中子元素，根据子元素选中父元素
+    // var oXbox = document.getElementsByClassName("xbox")[0];
+
+    // var oParent = oXbox.parentNode;
+    // console.log(oParent);
+
+
+    // 兄弟：选选中当前元素，根据当前选中其他兄弟
+
+    var oMsg = document.getElementsByClassName("msg")[0];
+    
+    // 下一个兄弟
+    console.log(oMsg.nextElementSibling);
+
+    // 上一个兄弟
+    console.log(oMsg.previousElementSibling);
+
+
+
+
+
+</script>
+</html>

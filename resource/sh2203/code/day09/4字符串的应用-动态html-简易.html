@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 200px;height: 200px;;display: flex;justify-content: center;align-items: center;border-radius: 10px;background: #222;}
+        .box span{width: 50px;height: 50px;background: #fff;border-radius: 25px;line-height: 50px;text-align: center}
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // 1. 字符串拼接
+    var span = "";
+    var arr = ["你","还","好","吗"];
+    for(var i=0;i<arr.length;i++){
+        span += "<span>"+ arr[i] +"</span>";
+    }
+    var str = '<div class="box">'+ span +'</div>';
+
+    // 2. 将拼接好的字符串打印到页面
+    document.write(str);
+
+</script>
+</html>

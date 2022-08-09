@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    class Parent{
+        constructor(msg){
+            this.msg = msg;
+        }
+        show(){
+            console.log(this.msg);
+        }
+    }
+
+    class Child extends Parent{
+        constructor(m){
+            super(m);
+        }
+    }
+
+    const p = new Parent("hello");
+    console.log(p);
+    p.show();
+
+    const c = new Child("hi")
+    console.log(c);
+    c.show();
+
+</script>
+</html>

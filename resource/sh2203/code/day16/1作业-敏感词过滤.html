@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="cont">
+            
+        </div>
+        <div>
+            <textarea class="txt"></textarea>
+            <input type="button" class="btn" value="发送">
+        </div>
+    </div>
+</body>
+<script>
+    var otxt = document.querySelector(".txt");
+    var obtn = document.querySelector(".btn");
+    var ocont = document.querySelector(".cont");
+
+    obtn.onclick = function(){
+        send();
+    }
+
+    otxt.onkeydown = function(eve){
+        var e = eve || window.event;
+        var code = e.keyCode || e.which;
+
+        if(code === 13){
+            send();
+            e.preventDefault();
+        }
+    }
+
+    function send(){
+        if(otxt.value === "") return;
+        var p = document.createElement("p");
+
+        // 敏感词过滤
+        // 提前准备好敏感词库
+        var arr = ["hello", "你好", "123", "！"];
+        var str = otxt.value;
+
+        // 需要得到的正则：/((hello)+|(你好)+|(123)+|(！)+|)+/g;
+        // 提前将要创建正则内容，作为字符串进行处理
+        var regStr = "";
+        for(var i=0;i<arr.length;i++){
+            regStr += "("+ arr[i] +")+|";
+        }
+        regStr = "(" + regStr.slice(0,-1) + ")+";
+        // 利用构造函数方式创建正则，因为构造函数可以支持变量
+        var reg = new RegExp(regStr, "g");
+
+        // console.log(reg);
+        // 利用正则替换字符串中的敏感词，并将替换结果放入其他容器
+        p.innerText = str.replace(reg, "***");
+
+        ocont.appendChild(p);
+        otxt.value = "";
+    }
+
+</script>
+</html>

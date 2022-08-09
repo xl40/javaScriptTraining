@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        input{width: 70px;}
+    </style>
+</head>
+<body>
+    <input type="text" id="txt1" value="">
+    +
+    <input type="text" id="txt2" value="">
+    <input type="button" value="=" id="btn">
+    <input type="text" id="result" readonly value="">
+</body>
+<script>
+    // - 页面所有的操作都在document身上
+    // - 页面上很存在很多元素，需要通过js选择器选中某个具体的元素
+    var txt1 = document.getElementById("txt1");
+    var txt2 = document.getElementById("txt2");
+    var btn = document.getElementById("btn");
+    var res = document.getElementById("result");
+    // console.log(txt)
+    // console.log(btn)
+    // console.log(res)
+
+    // - 如果需要对元素产生交互，需要提前给元素添加事件
+    btn.onclick = function(){
+        // - 如果需要获取或设置元素的内容，必须通过DOM提供的js属性
+        res.value = Number(txt1.value) + Number(txt2.value);
+    }
+    
+
+</script>
+</html>

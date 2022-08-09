@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        input{width: 200px;padding: 0;height: 30px;}
+        .tip{margin: 10px 0;padding: 0;list-style: none;display: flex;width: 200px;height: 10px;justify-content: center}
+        .tip li{flex: 1;margin: 0 5px;background: #ccc;}
+    </style>
+</head>
+<body>
+    <form autocomplete="off">
+        <input type="text" id="password">
+    </form>
+    <ul class="tip">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    var opw = document.getElementById("password");
+    var ali = document.querySelectorAll(".tip li");
+
+    opw.oninput = function(){
+        var str = this.value;
+
+        // 保证提示条的初始颜色为灰色
+        for(var i=0;i<ali.length;i++){
+            ali[i].style.background = "#ccc";
+        }
+        // 准备容器，记录是否出现某种类型
+        var a=0,b=0,c=0;
+        // 遍历字符，逐个判断
+        for(var i=0;i<str.length;i++){
+            if(str[i] >= 0 && str[i] <= 9){
+                // 出现数字了
+                a=1;
+            }
+            if(str[i] >= "a" && str[i] <= "z" || str[i] >= "A" && str[i] <= "Z"){
+                // 出现字母了
+                b=1;
+            }
+            // 特殊：除了数字字母，其他都是特殊字符
+            if(!(str[i] >=0 && str[i] <= 9 || str[i] >= "a" && str[i] <= "z" || str[i] >= "A" && str[i] <= "Z")){
+                // 出现特殊了
+                c=1;
+            }
+        }
+
+        // 判断结束后，将三个容器加起来，就是出现了几种
+        // 根据种类的数量设置指定个数的提示条的颜色
+        for(var i=0;i<a+b+c;i++){
+            ali[i].style.background = "red";
+        }
+    }
+
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    console.log( computed(4,7,2,5,1,"+") );
+    console.log( computed(2,3,1,4,"*") );
+    console.log( computed(8,6,9,"+") );
+    console.log( computed(2,5,3,"*") );
+
+    // 因为最后一个参数必然是符号，所以在函数内部读取arguments数据时，最后一个不遍历，单独获取
+    function computed(){
+        var lastIndex = arguments.length-1;
+        switch(arguments[lastIndex]){
+            case "+":
+                var sum = 0;
+                for(var i=0;i<arguments.length-1;i++){
+                    sum += (arguments[i]);
+                }
+                return sum;
+            case "*":
+                var sum = 1;
+                for(var i=0;i<arguments.length-1;i++){
+                    sum *= (arguments[i]);
+                }
+                return sum;
+        }
+    }
+
+</script>
+</html>

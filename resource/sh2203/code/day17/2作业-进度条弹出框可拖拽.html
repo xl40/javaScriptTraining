@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 400px;height:200px;border: solid 1px black;margin: 50px auto;position: relative;}
+        .box p{height:30px;position: absolute;left: 0;top:85px;width: 0px;margin: 0;background: blue;color: #fff;line-height: 30px;text-align: center;}
+        .alert{width: 400px;height: 200px;border: solid 1px black;position: absolute;left:30px;top:50px;background: #eee;display:none;}
+        .alert h2{margin: 0;padding:6px 0;background: #222;color: #fff;cursor: move;}
+        #close{position: absolute;bottom: 10px;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p><span></span></p>
+    </div>
+    <div class="alert">
+        <h2>这是弹出框的标题</h2>
+        <div class="cont">这是弹出框的内容</div> 
+        <input type="button" value="关闭" id="close">
+    </div>
+</body>
+<script>
+    var op = document.querySelector(".box p");
+    var ospan = document.querySelector(".box span");
+    var target = 400;
+    var speed = 3;
+    var t = null;
+
+    var oh2 = document.querySelector(".alert h2");
+
+    var clientW = document.documentElement.clientWidth;
+    var clientH = document.documentElement.clientHeight;
+
+    var oalert = document.querySelector(".alert");
+    var oclose = document.querySelector(".alert #close");
+
+    // 1. 实现进度条功能
+    document.onclick = function(){
+        if(t === null){
+            t = setInterval(function(){
+                if(target - op.offsetWidth < speed){
+                    clearInterval(t);
+                    op.style.width = target + "px";
+                    ospan.innerText = "100%";
+                    // 2. 当进度条完成后，显示弹出框
+                    oalert.style.display = "block";
+                }else{
+                    op.style.width = op.offsetWidth + speed + "px";
+                    ospan.innerText = parseInt(op.offsetWidth / target * 100) + "%";
+                }
+            }, 30);
+        }
+    }
+
+    // 3. 拖拽功能
+    oh2.onmousedown = function(eve){
+        var downE = eve || window.event;
+        downE.preventDefault();
+        document.onmousemove = function(eve){
+            var moveE = eve || window.event;
+            var l = moveE.pageX - downE.offsetX;
+            var t = moveE.pageY - downE.offsetY;
+            if(l < 0){
+                l = 0;
+            }
+            if(t < 0){
+                t = 0;
+            }
+            if(l > clientW - oalert.offsetWidth){
+                l = clientW - oalert.offsetWidth
+            }
+            if(t > clientH - oalert.offsetHeight){
+                t = clientH - oalert.offsetHeight
+            }
+            oalert.style.left = l + "px";
+            oalert.style.top = t + "px";
+        }
+        document.onmouseup = function(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+
+    // 4. 点击关闭弹出框
+    oclose.onclick = function(){
+        oalert.style.display = "none";
+    }
+</script>
+</html>

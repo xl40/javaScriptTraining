@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 浅拷贝
+    // var arr1 = [4,5,6,7];
+    // var arr2 = arr1;
+    // arr2[2] = "啊";
+    // console.log(arr1);      // [4, 5, '啊', 7]
+    // console.log(arr2);      // [4, 5, '啊', 7]
+
+    // 深拷贝
+    var arr1 = [4,5,6,7];
+    var arr2 = [];
+    for(var i=0;i<arr1.length;i++){
+        arr2[i] = arr1[i];
+    }
+    arr2[2] = "啊";
+
+    console.log(arr1);      // [4, 5, 6, 7]
+    console.log(arr2);      // [4, 5, '啊', 7]
+</script>
+</html>

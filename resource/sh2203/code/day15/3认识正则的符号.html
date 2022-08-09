@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    var str = "abcb   bccb12#.$%3.1cdb.cqw.#$_...____...____%^ABC   easdQBCabc12^&*(312a   abbccaaa)(*&^bb  bbccc09876";
+
+    console.log(str);
+
+    // 正则最基本的原则，正则中所有的符号，都是需要验证的符号
+
+    // console.log( str.replace(/bc/, "哈") );
+
+    // console.log( str.replace(/bc/g, "哈") );
+
+    // console.log( str.replace(/bc/ig, "哈") );
+
+    // console.log( str.replace(/b|c/ig, "哈") );
+
+    // console.log( str.replace(/b|c+/ig, "哈") );
+
+    // console.log( str.replace(/b+|c+/ig, "哈") );
+
+    // console.log( str.replace(/(b|c)+/ig, "哈") );
+
+    // console.log( str.replace(/[a-z]+/ig, "哈") );
+
+    // console.log( str.replace(/[0-9]+/ig, "哈") );
+
+    // console.log( str.replace(/[a-z0-9]+/ig, "哈") );
+
+    // console.log( str.replace(/[^a-z0-9]+/ig, "哈") );
+
+    // console.log( str.replace(/\d+/ig, "哈") );
+    // console.log( str.replace(/\D+/ig, "哈") );
+    // console.log( str.replace(/\w+/ig, "哈") );
+    // console.log( str.replace(/\W+/ig, "哈") );
+    // console.log( str.replace(/\s+/ig, "哈") );
+    // console.log( str.replace(/\S+/ig, "哈") );
+
+    // console.log( str.replace(/.+/ig, "哈") );
+
+    // console.log( str.replace(/\.+/ig, "哈") );
+
+
+    // 修饰符：
+        // g       global，全局匹配
+        // i       ignore，忽略大小写
+    
+    // 逻辑符：
+        // |       或
+        // [^]     非
+    
+    // 量词：
+        // +       用来描述前一个部分，出现1次或以上
+
+    // ()      一个小括号括起来的是一个整体，表示一个子表达式
+
+    // 中元符：
+        // []      中元符内部的所有内容都是或的关系，一个中元符对应一个字符，其内部也可以书写范围，如：a-z，0-9
+
+    // 转义符：
+        // \d      表示所有数字，同：[0-9]
+        // \D      表示非数字，同：[^0-9]
+        // \w      表示数字字母下划线，同：[0-9a-z_]
+        // \W      表示非数字字母下划线，同：[^0-9a-z_]
+        // \s      表示空白字符，如空格
+        // \S      表示非空白字符，如非空格
+        // \       表示转所有，将在正则中有意义的符号转成普通字符
+
+    // 通配符：
+        // .       表示所有字符
+    
+
+</script>
+</html>

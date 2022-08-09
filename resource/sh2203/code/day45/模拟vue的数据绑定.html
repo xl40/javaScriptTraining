@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+</body>
+<script>
+    // html能读取js中的变量
+
+    // let msg = "world";
+
+    // const obox = document.querySelector(".box");
+
+    // obox.innerText = msg;
+
+    // msg = "hello";
+
+    // obox.innerText = msg;
+
+
+    // ============
+
+    const vm = {
+        el: ".box",
+        _msg: "hello",
+        get msg(){
+            document.querySelector(this.el).innerText = this._msg;
+            return this._msg;
+        },
+        set msg(val){
+            document.querySelector(this.el).innerText = val;
+            this._msg = val;
+        },
+        get name(){},
+        set name(val){}
+    }
+
+    vm.msg
+    
+    vm.msg = "world";
+    
+</script>
+</html>

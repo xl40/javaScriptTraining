@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box{width: 100px;height: 100px;background: pink}
+        textarea{width: 200px;height: 300px;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    var box = document.getElementById("box");
+
+    box.onclick = function(){
+        console.log("左键单击了box")
+    }
+
+    box.ondblclick = function(){
+        console.log("左键双击了box")
+    }
+
+    box.oncontextmenu = function(){
+        console.log("右键单击了box")
+    }
+
+    box.onmousedown = function(){
+        console.log("鼠标在box身上按下了")
+    }
+
+    box.onmouseup = function(){
+        console.log("鼠标在box身上抬起了")
+    }
+
+    box.onmousemove = function(){
+        console.log("鼠标在box身上移动了")
+    }
+
+    box.onmouseover = function(){
+        console.log("鼠标进入了box")
+    }
+
+    box.onmouseout = function(){
+        console.log("鼠标离开了box")
+    }
+
+</script>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 完整语法：()=>{}
+    // const fn = (a)=>{
+    //     return "hello " + a;
+    // }
+    // console.log(fn("张三"));
+    
+    // 极简语法：=>
+    // const fn = a => "hello " + a;
+    // console.log( fn("李四") );
+    // 当有且只有一个参数时，可以省略小括号
+    // const fn = (a, b) => "hello " + a + "今年" + b + "岁";
+    // console.log( fn("王二", 18) );
+    // 有且直接返回值时，可以省略花括号和return，花括号和return必须同时省略
+    // const fn = (a, b) => {
+    //     const str = "hahah";
+    //     return str + "hello " + a + "今年" + b + "岁"
+    // };
+    // console.log( fn("王二", 18) );
+
+
+    // 特性
+    // 箭头函数无法绑定this，继续使用外部的this绑定
+    const obj = {
+        name:"obj",
+        show:function(){
+            console.log(this);
+        },
+        show2:()=>{
+            console.log(this);
+        },
+        show3:function(){
+            const f = ()=>{
+                console.log(this);
+            }
+            f();        // obj
+        }
+    }
+    obj.show();         // obj
+    obj.show2();        // window
+    obj.show3();
+
+
+    // function fn(){}
+    // new fn();
+    // 箭头函数无法被new执行
+    // const fn = ()=>{};
+    // new fn();
+
+    // 因为语法简单，所以可读性差，伤害了代码的语义化
+
+    // 使用场景：
+    // 小范围使用，参数，返回值，赋值式创建参数，非常方便
+    // arr.sort((a,b)=>b-a)
+    // arr.forEach(val=>{
+    //     val
+    // })
+    // arr.map(val => val*=1.3);
+    // arr.filter(val => val%2);
+
+
+
+    // 不建议：作为事件处理函数
+    // 因为没有this，会找不到事件源
+    // for(let i=0;i<ali.length;i++){
+    //     ali[i].onclick = ()=>{
+    //         this
+    //     }
+    // }
+
+
+
+
+
+</script>
+</html>

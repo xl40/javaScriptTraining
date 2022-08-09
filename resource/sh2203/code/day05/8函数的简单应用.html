@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // 需求：计算任意两个数字的和
+
+    function sum(a, b){
+        console.log( a + b );
+    }
+
+    // sum(3, 7);
+    // sum(6, 9);
+    // sum(2, 5);
+    // sum("hello", "world");
+
+    // 封装思想
+
+    // 需求：计算任意个任意数字的和
+
+    function allSum(){
+        // console.log(arguments);
+        var s = 0;
+        for(var i=0;i<arguments.length;i++){
+            s += arguments[i];
+        }
+        console.log(s);
+    }
+
+    // allSum(3,5,7);
+    // allSum(2,7,3,9,1);
+    // allSum(2,1);
+
+
+
+</script>
+</html>

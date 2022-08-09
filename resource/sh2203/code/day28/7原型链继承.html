@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    function Parent(msg){
+        this.msg = msg;
+    }
+    Parent.prototype.show = function(){
+        console.log(this.msg);
+    }
+    Parent.prototype.init = function(){
+        console.log("这是Parent的init");
+    }
+
+    function Child(){}
+    // 原型链
+    Child.prototype = new Parent("hi");
+    Child.prototype.init = function(){
+        console.log("Child的init");
+    }
+
+    const p = new Parent("hello");
+    console.log(p);
+    p.show();
+    p.init();
+
+    const c = new Child();
+    console.log(c);
+    c.show();
+    c.init();
+
+    
+
+    // 正常的通过构造函数创建的实例的原型链结构：
+    // Parent实例的原型链 -> Parent构造函数的原型对象，的原型链 -> Object构造函数的原型对象
+    // p.__proto__ -> Parent.prototype，Parent.prototype.__proto__ -> Object.prototype
+    // 两层原型
+
+
+
+    // 原型链继承之后的实例的原型链结构：
+    // Child实例的原型链 -> Parent的实例，的原型链 -> Parent构造函数的原型对象，的原型链 -> Object构造函数的原型对象
+    // 三层原型
+
+
+
+
+
+</script>
+</html>

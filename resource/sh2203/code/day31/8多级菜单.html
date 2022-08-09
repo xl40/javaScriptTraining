@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,body,ul,li{margin:0;padding:0;}
+        li{list-style: none;}
+        .nav{width: 100%;height: 40px;line-height: 40px;}
+        .nav>ul{width: 100%;height: 40px;display: flex;}
+        .nav>ul>li{flex:1;text-align: center;background: #ccc;margin: 0 1px;}
+        .nav>ul>li:last-child ul ul{left:-200px;}
+        .nav>ul>li>ul{width: 50%;background: pink;margin: 0 auto;display: none}
+        .nav>ul>li>ul>li{position: relative;}
+        .nav ul ul ul{width:200px;line-height:30px;position: absolute;right: -200px;background: #f55;top:0;z-index: 1;display: none;}
+        .nav span{display:block;}
+        .nav li:hover>span{background: red;color: #fff}
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li>
+                <span>一级菜单0</span>
+                <ul>
+                    <li>
+                        <span>二级菜单0-0</span>
+                        <ul>
+                            <li><span>三级菜单0-0-0</span></li>
+                            <li><span>三级菜单0-0-1</span></li>
+                            <li>三级菜单0-0-2</li>
+                            <li>三级菜单0-0-3</li>
+                            <li>三级菜单0-0-4</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>二级菜单0-1</span>
+                        <ul>
+                            <li>三级菜单0-1-0</li>
+                            <li>三级菜单0-1-1</li>
+                            <li>三级菜单0-1-2</li>
+                            <li>三级菜单0-1-3</li>
+                            <li>三级菜单0-1-4</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>二级菜单0-2</span>
+                        <ul>
+                            <li>三级菜单0-2-0</li>
+                            <li>三级菜单0-2-1</li>
+                            <li>三级菜单0-2-2</li>
+                            <li>三级菜单0-2-3</li>
+                            <li>三级菜单0-2-4</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>一级菜单1</span>
+                <ul>
+                    <li>
+                        <span>二级菜单1-0</span>
+                        <ul>
+                            <li>三级菜单1-0-0</li>
+                            <li>三级菜单1-0-1</li>
+                            <li>三级菜单1-0-2</li>
+                            <li>三级菜单1-0-3</li>
+                            <li>三级菜单1-0-4</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>二级菜单1-1</span>
+                        <ul>
+                            <li>三级菜单1-1-0</li>
+                            <li>三级菜单1-1-1</li>
+                            <li>三级菜单1-1-2</li>
+                            <li>三级菜单1-1-3</li>
+                            <li>三级菜单1-1-4</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>二级菜单1-2</span>
+                        <ul>
+                            <li>三级菜单1-2-0</li>
+                            <li>三级菜单1-2-1</li>
+                            <li>三级菜单1-2-2</li>
+                            <li>三级菜单1-2-3</li>
+                            <li>三级菜单1-2-4</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>一级菜单2</span>
+                <ul>
+                    <li>
+                        <span>二级菜单2-0</span>
+                        <ul>
+                            <li>三级菜单2-0-0</li>
+                            <li>三级菜单2-0-1</li>
+                            <li>三级菜单2-0-2</li>
+                            <li>三级菜单2-0-3</li>
+                            <li>三级菜单2-0-4</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>二级菜单2-1</span>
+                        <ul>
+                            <li>三级菜单2-1-0</li>
+                            <li>三级菜单2-1-1</li>
+                            <li>三级菜单2-1-2</li>
+                            <li>三级菜单2-1-3</li>
+                            <li>三级菜单2-1-4</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>二级菜单2-2</span>
+                        <ul>
+                            <li>三级菜单2-2-0</li>
+                            <li>三级菜单2-2-1</li>
+                            <li>三级菜单2-2-2</li>
+                            <li>三级菜单2-2-3</li>
+                            <li>三级菜单2-2-4</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    $(".nav").find("li").hover(function(){
+        // 就算是jq的事件，在事件处理函数内，this也是原生DOM元素
+        // 如果需要使用jq的DOM方法，需要转成jq的DOM元素
+        // console.log($(this))
+
+        // 无论几级菜单，只要结构一致
+        // 都是鼠标进入li，显示子ul
+        $(this).children("ul").stop().slideDown();
+    },function(){
+        // 都是鼠标离开li，隐藏子ul
+        $(this).children("ul").stop().slideUp();
+    })
+</script>
+</html>

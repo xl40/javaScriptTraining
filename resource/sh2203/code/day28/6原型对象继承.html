@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // function Parent(msg){
+    //     this.msg = msg;
+    // }
+    // Parent.prototype.show = function(){
+    //     console.log(this.msg);
+    // }
+    // Parent.prototype.init = function(){
+    //     console.log("这是Parent的init");
+    // }
+
+    // function Child(msg){
+    //     this.msg = msg;
+    // }
+    // 原型对象继承，就是拷贝原型对象，但是拷贝时，注意深浅拷贝
+    // 浅拷贝
+    // Child.prototype = Parent.prototype;
+    // 深拷贝
+    // for(let i in Parent.prototype){
+    //     Child.prototype[i] = Parent.prototype[i];
+    // }
+    // Child.prototype.init = function(){
+    //     console.log("这是Child的init");
+    // }
+    // const p = new Parent("hello");
+    // console.log(p);
+    // p.show();
+    // p.init();
+
+    // const c = new Child("world");
+    // console.log(c);
+    // c.show();
+    // c.init();
+
+    // ===============
+
+    
+    function Fn1(){}
+    function Fn2(){}
+    function Fn3(){}
+    Fn1.prototype.abc = function(){
+        console.log("hello1");
+    }
+    Fn2.prototype.qwe = function(){
+        console.log("hello2");
+    }
+    Fn3.prototype.zxc = function(){
+        console.log("hello3");
+    }
+
+    function Fun(){}
+    for(let i in Fn1.prototype){
+        Fun.prototype[i] = Fn1.prototype[i]
+    }
+    for(let i in Fn2.prototype){
+        Fun.prototype[i] = Fn2.prototype[i]
+    }
+    for(let i in Fn3.prototype){
+        Fun.prototype[i] = Fn3.prototype[i]
+    }
+
+    const f = new Fun();
+    f.abc()
+    f.qwe()
+    f.zxc()
+
+
+
+</script>
+</html>

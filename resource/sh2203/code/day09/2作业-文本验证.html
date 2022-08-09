@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="text" id="txt">
+    <input type="text" id="result" readonly>
+</body>
+<script>
+    // 2. 输入框文本验证
+    //     - 不允许为空，有提示
+    //     - 不允许以数字开头
+    //     - 长度必须在6~20之间
+    //     - 不允许出现小数点
+
+    var txt = document.getElementById("txt");
+    var res = document.getElementById("result");
+
+    txt.oninput = function(){
+        var str = txt.value;
+
+        // 不允许为空，有提示
+        // if(str === ""){
+        // if(str.length === 0){
+        // if( !str ){
+        //     res.value = "不允许为空";
+        // }else{
+        //     res.value = "";
+        // }
+
+        // 不允许以数字开头
+        // if( str[0] >= 0 && str[0] <= 9 ){
+        //     res.value = "不允许数字开头";
+        // }else{
+        //     res.value = "";
+        // }
+
+        // 长度必须在6~20之间
+        // if(str.length < 6 || str.length > 20){
+        //     res.value = "长度不符";
+        // }else{
+        //     res.value = "";
+        // }
+
+        // 不允许出现小数点
+        // 用来记录是否出现小数点
+        var flag = 0;
+        for(var i=0;i<str.length;i++){
+            if(str[i] === "."){
+                res.value = "不允许出现小数点";
+                // 如果出现了小数点，随便修改flag的值
+                flag = 1;
+                break;
+            }
+        }
+        // flag不是初始值，意味着被修改过，意味着出现小数点了
+        // flag是初始值，意味着没被修改过，意味着没出现小数点
+        if(flag === 0){
+            res.value = "";
+        }
+    }
+</script>
+</html>

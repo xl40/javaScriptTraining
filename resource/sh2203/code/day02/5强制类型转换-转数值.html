@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 一般用来将字符转数值
+
+    // - parseInt(其他)转整数
+    // var str = "365";
+    // var str = "36a5";
+    // var str = "365a";
+    // var str = "a365";
+    // var str = "365.789";
+    // console.log(str);
+    // console.log(typeof str);
+    // var num = parseInt(str);
+    // console.log(num);
+    // console.log(typeof num);
+
+    // - parseFloat(其他)可以保留小数位
+    // var str = "365";
+    // var str = "36a5";
+    // var str = "a365";
+    // var str = "365.789";
+    // var str = "365.7a89";
+    // console.log(str);
+    // console.log(typeof str);
+    // var num = parseFloat(str);
+    // console.log(num);
+    // console.log(typeof num);
+
+    // - Math.round(其他)
+    // var str = "365";
+    // var str = "36a5";
+    // var str = "365q";
+    // var str = "a365";
+    // var str = "365.7a89";
+    // var str = "365.789";
+    // console.log(str);
+    // console.log(typeof str);
+    // var num = Math.round(str);
+    // console.log(num);
+    // console.log(typeof num);
+
+
+
+    // 一般用来将其他所有非数值的数据转成数值
+    // - Number(其他)可以转所有类型
+
+    // var str = "365";
+    // var str = "36a5";
+    // var str = "365q";
+    // var str = "a365";
+    // var str = "365.7a89";
+    // var str = "365.789";
+    // console.log(str);
+    // console.log(typeof str);
+    // var num = Number(str);
+    // console.log(num);
+    // console.log(typeof num);
+
+    console.log( Number( 365.789 ) );
+
+    console.log( Number( true ) );
+    console.log( Number( false ) );
+
+    console.log( Number( {} ) );
+    console.log( Number( {num:10} ) );
+
+    // 空数组，为0
+    // 数组中有且只有一个可以严格转成数值的数据，等同于将数组内的数据转成数值
+    console.log( Number( [] ) );
+    console.log( Number( [10] ) );
+    console.log( Number( [10, 20] ) );
+    console.log( Number( ["10"] ) );
+    console.log( Number( ["hello"] ) );
+    console.log( Number( ["10a"] ) );
+
+    console.log( Number( function(){} ) );
+
+    console.log( Number( undefined ) );
+
+    console.log( Number( null ) );
+
+
+</script>
+</html>

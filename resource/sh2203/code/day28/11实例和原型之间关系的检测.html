@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    function Fn(){}
+    function Fun(){}
+    function Box(){}
+
+    Fn.prototype = new Fun();
+
+    const fn = new Fn();
+    const fun = new Fun();
+    const box = new Box();
+
+    // fn实例的原型链指向了Fn的prototype
+    // fn.__proto__ 指向 Fn.prototype
+
+    // console.log( Fn.prototype.isPrototypeOf(fn) );
+    // console.log( Fun.prototype.isPrototypeOf(fun) );
+    // console.log( Box.prototype.isPrototypeOf(box) );
+
+    // console.log( Fn.prototype.isPrototypeOf(fun) );
+    // console.log( Fn.prototype.isPrototypeOf(box) );
+
+    // console.log( Fun.prototype.isPrototypeOf(fn) );
+    // console.log( Fun.prototype.isPrototypeOf(box) );
+
+    // console.log( Box.prototype.isPrototypeOf(fn) );
+    // console.log( Box.prototype.isPrototypeOf(fun) );
+
+    // 万物皆对象(至少是通过构造函数方式创建的数据)
+    // 所有的原型链最终必然指向Object.prototype
+    // console.log( Object.prototype.isPrototypeOf(fn) );
+    // console.log( Object.prototype.isPrototypeOf(fun) );
+    // console.log( Object.prototype.isPrototypeOf(box) );
+    // console.log( Object.prototype.isPrototypeOf(Fn) );
+    // console.log( Object.prototype.isPrototypeOf(Fun) );
+    // console.log( Object.prototype.isPrototypeOf(Box) );
+
+    // ==========
+
+    // console.log( fn instanceof Fn );
+    // console.log( fun instanceof Fun );
+    // console.log( box instanceof Box );
+    // console.log( fn instanceof Fun );
+    // ......
+
+    
+    // 利用原型指向关系，精准判断数据类型或数据格式
+
+    // 如何判断日期对象
+    // 如何判断正则
+    // 如何判断数组
+    // 如何判断对象
+
+    const d = new Date();
+    const reg = /a/;
+    const arr = [];
+    const obj = {};
+
+    console.log(typeof d);
+    console.log(typeof reg);
+    console.log(typeof arr);
+    console.log(typeof obj);
+
+    console.log( Date.prototype.isPrototypeOf( d ) )
+    console.log( RegExp.prototype.isPrototypeOf( reg ) )
+    console.log( Array.prototype.isPrototypeOf( arr ) )
+    console.log( Object.prototype.isPrototypeOf( obj ) )
+
+
+
+</script>
+</html>

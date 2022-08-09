@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="text" id="hour">
+    <input type="text" id="money">
+    <input type="button" id="btn" value="计算工资">
+    <input type="text" readonly id="result">
+</body>
+<script>
+    // 小贺刚上班，按工作时间小时制领取周工资，工资标准是，每小时rate元RMB。每周工作时间40小时，如果要加班，超出部分按正常工资的1.5倍计（老板还算不错）。这周小贺上班的时间为hour小时，请编程序，输入rate和hour，输出小贺本周的薪水。
+
+    var hour = document.getElementById("hour");
+    var money = document.getElementById("money");
+    var btn = document.getElementById("btn");
+    var result = document.getElementById("result");
+
+    btn.onclick = function(){
+        var rate = Number(money.value);
+        var h = Number(hour.value);
+        
+        // 准备容器，记录计算结果
+        var sum = 0;
+        // 判断是否加班
+        if(h > 40){
+            // 加班的工资
+            sum = 40 * rate + (h-40) * rate * 1.5;
+        }else{
+            // 没有加班的工资
+            sum = h * rate;
+        }
+        // 将计算结果放在输入框内
+        result.value = sum;
+    }
+
+</script>
+</html>

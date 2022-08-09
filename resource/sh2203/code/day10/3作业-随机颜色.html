@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 9. 编写一个函数，获得一个rgb的随机颜色的字符串，如rgb(123,216,45)
+    function randomRGB(){
+        return "rgb("+ random(0,255) +","+ random(0,255) +","+ random(0,255) +")";
+    }
+    // console.log(randomRGB());
+
+
+    // 10. 编写一个函数，获得一个十六进制的随机颜色的字符串，如#20CD4F
+
+    function randomColor(){
+        var r = random(0,255).toString(16);
+        var g = random(0,255).toString(16);
+        var b = random(0,255).toString(16);
+        return "#" + addZero(r) + addZero(g) + addZero(b);
+    }
+
+    // 字符不足两位，首位补零功能
+    function addZero(n){
+        if(n.length < 2){
+            return "0"+n;
+        }else{
+            return n;
+        }
+    }
+
+    console.log(randomColor());
+    console.log(randomColor());
+    console.log(randomColor());
+    console.log(randomColor());
+    console.log(randomColor());
+    console.log(randomColor());
+    console.log(randomColor());
+    console.log(randomColor());
+    console.log(randomColor());
+    console.log(randomColor());
+    console.log(randomColor());
+    console.log(randomColor());
+    console.log(randomColor());
+
+
+
+    function random(max,min){
+        return Math.round(Math.random()*(max-min)+min);
+    }
+
+
+
+
+
+</script>
+</html>

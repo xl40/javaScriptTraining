@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        textarea{width: 400px;height: 500px;}
+    </style>
+</head>
+<body>
+    <textarea id="txt1"></textarea>
+    <input type="button" id="btn" value="转换">
+    <textarea id="txt2"></textarea>
+</body>
+<script>
+    // - 替换html标签
+    
+    var otxt1 = document.getElementById("txt1")
+    var otxt2 = document.getElementById("txt2")
+    var obtn = document.getElementById("btn")
+
+    obtn.onclick = function(){
+        // 替换html标签
+        var reg = /<[^>]+>/g;
+
+        otxt2.value = otxt1.value.replace( reg , "");
+    }
+
+</script>
+</html>
+
+
+

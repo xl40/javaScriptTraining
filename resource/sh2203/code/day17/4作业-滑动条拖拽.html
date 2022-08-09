@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{border: solid 1px black;width:300px;height: 100px;display: flex;text-align: center;align-items: center;margin: 0 auto;}
+        .box span{width: 40px;}
+        .box em{width: 40px;}
+        .box .xbox{width: 180px;height: 10px;background: #ccc;position: relative;}
+        .box .xbox p{margin: 0;width: 0;background: #22f;height:10px;}
+        .box .xbox i{height: 20px;background: red;width: 10px;position: absolute;left:0;top:-5px;}
+    </style>
+</head>
+<body>
+    <input type="range">
+    <br>
+    <br>
+    <div class="box">
+        <span>0%</span>
+        <em>0</em>
+        <div class="xbox">
+            <p></p>
+            <i></i>
+        </div>
+        <em>100</em>
+    </div>
+</body>
+<script>
+    var oxbox = document.querySelector(".box .xbox");
+    var op = document.querySelector(".box p");
+    var oi = document.querySelector(".box i");
+    var ospan = document.querySelector(".box span");
+    oi.onmousedown = function(eve){
+        var downE = eve || window.event;
+        downE.preventDefault();
+        document.onmousemove = function(eve){
+            var moveE = eve || window.event;
+            // 根据布局，计算当前元素应该移动的距离
+            var l = moveE.pageX - downE.offsetX - oxbox.offsetLeft;
+            // 边界限定
+            if(l<0) l=0;
+            if(l > oxbox.offsetWidth-oi.offsetWidth){
+                l = oxbox.offsetWidth-oi.offsetWidth;
+            }
+            // 设置滑块的位置
+            oi.style.left = l + "px";
+            // 设置进度条的宽度
+            op.style.width = l + "px";
+            // 计算进度条的百分比
+            ospan.innerText = Math.ceil(l / (oxbox.offsetWidth-oi.offsetWidth) * 100) + "%";
+        }
+        document.onmouseup = function(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+
+</script>
+</html>

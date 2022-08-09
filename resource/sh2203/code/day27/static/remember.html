@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    用户名：<input type="text" id="username" autocomplete="off"><br>
+    密码：<input type="text" id="password" autocomplete="off"><br>
+    <input type="checkbox" id="remember">记住账号密码3天
+    <input type="button" id="btn" value="登录">
+</body>
+<script src="./cookie.js"></script>
+<script>
+    
+    const ousername = document.getElementById("username");
+    const opassword = document.getElementById("password");
+    const oremember = document.getElementById("remember");
+    const obtn = document.getElementById("btn");
+
+    // 初始读取本地存储并解析，或设置默认值
+    let userMsg = getCookie("userMsg");
+    userMsg = userMsg ? JSON.parse(userMsg) : {username:"",password:""};
+
+    // 将读取到的信息插入到输入框
+    ousername.value = userMsg.username;
+    opassword.value = userMsg.password;
+
+    // 点击按钮时
+    obtn.onclick = function(){
+        // 判断是否需要记住账号密码
+        if(oremember.checked){
+            // 处理成对象
+            const obj = {
+                username: ousername.value,
+                password: opassword.value
+            }
+            // 转成json后，再存储到本地存储
+            setCookie("userMsg", JSON.stringify(obj), {
+                expires:3
+            })
+        }
+    }
+
+</script>
+</html>

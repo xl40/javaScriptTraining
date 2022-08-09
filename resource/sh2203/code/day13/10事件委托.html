@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{border: solid 1px black;}
+        .box p{margin: 15px 0;background: #ccc;padding: 5px 0;}
+        .box h3{margin: 15px 0;background: pink;padding:
+        5px 0;}
+        .box .red{color: red;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h3>三级标题1</h3>
+        <p>这是段落1</p>
+        <p class="red">这是段落2</p>
+        <h3>三级标题2</h3>
+        <h3 class="red">三级标题3</h3>
+        <p class="red">这是段落3</p>
+        <h3>三级标题4</h3>
+        <p>这是段落4</p>
+        <h3 class="red">三级标题5</h3>
+        <p>这是段落5</p>
+        <p>这是段落6</p>
+    </div>
+</body>
+<script>
+    // 需求：点击指定的元素，打印指定内容
+    // 小需求：本次指定的元素是p
+
+    // // 获取所有的p
+    // var ap = document.querySelectorAll(".box p");
+    // // 全部绑定点击事件
+    // for(var i=0;i<ap.length;i++){
+    //     ap[i].onclick = function(){
+    //         // 点击时，打印自身的内容
+    //         console.log(this.innerText);
+    //     }
+    // }
+
+    // 此时页面上存在几个事件？6个
+    // 同一时间，会触发几个？1个
+    // 请问，其他事件在做什么？在等待，被触发
+    // 如果，不触发了，等待就没有意义
+    // 浪费资源
+    // 能不能只给当前要点击的元素，添加事件呢？不能，做不到
+
+    // 换个思路，不给每个p都绑定事件，给他的父级，绑定事件，利用事件冒泡触发事件
+
+    // var obox = document.querySelector(".box")
+    // obox.onclick = function(eve){
+    //     var e = eve || window.event;
+    //     var target = e.target || e.srcElement;
+    //     // 事件目标
+    //     if(target.tagName === "P"){
+    //         console.log(target.innerText);
+    //     }
+    // }
+    // 此时页面上存在几个事件？1个
+
+    
+    // 节省内存
+
+    // ========
+
+    // 小需求：本次指定的元素是h3
+    // var obox = document.querySelector(".box")
+    // obox.onclick = function(eve){
+    //     var e = eve || window.event;
+    //     var target = e.target || e.srcElement;
+    //     // 事件目标
+    //     if(target.tagName === "H3"){
+    //         console.log(target.innerText);
+    //     }
+    // }
+    
+    // 小需求：本次指定的元素是具有class-red
+    // var obox = document.querySelector(".box")
+    // obox.onclick = function(eve){
+    //     var e = eve || window.event;
+    //     var target = e.target || e.srcElement;
+    //     // 事件目标
+    //     if(target.className === "red"){
+    //         console.log(target.innerText);
+    //     }
+    // }
+            
+    var obox = document.querySelector(".box");
+    eventProxy(obox, ".red", "click", function(t){
+        console.log(t.innerText);
+    })
+
+    eventProxy(obox, "P", "click", function(t){
+        t.style.fontSize = "20px";
+    })
+
+    eventProxy(obox, "H3", "click", function(t){
+        t.style.border = "solid 2px black";
+    })
+
+    function eventProxy(parent, target, type, f){
+        parent.addEventListener(type, function(eve){
+            var e = eve || window.event;
+            var targetElement = e.target || e.srcElement;
+            // 事件目标
+            switch(target[0]){
+                case ".":
+                    if(targetElement.className === target.slice(1)){
+                        f(targetElement);
+                    }
+                    break;
+                case "#":
+                    if(targetElement.id === target.slice(1)){
+                        f(targetElement);
+                    }
+                    break;
+                default:
+                    if(targetElement.tagName === target){
+                        f(targetElement);
+                    }
+                    break;
+            }
+        })
+    }
+    
+
+</script>
+</html>

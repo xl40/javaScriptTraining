@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 在页面上打印document.write，如下图形
+    // *
+    // **
+    // ***
+    // ****
+    // *****
+
+    // 循环的意义，解决重复输入命令的问题
+
+    // 先不使用循环，解决问题
+    // 就要重复输入
+    // document.write("*");
+    // document.write("<br>");
+
+    // document.write("*");
+    // document.write("*");
+    // document.write("<br>");
+
+    // document.write("*");
+    // document.write("*");
+    // document.write("*");
+    // document.write("<br>");
+
+    // document.write("*");
+    // document.write("*");
+    // document.write("*");
+    // document.write("*");
+    // document.write("<br>");
+
+    // 再利用循环解决明面上的重复的问题
+    // var m=1;
+    // for(var x=0;x<m;x++){
+    //     document.write("*");
+    // }
+    // document.write("<br>");
+    // m++
+
+    // for(var x=0;x<m;x++){
+    //     document.write("*");
+    // }
+    // document.write("<br>");
+    // m++
+
+    // for(var x=0;x<m;x++){
+    //     document.write("*");
+    // }
+    // document.write("<br>");
+    // m++
+
+    // for(var x=0;x<m;x++){
+    //     document.write("*");
+    // }
+    // document.write("<br>");
+    // m++
+
+
+    // 继续利用循环解决又出现的重复代码
+    // for(var i=0;i<5;i++){
+    //     for(var x=0;x<=i+5;x++){
+    //         document.write("*");
+    //     }
+    //     document.write("<br>");
+    // }
+
+
+    // ====================
+
+    // 循环嵌套用来解决多行多列结构性问题
+    // 外层循环控制行
+    // 内层循环控制列
+
+    // ====================
+
+    // 需求：
+    // 1 +          1
+    // 1*2 +        2
+    // 1*2*3 +      3
+    // 1*2*3*4 +    4
+    // 1*2*3*4*5 +  5
+
+    var sum = 0;
+    for(var i=1;i<=5;i++){
+        var cj = 1;
+        for(var j=1;j<=i;j++){
+            cj *= j;
+        }
+        sum += cj;
+    }
+    console.log(sum);
+
+
+
+
+
+</script>
+</html>

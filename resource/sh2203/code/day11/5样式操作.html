@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{background: red;font-size: 30px;color: yellow;}
+    </style>
+</head>
+<body>
+    <h1 class="box" style="width:100px;height:100px;border:solid 1px black;">
+        hello
+    </h1>
+</body>
+<script>
+    var obox = document.querySelector(".box");
+    console.log(obox);
+
+    // 获取行内样式
+    // console.log(obox.style);
+    // console.log(obox.style.width);
+    // console.log(obox.style.height);
+    // console.log(obox.style.border);
+    // // 无法获取非行内样式
+    // console.log(obox.style.color);
+    // // 设置行内样式
+    // obox.style.width = "200px";
+    // obox.style.padding = "50px";
+    // // 所有样式都无法删除，只能清空，或设置为初始值
+    // // CSS功底，初始值是什么呢，清空成什么
+    // obox.style.width = "";
+    // 批量设置行内样式
+    // obox.style.cssText = "width:200px;height:200px;background:green;font-size:60px;line-height:200px;text-align:center;";
+
+    // 获取非行内样式：getComputedStyle(元素)
+    // console.log(getComputedStyle(obox).fontSize);
+    // console.log(getComputedStyle(obox).backgroundColor);
+    // console.log(getComputedStyle(obox).color);
+    // 非行内样式不能设置
+    // getComputedStyle(obox).backgroundColor = "rgb(0,255,0)";
+    // 非行内样式的操作，不仅可以获取非行内，还可以获取行内
+    // console.log(getComputedStyle(obox).width);
+    // console.log(getComputedStyle(obox).height);
+    // console.log(getComputedStyle(obox).border);
+
+    // ==========
+
+    // 获取非行内样式的兼容封装
+    function getStyle(ele, css){
+        if(ele.currentStyle){
+            return ele.currentStyle[css];
+        }else{
+            return getComputedStyle(ele)[css];
+        }
+    }
+    // console.log(getStyle(obox, "width"))
+    // console.log(getStyle(obox, "height"))
+    // console.log(getStyle(obox, "background"))
+    // console.log(getStyle(obox, "border"))
+
+
+
+</script>
+</html>

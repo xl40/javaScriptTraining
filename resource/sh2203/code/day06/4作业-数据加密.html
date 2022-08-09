@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{margin: 20px;padding: 20px;border: solid 1px black;}
+        .box input[type=text]{width: 70px;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" id="txt1">
+        <input type="button" id="btn" value="=">
+        <input type="text" id="result">
+    </div>
+</body>
+<script>
+
+    // 5. 某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，加密规则如下：每位数字都加上5,然后用除以10的余数代替该数字，再将第一位和第四位交换，第二位和第三位交换，请编写一个函数，传入原文，返回密文
+    // - 3715
+    // - 8 12 6 10
+    // - 8 2  6  0
+    // - 0628
+
+    var txt1 = document.getElementById("txt1");
+    var res = document.getElementById("result");
+    var btn = document.getElementById("btn");
+
+    btn.onclick = function (){
+        var data = Number(txt1.value);
+        // 执行数据加密功能，并将加密结果，放入结果框
+        res.value = encryption(data);
+    }
+
+    function encryption(d){
+        // 每位数字都加上5,然后用除以10的余数代替该数字，再将第一位和第四位交换，第二位和第三位交换
+        // 3715
+        var a = parseInt(d/1000);
+        var b = parseInt(d/100)%10;
+        var c = parseInt(d/10)%10;
+        var d = d%10;
+        // console.log(a,b,c,d);
+
+        a = (a+5)%10;
+        b = (b+5)%10;
+        c = (c+5)%10;
+        d = (d+5)%10;
+
+        return "" + d + c + b + a;
+    }
+
+
+</script>
+</html>

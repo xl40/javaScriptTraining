@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 6. 随机生成一个五位以内的数（0~99999），然后输出该数共有多少位，每位分别是什么
+
+    var str = random(0, 99999).toString();
+    console.log(str);
+    console.log(str.length);
+    for(var i=0;i<str.length;i++){
+        console.log(str[i]);
+    }
+
+
+    console.log("==========");
+
+    // 7. aabccd统计每个字符出现的次数，使用对象显示结果，如：{a:2, b:1, c:2, d:1} ***
+
+    var str = "aabccdabcqweasdazxcqazqwsasasd";
+    var obj = {};
+
+    for(var i=0;i<str.length;i++){
+        var key = str[i];
+        // 如果对象中从来没出现这个属性，意味着这是第一次遇到该字符
+        if(obj[key] === undefined){
+            // 给对象添加该字符作为属性，值为1
+            obj[key] = 1;
+        }else{
+            // 如果对象中存在该属性，只需要对这个属性的值进行+1
+            obj[key]++;
+        }
+    }
+
+    console.log(obj)
+
+    
+    console.log("==========");
+
+    // 8. 生成4位数字字母混合的验证码（数字，大写字母，小写字母）
+    // 随机字母：借助ASCII：a-z：97-122；A-Z：65-90
+        // String.fromCharCode(random(97,122));
+    // 如何从三种类型中随机出四个字符，且不固定顺序
+        
+    function randomString(){
+        // 随便随机一个长度至少大于4，每种类型出现的频率一致的大字符串：随机字符库
+        var str = "";
+        for(var i=0;i<4;i++){
+            str += random(0, 9);
+            str += String.fromCharCode(random(97,122));
+            str += String.fromCharCode(random(65,90));
+        }
+        // console.log(str);
+
+        // 从大字符串中，再随机取4位
+        var randomStr = "";
+        for(var i=0;i<4;i++){
+            // 0~str.length-1
+            randomStr += str[random(0, str.length-1)]
+        }
+        // console.log(randomStr);
+        return randomStr;
+    }
+
+    console.log(randomString());
+
+
+
+
+
+    function random(max,min){
+        return Math.round(Math.random()*(max-min)+min);
+    }
+
+</script>
+</html>

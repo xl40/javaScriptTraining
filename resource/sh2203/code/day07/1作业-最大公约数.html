@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    function fn(m, n){
+        var r = m % n;
+        m = n;
+        n = r;
+        if(r === 0){
+            return m;
+        }else{
+            return fn(m, n)
+        }
+    }
+    console.log(fn(35,49));
+
+
+</script>
+</html>

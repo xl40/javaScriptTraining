@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width:100px;height: 100px;background: red;}
+        .box p{background:pink;margin: 20px;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>段落1</p>
+        <p>段落2</p>
+        <p>段落3</p>
+        <p>段落4</p>
+    </div>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    // jq所有的事件，都是DOM2级绑定，可以重复绑定
+    
+    // 1. 常规绑定：常见事件名作为方法名使用
+    // $(".box").click(function(){
+    //     console.log(1)
+    // })
+    // $(".box").click(function(){
+    //     console.log(2)
+    // })
+    // ...
+
+    // 2. bind绑定，unbind删除（被废弃）
+    // $(".box").bind("click.hahaha",function(){
+    //     console.log(1);
+    // })
+    // $(".box").bind("click.heiehie",function(){
+    //     console.log(2);
+    // })
+    // $(".box").unbind('click.hahaha');
+
+    // 3. on绑定，off删除（替代bind和unbind）
+    // $(".box").on("click.hahaha",function(){
+    //     console.log(1);
+    // })
+    // $(".box").on("click.heiehie",function(){
+    //     console.log(2);
+    // })
+    // $(".box").off('click.hahaha');
+    // 事件委托
+    // $(".box").on("click", "p", function(){
+    //     console.log(1);
+    // })
+
+    // 4. one绑定一次性事件
+    // $(".box").one("click",function(){
+    //     console.log(1)
+    // })
+
+    // 5. hover绑定进入和离开事件
+    // $(".box").hover(function(){
+    //     console.log("进入")
+    // },function(){
+    //     console.log("离开")
+    // })
+
+    // 6. 事件对象，相对于原生事件系统来说，没有修改，只是处理了兼容
+
+    // 7. 模拟事件执行
+    // $(".box").click(function(){
+    //     console.log(1);
+    // })
+    // setInterval(()=>{
+    //     $(".box").trigger("click");
+    // },2000)
+
+</script>
+</html>

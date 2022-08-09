@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="text" id="txt">
+    <input type="button" id="btn" value="评级">
+    <input type="text" readonly id="result">
+</body>
+<script>
+    var txt = document.getElementById("txt");
+    var btn = document.getElementById("btn");
+    var res = document.getElementById("result");
+
+    btn.onclick = function(){
+        // 注意：从页面上的表单元素中获取到的内容的数据格式是string
+        var r = Number(txt.value);
+
+        // 成绩的范围（小于60，60~69，70~79，80~89，90~99，100）
+        // if(r < 60 && r >= 0){
+        //     // 小于60，不及格
+        //     res.value = "不及格";
+        // }else if(60 <= r && r <= 69){
+        //     // 60~69，及格
+        //     res.value = "及格";
+        // }else if(r >= 70 && r <= 79){
+        //     // 70~79，良好
+        //     res.value = "良好";
+        // }else if(r >= 80 && r <= 89){
+        //     // 80~89，优秀
+        //     res.value = "优秀";
+        // }else if(r >= 90 && r <= 100){
+        //     // 90~100，学霸
+        //     res.value = "学霸";
+        // }else{
+        //     res.value = "成绩输入错误";
+        // }
+
+        // 成绩的范围（小于60，60~69，70~79，80~89，90~99，100）
+        // 将判断条件放置在case后，switch的小括号中放置true
+        // switch( true ){
+        //     case r < 60 && r >= 0:
+        //         res.value = "不及格";break;
+        //     case 60 <= r && r <= 69:
+        //         res.value = "及格";break;
+        //     case r >= 70 && r <= 79:
+        //         res.value = "良好";break;
+        //     case r >= 80 && r <= 89:
+        //         res.value = "优秀";break;
+        //     case r >= 90 && r <= 100:
+        //         res.value = "学霸";break;
+        //     default:
+        //         res.value = "成绩错误";
+        // }
+
+        // if-else更适合处理范围条件
+        // switch更适合处理确定的值
+
+        // 将可能是范围的数据，处理成具体的值，然后再进行switch的判断
+        r = parseInt(r / 10);
+        switch( r ){
+            case 6:
+                res.value = "及格";break;
+            case 7:
+                res.value = "良好";break;
+            case 8:
+                res.value = "优秀";break;
+            case 9:
+                res.value = "学霸";break;
+            case 10:
+                res.value = "学霸";break;
+            default:
+                res.value = "不及格";
+        }
+    }
+
+
+</script>
+</html>

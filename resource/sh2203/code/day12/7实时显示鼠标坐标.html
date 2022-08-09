@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .pos{position: absolute;left: 20px;bottom: 20px;}
+    </style>
+</head>
+<body>
+    <span class="pos"></span>
+</body>
+<script>
+
+    var opos = document.querySelector(".pos")
+
+    // 给document，添加mousemove事件
+    document.onmousemove = function(eve){
+        // 鼠标事件对象
+        var e = eve || window.event;
+        // 鼠标相对页面的坐标：pageX，pageY
+        // 将坐标设置到容器
+        opos.innerText = e.pageX + ", " + e.pageY;
+        opos.style.left = e.pageX + 10 + "px";
+        opos.style.top = e.pageY + 10 + "px";
+
+    }
+</script>
+</html>

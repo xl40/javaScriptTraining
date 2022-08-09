@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    // function sayHello(name){
+    //     console.log("hello " + name);
+    // }
+    // sayHello("张三");
+    // sayHello("李四");
+    // sayHello("王二");
+    // sayHello();
+
+    // 默认情况下，函数的每两次执行之间没有任何关系
+    // 函数的每次之后，都等同于重新执行内部的功能
+
+    // 参数的类型↓↓↓↓
+
+    // function fn(a){
+    //     console.log(a);
+    // }
+
+    // fn( "hello" );
+
+    // fn( 123 );
+
+    // fn( true );
+
+    // fn( {} );
+    // fn( [] );
+
+    // fn( undefined );
+
+    // fn( null );
+
+    // fn( NaN );
+
+    // fn( function(){} );
+
+    // fn( function abc(){} );
+
+
+    // 将函数作为功能，来学习
+    // 但是函数，也是一个数据类型
+
+
+    // 参数的个数↓↓↓↓
+
+    function fun(q, w, e){
+        console.log(q);
+        console.log(w);
+        console.log(e);
+        console.log( arguments );
+    }
+    fun("hello", 123, true, {}, [], undefined, "world");
+
+
+</script>
+</html>

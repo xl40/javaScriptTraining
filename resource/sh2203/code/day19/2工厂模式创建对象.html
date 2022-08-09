@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // 如果需要多个同特征对象，可能需要一个一个的单独创建
+    // 单体（单例）模式创建对象
+    // const stu1 = {
+    //     id:"sh2203001",
+    //     name:"张三",
+    //     age:21,
+    //     sex:"男",
+    //     show:function(){
+    //         console.log(`大家好，我叫${this.name}，今年${this.age}岁，性别${this.sex}`);
+    //     }
+    // }
+    // console.log(stu1);
+    // stu1.show();
+    // const stu2 = {
+    //     id:"sh2203002",
+    //     name:"李四",
+    //     age:22,
+    //     sex:"男",
+    //     show:function(){
+    //         console.log(`大家好，我叫${this.name}，今年${this.age}岁，性别${this.sex}`);
+    //     }
+    // }
+    // console.log(stu2);
+    // stu2.show();
+
+    // 一个一个创建，太麻烦了，所以进行一次封装
+    // 封装之后，这个函数就类似于一个工厂
+    // 里面的对象，类似于工厂中的模具
+    // 工厂模式创建对象：
+    // 上层供应商
+    // const publicObj = {
+    //     show:function(){
+    //         console.log(`大家好，我叫${this.name}，今年${this.age}岁，性别${this.sex}`);
+    //     }
+    // }
+    // function createStu(i, n, a, s){
+    //     // 原料
+    //     const o = {};
+    //     // 加工
+    //     o.id = i;
+    //     o.name = n;
+    //     o.age = a;
+    //     o.sex = s;
+    //     o.show = publicObj.show;    // 上层供应商提供的功能
+    //     // 出厂
+    //     return o;
+    // }
+    // const stu1 = createStu("sh2203001", "张三", 21, "男");
+    // console.log(stu1);
+    // stu1.show();
+    // const stu2 = createStu("sh2203002", "李四", 23, "男");
+    // console.log(stu2);
+    // stu2.show();
+    // console.log(stu1 === stu2);
+    // console.log(stu1.show === stu2.show);
+
+    // 以上自定义工厂模式已经被js抛弃，因为js内置了工厂模式
+    // js内置的工厂模式其实是对自定义工厂模式的封装
+    // 使代码更加简洁，规范，可扩展，更强大
+    // 注意：内置工厂模式的语法
+
+
+
+</script>
+</html>

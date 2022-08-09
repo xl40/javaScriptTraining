@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="button" id="success" value="成功提示">
+    <input type="button" id="error" value="失败提示">
+    <input type="button" id="warning" value="警告提示">
+</body>
+<script>
+    // 单例模式
+
+    // 字面量创建对象
+    // const obj = {};
+
+    // 经过封装
+
+    const os = document.getElementById("success")
+    const oe = document.getElementById("error")
+    const ow = document.getElementById("warning")
+
+    // 单例模式的弹出框
+    os.onclick = function(){
+        alert({
+            type:"success",
+            content:"成功提示"
+        })
+    }
+
+    oe.onclick = function(){
+        alert({
+            type:"error",
+            content:"失败提示"
+        })
+    }
+
+    ow.onclick = function(){
+        alert({
+            type:"warning",
+            content:"警告提示"
+        })
+    }
+
+    // 使用了闭包的单例模式，不推荐
+    // const alert = (function(){
+    //     const obj = {};
+    //     return function(ops={}){
+    //         obj.content = ops.content;
+    //         obj.type = ops.type;
+    //         return obj;
+    //     }
+    // })();
+
+    // 单例模式的结构
+    // function alert(){
+    //     // alert身上有没有obj，没有就创建，有就略过，保证alert身上只有一个obj
+    //     if(!alert.obj){
+    //         // 只会执行一次
+    //         alert.obj = {};
+    //     }
+    //     // 实现弹出框的功能
+    //     alert.obj.xxx = "xxxxx";
+    //     return alert.obj;
+    // }
+
+
+    // 单例模式的应用
+    function alert(ops={}){
+        // alert身上有没有obj，没有就创建，有就略过，保证alert身上只有一个obj
+        if(!alert.obj){
+            // 只会执行一次
+            alert.obj = {};
+            alert.obj.ele = document.createElement("dialog");
+            document.body.appendChild(alert.obj.ele);
+        }
+        // 实现弹出框的功能
+        alert.obj.ele.style.display = "block";
+        alert.obj.ele.innerText = ops.content;
+        let c = "#ccc";
+        switch(ops.type){
+            case "success":c = "green";break;
+            case "error":c = "red";break;
+            case "warning":c = "yellow";break;
+        }
+        alert.obj.ele.style.borderColor = c;
+        alert.obj.ele.style.color = c;
+        // 延时自动隐藏
+        clearTimeout(alert.obj.t);
+        alert.obj.t = setTimeout(()=>{
+            alert.obj.ele.style.display = "none";
+        }, 2000)
+
+        return alert.obj;
+    }
+
+
+    
+</script>
+</html>

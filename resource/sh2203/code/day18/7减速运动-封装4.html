@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .cont1{width: 100px;height: 600px;border:solid 1px black;position: relative;float:left;margin: 0 10px;}
+        .box1{width: 50px;height:50px;background: red;position: absolute;left:25px;top:0;}
+    </style>
+</head>
+<body>
+    <div class="cont1">
+        <div class="box1"></div>
+    </div>
+</body>
+<script>
+    const ocont1 = document.querySelector(".cont1");
+    const obox1 = document.querySelector(".box1");
+
+    ocont1.onclick = function(){
+        move(obox1, {
+            width: 300,
+            height: 51
+        });
+    }
+
+    // bug：当不同属性的目标不同时，只要有一个属性先到终点了，计时器就被清了，导致有些属性还没到终点
+
+
+    function move(ele, data){
+        if(ele.t === undefined){
+            ele.t = setInterval(() => {
+                // 2. 假设计时器立即清除，不是真正的清除，是假设要清除
+                let flag = true;
+                for(let i in data){
+                    const now = parseInt(getStyle(ele, i));
+                    let speed = (data[i] - now) / 10;
+                    if(speed < 0){
+                        speed = Math.floor(speed);
+                    }else{
+                        speed = Math.ceil(speed);
+                    }
+                    // 1. 有一个属性到终点了，不应该清除计时器，删除原来清除计时器的代码
+                    // if(now === data[i]){
+                    //     clearInterval(ele.t)
+                    // }else{
+                        ele.style[i] = now + speed + "px";
+                    // }
+                    // 3. 在计时器执行过程中，只要有一个属性没到终点，都不能清除计时器
+                    if(now !== data[i]){
+                        flag = false;
+                    }
+                }
+                // 4. 根据第2步的假设，准备清除计时器
+                if(flag){
+                    clearInterval(ele.t);
+                }
+            }, 30);
+        }
+    }
+
+
+    function getStyle(ele, attr){
+        if(getComputedStyle){
+            return getComputedStyle(ele)[attr];
+        }else{
+            return ele.currentStyle[attr];
+        }
+    }
+
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <em>文字</em>
+    </div>
+    <div class="box2">
+        <b>文字</b>
+    </div>
+    <input type="text" value="123123" class="txt" />
+</body>
+<script>
+    var obox1 = document.querySelector(".box1");
+    var obox2 = document.querySelector(".box2");
+    var otxt = document.querySelector(".txt");
+
+    // innerHTML可以解析html标签
+    console.log(typeof obox1.innerHTML);
+    console.log(obox1.innerHTML);
+    obox1.innerHTML = "<mark>hello</mark>";
+
+    // innerText操作的是纯文本
+    console.log(typeof obox2.innerText);
+    console.log(obox2.innerText);
+    obox2.innerText = "<mark>world</mark>"
+
+    // value专门用来获取表单控件的内容
+    console.log(typeof otxt.value);
+    console.log(otxt.value)
+    otxt.value = "hahahah";
+
+
+
+</script>
+</html>

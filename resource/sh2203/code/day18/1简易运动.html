@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 50px;height:50px;background: red;position: absolute;left:0;top:0;}
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    // 将某个物体，随着时间的变化，按照某种规律持续改变自身属性
+    // 将一个div元素，在计时器中，不断的将自身的left增加10像素
+
+    const obox = document.querySelector(".box");
+
+    const target = 400;
+    const speed = 9;
+
+    let t = setInterval(()=>{
+        if(target - obox.offsetLeft < speed){
+            clearInterval(t)
+            obox.style.left = target + "px";
+        }else{
+            obox.style.left = obox.offsetLeft + speed + "px";
+        }
+    }, 30);
+
+
+</script>
+</html>

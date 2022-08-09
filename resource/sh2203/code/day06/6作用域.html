@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // var a = 10;
+
+    // function fn(){
+
+    //     var b = 20;
+
+    //     console.log(a);
+    //     console.log(b);
+
+    // }
+    // fn();
+
+    // console.log(a);
+    // console.log(b);
+
+
+// ==============
+
+    // function box(){
+    //     var a = "hello";
+
+    //     function fn1(){
+    //         console.log(a);
+    //     }
+
+    //     function fn2(){
+    //         console.log(a);
+    //     }
+
+    //     function fn3(){
+    //         console.log(a);
+    //     }
+
+    //     fn1();
+    //     fn2();
+    //     fn3();
+    // }
+
+    // console.log(a);
+
+// ================
+
+    // 匿名函数：会自动执行，写完就执行。
+    // 感觉好像没有存在的必要，但是匿名函数常用来创建一个新的作用域
+
+    // (function(){
+    //     console.log(1)
+    // })()
+
+    // var str = "admin";;
+    // ;(function(){
+    //     var a = "world";
+    //     function fn1(){
+    //         console.log(a)
+    //     }
+    //     function fn2(){
+    //         console.log(a)
+    //     }
+    //     fn1();
+    //     fn2();
+    // })();
+
+// ==============
+
+    // var a = 10;
+    function fn1(){
+        // var a = 20;
+        function fn2(){
+            // var a = 30;
+            function fn3(){
+                // var a = 40;
+                function fn4(){
+                    // var a = 50;
+                    console.log(a);
+                }
+                fn4();
+            }
+            fn3();
+        }
+        fn2();
+    }
+    fn1();
+
+    
+    
+
+</script>
+</html>

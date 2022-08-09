@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 400px;height: 100px;line-height: 100px;font-size: 50px;text-align: center;}
+    </style>
+</head>
+<body>
+    <div class="box">请点击开始</div>
+    <input type="button" value="开始" id="btn">
+</body>
+<script>
+    
+    var obox = document.querySelector(".box");
+    var btn = document.getElementById("btn");
+
+    // 记录是否开始了：0为要开始，1为要停止
+    var flag = 0;
+
+    var t;
+
+    // 名字库
+    var names = ["张三","李四","王二","赵五","钱六","孙七","周八","吴九"];
+
+    btn.onclick = function(){
+        // 点击后先判断记录的状态，要开始？要停止？
+        if(flag === 0){
+            // 开始的功能
+            t = setInterval(() => {
+                // 利用范围随机数，随机取数组中的某个数据，设置到页面
+                obox.innerText = names[random(0, names.length-1)];
+            }, 50);
+            // 修改状态为下次要执行的功能
+            flag = 1;
+            btn.value = "停止";
+        }else{
+            // 停止的功能
+            clearInterval(t);
+            // 修改状态为下次要执行的功能
+            flag = 0;
+            btn.value = "继续";
+        }
+    }
+
+    function random(a, b){
+        return Math.round(Math.random()*(a-b)+b);
+    }
+
+</script>
+</html>

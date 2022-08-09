@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 策略模式，要求业务逻辑足够强
+    // 对项目有全面的了解，制定的计划才更完美
+
+    // 在程序中，可能会接收到一个数据，这个数据的内容或类型会决定后续执行什么功能
+    // banner，执行轮播图功能
+    // table，执行选项卡功能
+    // menu，执行下拉菜单功能
+    // fire，执行烟花功能
+
+    // 策略模式
+    // switch(type){
+    //     case "banner":banner();break;
+    //     case "table":table();break;
+    //     case "menu":menu();break;
+    //     case "fire":fire();break;
+    // }
+
+    
+    
+    const project = {
+        banner:function(){
+            console.log('轮播图功能');
+        },
+        table(){
+            console.log('选项卡功能');
+        },
+        menu(){
+            console.log('菜单功能');
+        },
+        fire:function(){
+            console.log('烟花功能');
+        }
+    }
+    let type1 = "fire";
+    // 不使用分支语句的策略模式
+    project[type1]();
+    
+    let type2 = "banner";
+    // 不使用分支语句的策略模式
+    project[type2]();
+
+
+
+
+
+
+</script>
+</html>

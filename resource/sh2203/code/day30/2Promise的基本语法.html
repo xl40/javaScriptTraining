@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    // Promise是一个构造函数，需要被new执行
+    // new Promise时，需要立即给Promise传递一个回调函数
+    //     这个回调函数又接收了两个参数
+    //         参数1：表示成功后要执行的功能
+    //         参数2：表示失败后要执行的功能
+    //         参数1和参数2的具体功能，可以在Promise的实例方法内定义
+    // new之后，会得到一个Promise的实例
+    //     Promise的实例的then方法，又有两个回调函数的参数
+    //         参数1：用来传输成功时要执行的功能
+    //         参数2：用来传输失败时要执行的功能
+    //     Promise的实例的catch方法，用来传输失败时要执行的功能
+
+    // Promise：承诺
+    // 发起一个承诺：疫情结束后，好好聚聚
+    //     等待期，等待结束的时间，正在执行中...，pending
+    //     承诺成功，将来，fulfilled
+    //     承诺失败，将来，rejected
+    //     成功和失败，二选一
+
+    const p = new Promise((resolve, reject)=>{
+        console.log("正在执行中...");
+        // 使用延时器模拟异步
+        setTimeout(()=>{
+            // 执行成功的功能
+            resolve("success");
+        }, Math.random()*500);
+        // 使用延时器模拟异步
+        setTimeout(()=>{
+            // 执行失败的功能
+            reject("error");
+        }, Math.random()*500);
+    })
+    p.then((res)=>{
+        // 成功的功能定义
+        console.log("成功了" + res)
+    }, (code)=>{
+        // 失败的功能定义
+        console.log("失败了1" + code)
+    })
+    p.catch(()=>{
+        // 失败的功能定义
+        console.log("失败了2")
+    })
+    console.log(p);
+
+
+</script>
+</html>

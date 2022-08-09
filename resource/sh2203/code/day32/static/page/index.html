@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./style/pagination.css">
+</head>
+<body>
+	<div class="pagination"></div>
+</body>
+<script src="../jquery.js"></script>
+<script src="./js/jquery.pagination.js"></script>
+<script>
+	$(".pagination").pagination(50, {
+		items_per_page:2,
+		num_display_entries:3,
+		num_edge_entries:2,
+		current_page: 5,
+		// link_to:"http://www.baidu.com",
+		prev_text: "上",
+		next_text: "下",
+		ellipse_text:"---",
+		prev_show_always:false,
+		callback:(abc)=>{
+			console.log(abc)
+		}
+	});
+</script>
+</html>

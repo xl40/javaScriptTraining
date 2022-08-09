@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width:100px;height:100px;background: red;position: absolute;left:0;top:0;}
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+<script>
+
+    const obox = document.querySelector(".box")
+
+    obox.onclick = function(){
+        move(obox, {
+            left: 400
+        }, function(){
+            move(obox,{
+                top:400
+            },function(){
+                move(obox,{
+                    left:0
+                },function(){
+                    move(obox,{
+                        top:0
+                    })
+                })
+            })
+        })
+    }
+    
+
+    function move(ele, obj, cb){
+        if(ele.t === undefined){
+            ele.t = setInterval(() => {
+                let flag = true;
+                for(let i in obj){
+                    // 获取当前值
+                    const now = i==="opacity" ? getStyle(ele, i)*100 : parseInt(getStyle(ele, i));
+                    // 计算步长
+                    let speed = (obj[i] - now)/10;
+                    speed = speed<0 ? Math.floor(speed) : Math.ceil(speed);
+                    // 设置到元素
+                    ele.style[i] = i==="opacity" ? (now+speed)/100 : now+speed+"px";
+                    // 判断是否要清除计时器
+                    if(now !== obj[i]){
+                        flag = false;
+                    }
+                }
+                if(flag){
+                    clearInterval(ele.t);
+                    ele.t = undefined;
+                    cb && cb();
+                }
+            }, 30);
+        }
+    }
+
+    function getStyle(ele, attr){
+        return ele.currentStyle ? ele.currentStyle[attr] : getComputedStyle(ele)[attr];
+    }
+
+
+</script>
+</html>

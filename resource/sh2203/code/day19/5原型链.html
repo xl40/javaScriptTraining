@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // function Fn(){}
+
+    // const obj = new Object();
+    // const f = new Fn();
+
+    // 浏览器中显示的对象的原型链属性标志为：[[Prototype]]
+    // 但是代码中对象的原型链属性名为：__proto__
+
+    // console.log(obj);
+    // console.log(obj.__proto__);
+
+    // console.log(f);
+    // console.log(f.__proto__);
+
+
+    // 原型链属性：
+        // 所有对象类数据都会具有一个原型链属性：__proto__。属性自身是一个指向，指向了创建自身的构造函数的原型属性prototype
+
+        // 当使用对象的某个属性或方法时，先在对象自身查找，找到了就使用，找不到，沿着__proto__继续查找，找到了就使用，并停止查找，还没找到，继续沿着__proto__继续查找，直到顶层原型属性，还没找到，抛出undefined
+    
+    // const obj = {}
+    // obj.name = "hello"
+    // obj.__proto__.name = "hi";
+    // console.log(obj);
+    // console.log(obj.name);
+    // console.log(obj.msg);
+
+    // 原型属性：
+        // 除了箭头函数，所有函数都会具有一个原型属性：prototype。属性自身是一个对象类型的数据。
+        // 用来：用来作为自身被new执行后创建出来的对象的原型链__proto__指向
+    
+    function Fn(n){
+        this.name = n;
+    }
+    // 大老王
+    console.log(Fn.prototype);
+    Fn.prototype.name = "大老王"
+    Fn.prototype.cart = function(){
+        console.log(this.name + "的宝马");
+    }
+    Fn.prototype.cart();
+
+    // 通过大老王创建出来小老王1
+    const f1 = new Fn("小老王1");
+    console.log(f1.__proto__);
+    f1.cart();
+
+    // 通过大老王创建出来小老王2
+    const f2 = new Fn("小老王2");
+    console.log(f2.__proto__);
+    f2.cart();
+
+    // 小老王1的父级是大老王
+    console.log(f1.__proto__ === Fn.prototype);
+    // 小老王2的父级是大老王
+    console.log(f2.__proto__ === Fn.prototype);
+    // 小老王1的父级 就是 小老王2的父级
+    console.log(f1.__proto__ === f2.__proto__);
+
+
+
+</script>
+</html>

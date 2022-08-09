@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    var str = "中文";
+    console.log(str.charCodeAt(0));     // 20013
+
+    // 20013 ====> 4e2d
+
+    // 浏览器直接支持Unicode编码
+    console.log( "\u4e2d" );
+
+    // 不支持直接十六进制
+    console.log("0x4e2d");
+
+    // 转换方法，不支持Unicode编码的语法
+    console.log( String.fromCharCode("\u4e2d") );
+
+    // 转换方法，支持Unicode编码的十六进制语法
+    console.log( String.fromCharCode("0x4e2d") );
+
+    // 转换方法，支持Unicode编码的十进制语法
+    console.log( String.fromCharCode(20013) );
+
+
+    // a~z：97~122
+    console.log( "a".charCodeAt() );
+    console.log( "b".charCodeAt() );
+    console.log( "c".charCodeAt() );
+
+    // A~Z：65~90
+    console.log( "A".charCodeAt() );
+    console.log( "B".charCodeAt() );
+    console.log( "C".charCodeAt() );
+
+    // 0~9：48~57
+    console.log( "0".charCodeAt() );
+    console.log( "1".charCodeAt() );
+    console.log( "2".charCodeAt() );
+    console.log( "9".charCodeAt() );
+
+
+
+</script>
+</html>

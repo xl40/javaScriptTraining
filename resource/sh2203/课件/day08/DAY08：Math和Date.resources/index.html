@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#isyou{font-size: 80px;text-align: center;margin: 100px auto;}
+			#btn{width: 180px;height: 60px;border: none;background: dodgerblue;display: block;margin: 0 auto;color: #fff;font-size: 30px;border-radius: 6px;text-align: center;line-height: 60px;cursor: pointer;}
+			#btn:active{background: slateblue;}
+		</style>
+	</head>
+	<body>
+		<div id="isyou">请点击下面的按钮，开始抽奖</div>
+		<span id="btn">点击开始</span>
+	</body>
+	<script type="text/javascript">
+		var str = "薛刚,李坤,常庆玲,程龙,徐煌,胡小缓,冯忠辉,余玲,陈昊林,郑浩,吴浩,陈启帆,冯卫平,曾争,张涛,平金获,刘威,高坤伦,金鑫,王婷婷,刘盼,邱嘉燕,汪恒,郭风雷,于智博,蔡少东,吴宁静,汪国文,葛怀慧";
+		var arr = str.split(",");
+		var oBtn = document.getElementById("btn");
+		var oIsyou = document.getElementById("isyou");
+		var onOff = 1;//打开
+		var timer = null;
+		oBtn.onclick = function(){
+			if(onOff == 1){
+				timer = setInterval(function(){
+					var index = Math.round(Math.random()*(arr.length-1))
+					oIsyou.innerHTML = arr[index];
+				},10)
+				oBtn.innerHTML = "点击结束";
+				onOff = 4;
+				console.log(onOff);
+			}else{
+				clearInterval(timer);
+				oBtn.innerHTML = "点击开始";
+				onOff = 1;
+			}
+		}
+		//点开始之后，一直跳转，直到用户再次点击，停止
+	</script>
+</html>
+<!--薛刚,李坤,常庆玲,程龙,徐煌,胡小缓,冯忠辉,余玲,陈昊林,郑浩,吴浩,陈启帆,冯卫平,曾争,张涛,平金获,刘威,高坤伦,金鑫,王婷婷,刘盼,邱嘉燕,汪恒,郭风雷,于智博,蔡少东,吴宁静,汪国文,葛怀慧-->

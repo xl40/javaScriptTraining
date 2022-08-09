@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    class Model{
+        data1(){
+            return "hello";
+        }
+        data2(){
+            return "world";
+        }
+        data3(){
+            return "hi";
+        }
+    }
+    class View{
+        view1(d){
+            console.log(d);
+        }
+        view2(d){
+            document.write(d);
+        }
+    }
+    class Control{
+        constructor(){
+            this.m = new Model()
+            this.v = new View();
+        }
+        c1(){
+            const d = this.m.data2();
+            this.v.view1(d);
+        }
+        c2(){
+            const d = this.m.data3();
+            this.v.view2(d);
+        }
+        c3(){
+            const d = this.m.data1();
+            this.v.view1(d);
+        }
+    }
+    const c = new Control();
+    c.c2();
+    c.c1();
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    const url1 = "/a";
+    const url2 = "/b";
+    const url3 = "/c";
+    const url4 = "/d";
+
+    // 需求：同时获取到来自以上四个地址的数据
+
+    // 回调地狱
+    ajaxGet(url1, res1=>{
+        ajaxGet(url2, res2=>{
+            ajaxGet(url3, res3=>{
+                ajaxGet(url4, res4=>{
+                    console.log(res1, res2, res3, res4);
+                })
+            })
+        })
+    })
+
+    // 回调地狱：是获取异步数据的一种解决方式
+        // 不方便挑错
+        // 浪费性能
+
+
+    // 延时器模拟ajax测试
+    // ajaxGet("http://localhost:3000/api?type=login",function(res){
+    //     console.log(res);
+    // })
+    function ajaxGet(url, cb){
+
+        setTimeout(() => {
+            const msg = `这是来自${url}的请求成功后得到的响应数据`;
+            // 请求成功
+            cb(msg);
+        }, 10);
+
+    }
+</script>
+</html>

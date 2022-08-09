@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 冒泡排序：将数组中的数据，从左向右，依次进行两两比较，小的放前面
+    
+    // 所谓比较，并不是直接将两个数据，进行比较，而是通过数组的索引获取到数据之后再做比较，所谓的两两，指的是索引之间的两两
+
+    var arr = [7, 6, 5, 4, 3];
+    console.log(arr);
+    // 可能会进行的比较次数：
+    // 0-1, 1-2, 2-3, 3-4
+    // [6, 5, 4, 3, 7]
+    // 0-1, 1-2, 2-3
+    // [5, 4, 3, 6, 7]
+    // 0-1, 1-2
+    // [4, 3, 5, 6, 7]
+    // 0-1
+    // [3, 4, 5, 6, 7]
+
+    // 比较次数的结构
+    // 0-1, 1-2, 2-3, 3-4   0 ~ length-1-0
+    // 0-1, 1-2, 2-3        0 ~ length-1-1
+    // 0-1, 1-2             0 ~ length-1-2
+    // 0-1                  0 ~ length-1-3
+
+    // 多行多列：(length-1)行，列↑↑↑↑↑↑↑↑↑↑↑
+
+
+    for(var i=0;i<arr.length-1;i++){
+        for(var j=0;j<arr.length-1-i;j++){
+            // console.log(j+"-"+(j+1));
+            if(arr[j] > arr[j+1]){
+                var x = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = x;
+            }
+        }
+    }
+
+    console.log(arr);
+
+
+
+
+
+</script>
+</html>

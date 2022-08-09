@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        {{ msg }}
+    </div>
+</body>
+<script src="https://lib.baomitu.com/vue/2.7.0-alpha.4/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: ".box",
+        data: ()=>{
+            return {
+                msg: "hello"
+            }
+        }
+    })
+
+    vm.msg = 1231231233;
+    
+</script>
+</html>

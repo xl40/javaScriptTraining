@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // - 多分支：根据成绩的不同范围给出对应的评语
+    //     - 分支的嵌套：`if(){}else if(){}else if(){}...`
+    //     - 多分支语句：`switch(){ ... }`
+
+    // 分支的嵌套
+    // 需求：判断一个数值是正数？不是正数(是负数？是0？)？
+    // var n = 3;
+    // if( n > 0 ){
+    //     console.log(n + "是正数")
+    // }else{
+    //     if( n < 0 ){
+    //         console.log(n + "是负数")
+    //     }else{
+    //         console.log(n + "是零")
+    //     }
+    // }
+    // if-else的嵌套的简写方式
+    // var n = 0;
+    // if( n > 0 ){
+    //     console.log(n + "是正数")
+    // }else if( n < 0 ){
+    //     console.log(n + "是负数")
+    // }else{
+    //     console.log(n + "是零")
+    // }
+
+    // ===============
+
+    // switch(){}
+        // switch      关键字，语句名
+        // ()          要判断的数据
+        // {}          分支体内的执行语句
+
+    // 完整语法
+    // switch(要判断的数据){
+    //     case 可能的值1:
+    //         执行语句1;
+    //         break;
+    //     case 可能的值2:
+    //         执行语句2;
+    //         break;
+    //     case 可能的值3:
+    //         执行语句3;
+    //         break;
+    //     ...
+    //     default:
+    //         以上case都没执行时，要执行的语句
+    // }
+
+
+    // 需求：根据012345，打印 零壹贰叁肆伍
+    var n = -3;
+    switch( n ){
+        case 0:
+            console.log("零");
+            break;
+        case 1:
+            console.log("壹");
+            break;
+        case 2:
+            console.log("贰");
+            break;
+        case 3:
+            console.log("叁");
+            break;
+        case 4:
+            console.log("肆");
+            break;
+        case 5:
+            console.log("伍");
+            break;
+        default:
+            console.log("数字"+ n +"不在指定范围内,范围是:0~5")
+    }
+
+    // switch/case的穿透：一个switch语句内只会进行一次正确的case判断，只要符合某个case的值了，之后的case都不再判断，直接执行语句
+
+    // switch语句中可以使用break提前结束语句自身
+
+    // 利用break阻止case的穿透
+
+    // 所有case都不执行时，会执行default关键字后的执行语句
+
+
+    // 语句自身并没有什么逻辑思路，需要思考的是，准备使用语句完成什么功能
+</script>
+</html>

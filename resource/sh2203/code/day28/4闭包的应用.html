@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <li>link1</li>
+        <li>link2</li>
+        <li>link3</li>
+        <li>link4</li>
+        <li>link5</li>
+        <li>link6</li>
+    </ul>
+</body>
+<script>
+    // 没有使用闭包，无法获取循环每次的计数器
+    // let ali = document.querySelectorAll("li");
+    // for(var i=0;i<ali.length;i++){
+    //     ali[i].onclick = function(){
+    //         console.log(i);
+    //     }
+    // }
+    // 闭包写法一：
+    // let ali = document.querySelectorAll("li");
+    // for(var i=0;i<ali.length;i++){
+    //     (function(i){
+    //         ali[i].onclick = function(){
+    //             console.log(i);
+    //         }
+    //     })(i)
+    // }
+
+    // 闭包写法二：
+    // let ali = document.querySelectorAll("li");
+    // for(var i=0;i<ali.length;i++){
+    //     ali[i].onclick = (function(i){
+    //         return function(){
+    //             console.log(i);
+    //         }
+    //     })(i);
+    // }
+
+    // 闭包写法三：
+    // let ali = document.querySelectorAll("li");
+    // for(let i=0;i<ali.length;i++){
+    //     ali[i].onclick = function(){
+    //         console.log(i);
+    //     }
+    // }
+
+    // ==============
+
+    // 给不能传参的 内置函数的回调函数 传参
+
+    // setTimeout( fn("jasgfjasg") , 1000 );
+    // function fn(a){
+    //     return function(){
+    //         console.log(a);        
+    //     }
+    // }
+
+    
+
+</script>
+</html>

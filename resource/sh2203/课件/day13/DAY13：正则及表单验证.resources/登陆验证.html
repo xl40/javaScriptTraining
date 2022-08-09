@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		.error{
+			color: red;
+		}
+		.success{
+			color: green;
+			border: 2px solid green;
+		}
+	</style>
+</head>
+<body>
+	
+	<form action="http://www.jd.com">
+		<h2>注册</h2>
+		<p>账号:<input type="text" id="user"><span class="error"></span></p>
+		<p>密码:<input type="text" id="pass"><span class="error"></span></p>
+		<p>确认密码:<input type="text" id="validatePass"><span class="error"></span></p>
+		<p>手机号:<input type="text" id="phoneNum"><span class="error"></span></p>
+		<p>邮箱:<input type="text" id="email"> <span class="error"></span></p>
+		<input type="submit" id="btn" value="提交注册信息">
+	</form>
+
+</body>
+
+<script>
+	// 每次输入框失去焦点的时候验证输入框内容; => 正确 给予正确提示，错误给予提示;
+
+	// 当点击提交按钮的时候，所有输入项要正确验证才可跳转; 数组 里面所有的项都验证成功;
+
+	var aValidate = [false,false,false];//验证数组;
+ 
+
+	function $(id){
+		return document.getElementById(id);
+	}
+
+	var oBtn = $("btn");
+	var oUser = $("user");
+
+	var oPass = $("pass");
+	var oValidatePass = $("validatePass");
+
+	oUser.onblur = function(){
+		var sUser = oUser.value;
+		var reg = /^[a-z0-9_\-\u4e00-\u9fa5]{4,20}$/gi
+		//console.log(sUser);
+		if(reg.test(sUser)){
+			//符合规则;
+			oUser.className = "success";
+			oUser.nextElementSibling.innerHTML = "";
+
+			aValidate[0] = true;
+
+		}else{
+			//console.log(oUser.nextElementSibling);
+			oUser.className = "error";
+			oUser.nextElementSibling.innerHTML = "支持中文、字母、数字、“-”“_”的组合，4-20个字符";
+
+			aValidate[0] = false;
+
+		}
+	}
+
+	//判定密码难度 
+
+	oPass.onblur = function(){
+
+		var sPass = oPass.value;
+
+		var reg = /^[^\\*\u4e00-\u9fa5]{6,20}$/
+
+		if(reg.test(sPass)){
+			//验证成功;
+			// 验证密码强度;
+			// 三个判断分别加分 => 
+				//1.有数字 加一分;
+				//2.有字母 加一分;
+				//3.有特殊符号加一分;
+			var mark = 0;
+			//判定是否有数字;
+			var hasNum = /\d/g
+			if(hasNum.test(sPass)){
+				mark++;
+			}
+
+			var hasLetter = /[a-z]/gi
+			if(hasLetter.test(sPass)){
+				mark++;
+			}
+
+			var hasSymbol = /[!@#\$%\^\.]/g
+
+			if(hasSymbol.test(sPass)){
+				mark++;
+			}
+
+			switch(mark){
+				case 1:
+				oPass.style.border = "2px solid #f10";
+				oPass.nextElementSibling.innerHTML = "密码安全度低,建议使用组合密码!";
+				break;
+				case 2:
+				oPass.style.border = "2px solid yellow";
+				oPass.nextElementSibling.innerHTML = "密码中等,建议使用组合密码!";
+				break;
+				case 3:
+				oPass.style.border = "2px solid green";
+				oPass.nextElementSibling.innerHTML = "你别把自己密码忘了!";
+
+				setTimeout(function(){
+					oPass.nextElementSibling.innerHTML = "";
+				}, 1000);
+			}
+
+			oPass.className = "";
+
+			aValidate[1] = true;
+
+
+		}else{
+			oPass.className = "error";
+			oPass.style.border = "1px solid #000";
+			oPass.nextElementSibling.innerHTML = "请输入符合规则的密码";
+
+			aValidate[1] = false;
+		}
+	}
+
+	oValidatePass.onblur = function(){
+
+		if(oValidatePass.value == oPass.value){
+			//正确
+			oValidatePass.style.border = "1px solid #ddd";
+			oPass.style.border = "1px solid #ddd";
+
+			oValidatePass.nextElementSibling.innerHTML=""
+
+			aValidate[2] = true;
+		}else{
+			//错误;
+			oValidatePass.style.border = "2px solid red";
+			oValidatePass.nextElementSibling.innerHTML="密码输入不一致";
+			oPass.style.border = "2px solid red";
+			aValidate[2] = false;
+		}
+	}
+
+	oBtn.onclick = function(event){
+		// 是否必填选项选中;
+		var isAllValidate = false; //是否全部验证通过;
+
+		for(var i = 0 ; i < aValidate.length ; i++){
+			if(aValidate[i] == false){
+				var evt = event || window.event;
+				if(evt.preventDefault){
+					evt.preventDefault()
+				}else{
+					window.event.returnValue = false;
+				}
+				break;
+			}
+		}
+	}
+
+
+</script>
+
+</html>

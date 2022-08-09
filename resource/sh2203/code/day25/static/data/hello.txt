@@ -1,0 +1,2 @@
+const world5 = "你好5";
+console.log(world5);

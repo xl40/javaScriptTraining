@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <textarea id="txt1"></textarea>
+    <input type="button" id="btn" value="发送">
+    <textarea id="result" readonly></textarea>
+</body>
+<script>
+    // 1. 敏感词过滤【喵了个喵=====>***】
+        // - 自己随便设定敏感词，多个敏感词放在一个数组中
+        // - 要替换的文本，自定义随便写
+    var txt1 = document.getElementById("txt1")
+    var btn = document.getElementById("btn")
+    var res = document.getElementById("result")
+
+    var msg = ["喵了个喵", "abc", "hello", "123", "哈哈哈"];
+
+    btn.onclick = function(){
+        var str = txt1.value;
+        // 遍历数组中的敏感词
+        for(var i=0;i<msg.length;i++){
+            // 将数组中的每个敏感词都替换字符的长度次（注1）
+            for(var j=0;j<str.length;j++){
+                // 替换后，覆盖原字符
+                str = str.replace(msg[i], "***");
+            }
+        }
+        // 将替换之后的字符，放入结果框
+        res.value = str;
+    }
+
+    // 注1：假设整个字符中全部都是某一个敏感词
+
+</script>
+</html>

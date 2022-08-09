@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        input{width:100px;}
+    </style>
+</head>
+<body>
+    <input type="text" id="txt1">
+    <input type="text" id="txt2">
+    <input type="text" id="txt3">
+    <input type="button" id="btn" value="添加">
+
+    <table border="1" width=400 align="center">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</body>
+<script>
+    var otxt1 = document.getElementById("txt1")
+    var otxt2 = document.getElementById("txt2")
+    var otxt3 = document.getElementById("txt3")
+    var obtn = document.getElementById("btn")
+    var otbody = document.querySelector("tbody")
+
+    obtn.onclick = function(){
+        // 创建元素
+        var tr = document.createElement("tr");
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        var td4 = document.createElement("td");
+
+        // 设置内容
+        td1.innerText = otxt1.value;
+        td2.innerText = otxt2.value;
+        td3.innerText = otxt3.value;
+        td4.innerText = "删除";
+
+        // 插入到指定容器
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        otbody.appendChild(tr);
+
+        // 点击最后一个td，删除整个tr
+        td4.onclick = function(){
+            tr.remove();
+        }
+    }
+
+</script>
+</html>

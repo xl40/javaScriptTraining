@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .login{display: block;}
+        .welcome{display: none;}
+    </style>
+</head>
+<body>
+
+    <h2 class="login">
+        <a href="./login.html">去登陆</a>
+    </h2>
+    <h2 class="welcome">
+        欢迎<span>xxx</span>进入本网站，<em>退出</em>
+    </h2>
+
+    <p>这是首页</p>
+    <p><a href="./list.html">去购物</a></p>
+    <p class="goCart"><a href="./cart.html">查看购物车</a></p>
+    <br>
+    =========
+    <br>
+    模拟数字框
+    <br>
+    <input type="number" value="3" min="1" step="3" max="10">
+    <br>
+    <div class="number"></div>
+    =======
+    <div class="menu">
+        <ul>
+            <!-- <li>
+                <span></span>
+                <ul>
+                    <span></span>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </ul>
+            </li> -->
+        </ul>
+    </div>
+</body>
+<script src="./libs/jquery.js"></script>
+<script src="./js/number.js"></script>
+<script>
+    // =====登录守卫 start=====
+
+    // 判断是否已经登录
+    if(localStorage.getItem("token")){
+        $(".login").hide();
+        $(".welcome").show().children("span").html(localStorage.getItem("username"));
+    }
+
+    // 退出功能
+    $(".welcome").children("em").click(function(){
+        localStorage.setItem("token", "");
+        localStorage.setItem("username", "");
+        $(".login").show();
+        $(".welcome").hide();
+    })
+
+    // 守卫去购物车的链接
+    $(".goCart").children("a").click(function(){
+        if(!localStorage.getItem("token")){
+            return false;
+        }
+    })
+
+    // =====登录守卫 end=====
+
+
+    $.ajax({
+        url:"http://localhost:3000/api",
+        data:{
+            type:"getMenu"
+        },
+        success:res=>{
+            res = JSON.parse(res).data;
+            // console.log(res);
+            let str = "";
+            res.forEach(val=>{
+                // 先生成内部的小的重复的结构
+                let s = "";
+                for(let i in val.liTwo[0]){
+                    if(i !== "span"){
+                        s += `<li>${val.liTwo[0][i]}</li>`;
+                    }
+                }
+                // 再生成大的主题结构，将小结构嵌套其中
+                str += `<li>
+                        <span>${val.liTwo[0].span}</span>
+                        <ul>
+                            ${s}
+                        </ul>
+                    </li>`
+            })
+            $(".menu").children("ul").html(str);
+        }
+    })
+    
+    // =========
+    // min表示最小值，默认0
+    // max表示最大值，默认100
+    // step表示步长，默认1
+    // value表示默认值，默认0
+    // cont表示数字框的容器，必传
+    new InputNumber({
+        min: 1,
+        max: 9999999,
+        step: 3,
+        value: 1,
+        cont: document.querySelector(".number")
+    })
+
+    // 项目期间遇到的问题：
+        // 问题描述：
+            // 万一用户写错了选择器，导致没有选中元素
+            // 用户干脆就没传
+        // 解决思路：
+            // 在文档中说明，该参数必传，如果出错，那是用户的事，与我无关
+            // 彩蛋：偷偷给个默认值，但是不告诉用户，默认值是内部创建的新div
+
+        // 问题描述：某些DOM元素未在页面上成功显示
+        // 解决思路：
+            // 1. 通过浏览器的控制台的elements观察，页面结构是否真的没有添加到页面
+                // - 如果没有添加到页面，那就找元素的创建和插入代码
+            // 2. 如果页面结构上有元素，但是元素为空
+                // - 那就找元素内容的设置代码
+            // 3. 如果页面结构上有元素，也有内容，但就是在页面上未显示
+                // - 那就去找css样式，是否是布局中的溢出隐藏，高度塌陷，脱离文档流等操作造成的影响
+
+
+
+// 测试数据，没有投入使用
+// const ___menu = [{
+//     title:"数码商品",
+//     kind:[{
+//         title:"电脑",
+//         brand:[{
+//             title:"华为",
+//             type:[{
+//                 title:"青春版",
+//                 // color:[{
+//                 //     title:"绚丽红",
+//                 //     color:"red",
+//                 //     imgs:[[]]
+//                 // },{
+//                 //     title:"科技灰",
+//                 //     color:"#ccc",
+//                 //     imgs:[[]]
+//                 // }]
+//                 color:["#f00", "#0f0", "#00f"]
+//             },{
+//                 title:"plus版",
+//                 color:[{}]
+//             }]
+//         },{
+//             title:"小米",
+//             type:[{
+//                 title:"青春版",
+//                 color:[{},{}]
+//             },{
+//                 title:"",
+//                 color:[{}]
+//             }]
+//         }]
+//     },{
+//         title:"手机",
+//         brand:[{...}]
+//     }]
+// },{
+//     title:"服饰箱包"，
+//     kind:[{...}]
+// }];
+
+
+
+</script>
+</html>
+
+
+
+
+
+

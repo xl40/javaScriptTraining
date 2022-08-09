@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    const f = (function(){
+        let a = 0;
+        return function(){
+            a++;
+            console.log(a);
+        }
+    })();
+
+    // 需求：每次打印的数据，都是在上次的执行结果上继续计算，不允许产生全局变量
+
+    f();
+    f();
+    f();
+    f();
+    f();
+
+    // 利用作用域的嵌套，将原本的局部变量进化成私有变量的环境，叫闭包
+
+    // 将原本局部作用域中的局部变量，临时保存出来，不受局部作用域的影响，可以被外部，重复使用
+
+</script>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    "use strict";
+
+    // 1. 变量必须先声明在使用
+    // a = 10;
+    // console.log(a);
+
+    // 2. 没有明确隶属对象的函数直接执行时，内部的this不指向window，指向undefined
+    // function fn(){
+    //     console.log(this);
+    // }
+    // fn();
+
+    // 3. 函数的形参名不允许重复
+    // function fn(a,b,b){
+    //     console.log(a);
+    //     console.log(b);
+    // }
+    // fn(1,2,3);
+
+    // 4. arguments保存的实参，不受形参的改变而影响
+    // function fn(a){
+    //     a = 20;
+    //     console.log(a);
+    //     console.log(arguments);
+    // }
+    // fn(10)
+
+    // 5. arguments.callee方法被禁止使用
+        // 无名函数不允许用来做递归
+    // function fn(){
+    //     console.log(arguments.callee);
+    //     console.log(fn);
+    //     console.log(fn === arguments.callee);
+    // }
+    // fn();
+
+    // 6. 禁止使用0开头的数值表示八进制
+    // 在js中只有十进制是数值，其他进制全部都是字符！
+    // console.log( 010 );
+    // console.log( "010" );
+    // console.log( 10 );
+
+
+    // 7. 禁止使用with语句
+    // var obj = {
+    //     name:"admin",
+    //     age:18,
+    //     sex:"男"
+    // }
+    // with(obj){
+    //     console.log(name);
+    //     console.log(age);
+    //     console.log(sex);
+    // }
+    
+
+
+</script>
+</html>

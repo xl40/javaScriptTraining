@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 4. 内存的存储机制（程序执行过程中数据的存储）
+    //     - 栈：空间比较小，稳定，不可修改，一般用来存储变量名或值传递的数据
+    //     - 堆：空间较大，灵活，可被修改，一般用来存储具体的数据
+
+    // 1. 基本数据（值传递）
+    //     - 不仅变量名存在栈中，数据也存在栈中。不占堆。
+    //     - string，number，boolean，undefined，null
+
+    // var str = "hello";
+    // 给str重新赋值，并不是修改原数据
+    // str = "world";
+
+    // 修改hello这个值中的某个字符
+    // str[1] = "啊";
+    // 无法修改
+
+    // console.log(str[0]);
+    // console.log(str[1]);
+    // console.log(str[2]);
+    // console.log(str[3]);
+    // console.log(str[4]);
+
+    // console.log(str);
+
+
+    // 2. 复杂数据（引用传递）
+    //     - 变量名存储在栈中，数据存储在堆中，栈中在保存堆的地址
+    //     - object，array，function
+
+    // var arr = [4,5,6,7];
+    // console.log(arr);
+
+    // 给arr重新赋值，并不是修改原数据
+    // 这是将arr变量重新指向新的堆地址
+    // arr = [];
+
+    // 修改arr指向的堆中的数组中的某个数据
+    // arr[1] = "啊";
+    // 可以修改
+
+    // console.log(arr[0]);
+    // console.log(arr[1]);
+    // console.log(arr[2]);
+    // console.log(arr[3]);
+
+    // console.log(arr);
+
+
+    // ================================
+
+    // var str1 = "hello";
+    // var str2 = str1;
+    // str2 = "world";
+    // console.log(str1);
+    // console.log(str2);
+
+    // var arr1 = [4,5,6,7];
+    // 将arr1的地址拷贝给了arr2，arr1和arr2公用一个地址
+    // 一个地址指向的是不是同一个数据
+    // var arr2 = arr1;
+    // arr2[2] = "啊";
+    // console.log(arr1);
+    // console.log(arr2);
+    // console.log(arr2 === arr1);
+
+    // 浅拷贝：拷贝数据时，只要拷贝地址，修改了新值，会影响老值
+
+
+
+    
+
+</script>
+</html>
