@@ -7,13 +7,32 @@
  *
  */
 
-
-function factorial(n) {
-    if (n === 1) {
-        return 1;
+describe("给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。", () => {
+    function reverseList(head) {
+        return undefined;
     }
-    return n * factorial(n - 1);
-}
+
+    it('1', function () {
+        let head = [1, 2, 3, 4, 5]
+        let result = [5, 4, 3, 2, 1];
+        expect(reverseList(head)).toStrictEqual(result)
+    });
+
+
+    it('2', function () {
+        let head = [1,2]
+        let result = [2, 1];
+        expect(reverseList(head)).toStrictEqual(result)
+    });
+
+    it('3', function () {
+        let head = []
+        let result = [];
+        expect(reverseList(head)).toStrictEqual(result)
+    });
+
+
+});
 
 describe("1. 利用递归求n的阶乘", () => {
 
@@ -31,6 +50,13 @@ describe("1. 利用递归求n的阶乘", () => {
      *     = 4 * 3!
      *     = n * (n-1)!
      */
+
+    function factorial(n) {
+        if (n === 1) {
+            return 1;
+        }
+        return n * factorial(n - 1);
+    }
 
 
     it('1', function () {
@@ -67,13 +93,6 @@ describe("1. 利用递归求n的阶乘", () => {
 });
 
 
-function fibonacci(n) {
-    if (n === 1 || n === 2) {
-        return 1;
-    }
-    return fn(n - 1) + fn(n - 2);
-}
-
 describe("2. 利用递归求斐波那契数列的第n位", () => {
 
 
@@ -93,6 +112,14 @@ describe("2. 利用递归求斐波那契数列的第n位", () => {
      *     fn(n) = fn(n - 2) + fn(n - 1)
      *
      */
+
+
+    function fibonacci(n) {
+        if (n === 1 || n === 2) {
+            return 1;
+        }
+        return fn(n - 1) + fn(n - 2);
+    }
 
     it('1', function () {
         let n = 1
@@ -124,6 +151,12 @@ describe("leetcode 面试题 08.05. 递归乘法", () => {
      *        = a + m(a, b-1)
      */
 
+    function multiply(A, B) {
+        if (B === 0)
+            return 0;
+        return A + multiply(A, B - 1);
+    }
+
 
     it('1', function () {
         let a = 1
@@ -140,9 +173,4 @@ describe("leetcode 面试题 08.05. 递归乘法", () => {
     });
 })
 
-function multiply(A, B) {
-    if (B === 0)
-        return 0;
-    return A + multiply(A, B - 1);
-}
 
