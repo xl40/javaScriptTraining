@@ -9,7 +9,7 @@
 
 
 function factorial(n) {
-    if (n === 1){
+    if (n === 1) {
         return 1;
     }
     return n * factorial(n - 1);
@@ -67,8 +67,6 @@ describe("1. 利用递归求n的阶乘", () => {
 });
 
 
-
-
 function fibonacci(n) {
     if (n === 1 || n === 2) {
         return 1;
@@ -111,7 +109,22 @@ describe("2. 利用递归求斐波那契数列的第n位", () => {
 });
 
 
-describe("multiply", () => {
+describe("leetcode 面试题 08.05. 递归乘法", () => {
+
+    // 递归乘法。 写一个递归函数，不使用 * 运算符， 实现两个正整数的相乘。可以使用加号、减号、位移，但要吝啬一些。
+    /***
+     *  两个正整数的相乘 拆解为加法
+     *  定义函数 multiply(a,b) = a * b
+     *  5 * 1 = 5
+     *  5 * 2 = 5 + 5
+     *  5 * 3 = 5 + 5 + 5
+     *  5 * 4 = 5 + (5 + 5 + 5)
+     *        = 5 + (5 * 3)
+     *        = 5 + m(5, 3)
+     *        = a + m(a, b-1)
+     */
+
+
     it('1', function () {
         let a = 1
         let b = 10
@@ -127,11 +140,9 @@ describe("multiply", () => {
     });
 })
 
-function multiply(a, b) {
-    const arr = [0];
-    for (let i = 1; i <= b; i++) {
-        arr[i] = arr[i - 1] + a;
-    }
-    return arr[b];
+function multiply(A, B) {
+    if (B === 0)
+        return 0;
+    return A + multiply(A, B - 1);
 }
 
