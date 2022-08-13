@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情</title>
+    <link rel="stylesheet" href="css/Puplic.css">
+    <link rel="stylesheet" href="css/Details.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <div class="header">
+        <div class="header-top">
+            <div class="header-container">
+                <div class="top-nav fl">
+                    <a href="../html/index.html">小米商城</a>
+                    <span class="header-line">|</span>
+                    <a href="#">MIUI</a>
+                    <span class="header-line">|</span>
+                    <a href="#">IoT</a>
+                    <span class="header-line">|</span>
+                    <a href="#">云服务</a>
+                    <span class="header-line">|</span>
+                    <a href="#">天星数科</a>
+                    <span class="header-line">|</span>
+                    <a href="#">有品</a>
+                    <span class="header-line">|</span>
+                    <a href="#">小爱开放平台</a>
+                    <span class="header-line">|</span>
+                    <a href="#">企业团购</a>
+                    <span class="header-line">|</span>
+                    <a href="#">资质证照</a>
+                    <span class="header-line">|</span>
+                    <a href="#">协议规则</a>
+                    <span class="header-line">|</span>
+                    <a href="#" class="header-nav-app">
+                        下载app
+                        <!-- 下箭头 -->
+                        <div class="trl"></div>
+                        <div class="down-box">
+                            <img src="../images/PVG.png" alt="" class="arrow-QR">
+                            <i>小米商城APP</i>
+                        </div>
+                    </a>
+                    <span class="header-line">|</span>
+                    <a href="#">智能生活</a>
+                    <span class="header-line">|</span>
+                    <a href="#">Select Location</a>
+                </div>
+                <div class="top-info fr">
+                    <div class="login fl">
+                        <a href="../html/login.html">登录</a>
+                        <span class="header-line">|</span>
+                        <a href="../html/register.html">注册</a>
+                        <span class="header-line">|</span>
+                    </div>
+                    <p class="login-welcome fl">
+                        欢迎
+                        <span></span>
+                        <em class="exit">退出</em>
+                    </p>
+                    <a href="#" class="notice fl">消息通知</a>
+                    <div class="Shopping-Cart fl">
+                        <a href="../html/Cart.html" class="shop">
+                            <i class="iconfont cart">&#xe638;</i>
+                            购物车
+                            <span class="shopCart-text">（0）</span>
+                        </a>
+                        <div class="show-cart">
+                            <p class="no-goods">购物车中还没有商品，赶紧选购吧！</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 商品详情 -->
+    <div class="mi-detail">
+        <div class="product-intro">
+            <!-- 放大镜 -->
+            <div class="magnifier-wrap fl">
+                <div class="smallimg-box">
+                    <img src="" alt="">
+                    <span></span>
+                </div>
+                <div class="magnifier-banner-wrap">
+                    <ul></ul>
+                </div>
+                <div class="btn">
+                    <input type="button" class="iconfont" value="&#xe603;" id="left">
+                    <input type="button" class="iconfont" value="&#xe629;" id="right">
+                </div>
+            </div>
+            
+            <div class="bigimg-box">
+                <img src="" alt="">
+            </div>
+            
+            <!-- 产品介绍 -->
+            <div class="product-con fl">
+                <div class="product-title">
+                    <h1 class="title-text"></h1>
+                </div>
+                <div class="product-price">
+                    <dl class="price-cur">
+                        <dt class="metatit">价格</dt>
+                        <dd>
+                            <span class="price">
+                                ¥<em></em>元
+                            </span>
+                            <span class="_price">
+                                ¥<em></em>元
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="shopPromotion-title">
+                        <dt class="metatit">活动一</dt>
+                        <dd>满6900元减2000元</dd>
+                        <a class="more">
+                            更多优惠
+                            <i class="iconfont">&#xe69a;</i>
+                        </a>
+                    </dl>
+                </div>
+
+                <div class="meta">
+                    <dl class="delivery-panel">
+                        <dt class="metatit">运费</dt>
+                        <dd class="postAge">
+                            <span class="deliveryAdd">北京</span>
+                            至
+                            <span class="mui_addr_icon ">上海 黄浦区 </span>
+                            <i class="iconfont">&#xe69a;</i>
+                            <div class="postAge-info">
+                                <p>快递: 0.00 </p>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+
+                <ul class="ind-panel">
+                    <li class="ind-item">
+                        <span class="label">月销量</span>
+                        <span class="count">1000+</span>
+                    </li>
+                    <li class="ind-item">
+                        <span class="label">累计评价</span>
+                        <span class="count">1882</span>
+                    </li>
+                    <li class="ind-item">
+                        <span class="label">送小米积分 <i>999</i>起</span>
+                    </li>
+                </ul>
+
+                <div class="type-list">
+                    <dl class="phone-type">
+                        <dt>选择颜色</dt>
+                    </dl>
+                </div>
+                <div class="amount">
+                    <span class="num">数量</span>
+                    <div class="number"></div>
+                    <span class="several_pieces">件</span>
+                </div>
+                <div class="btn-action">
+                    <div class="btn-buy">
+                        <a href="#" title="点击此按钮，到下一步确认购买信息。">立即购买</a>
+                    </div>
+                    <div class="btn-basket" id="">
+                        <i style="display: none;">
+                            <span></span>
+                        </i>
+                        <a class="J_LinkBasket">
+                            <em class="iconfont">&#xe638;</em>
+                            加入购物车
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ser-wrap">
+                    <dl class="ser-box">
+                        <dt class="metatit">服务承诺</dt>
+                        <dd class="ser-list">
+                            <ul class="serPromise">
+                                <li>
+                                    <a href="#">全国联保</a>
+                                </li>
+                                <li>
+                                    <a href="#">正品保证</a>
+                                </li>
+                                <li>
+                                    <a href="#">免举证退换货</a>
+                                </li>
+                                <li>
+                                    <a href="#">极速退款</a>
+                                </li>
+                                <li>
+                                    <a href="#">退货运费险</a>
+                                </li>
+                                <li>
+                                    <a href="#">七天无理由退换</a>
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <div class="pay-box">
+                        <span>支付方式</span>
+                        <i class="iconfont">&#xe731;</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="libs/jquery.js"></script>
+<script src="js/number.js"></script>
+<script>
+
+    // 立即渲染数字框
+    new InputNumber({
+        min: 1,
+        max: 9999999,
+        value: 1,
+        cont: document.querySelector(".number")
+    })
+
+    // 上一个页面传过来的id
+    const id = location.search.split("=")[1];
+
+    // 获取商品数据
+    $.ajax({
+        url:"http://localhost:3000/api",
+        data:{
+            type:"getGoods"
+        },
+        success:res=>{
+            res = JSON.parse(res).data
+            // console.log(res);
+            let i = 0;
+            const flag = res.some((val,idx)=>{
+                i = idx;
+                return val.proId === id
+            })
+            if(flag){
+                // 从商品数据中，找到符合当前id的商品
+                // console.log(res[i]);
+
+                // 渲染详情页
+                render(res[i]);
+
+                // 放大镜功能
+                new Magnifier(res[i]);
+
+                // 图片列表的滚动
+                new ListBanner({
+                    left:$("#left"),
+                    right:$("#right"),
+                    imgbox:$(".magnifier-banner-wrap").children("ul"),
+                    index:0
+                });
+                // 数字框的加减
+            }
+        }
+    })
+
+
+    class ListBanner{
+        constructor(ops){
+            this.left = ops.left;
+            this.right = ops.right;
+            this.imgbox = ops.imgbox;
+            this.imgs = this.imgbox.children("li");
+
+            this.index = ops.index || 0;
+
+            this.addEvent();
+        }
+        addEvent(){
+            const that = this;
+            this.left.click(function(){
+                if(that.index === 0){
+                    that.index = 0;
+                }else{
+                    that.index--;
+                }
+                that.move();
+            })
+            this.right.click(function(){
+                // 因为可显示区域已经显示了n张图片，总长度-n是最大索引
+                // n可通过计算得到
+                // 此处n为5（拍脑袋）
+                if(that.index === that.imgs.length-5){
+                    that.index = that.imgs.length-5
+                }else{
+                    that.index++;
+                }
+                that.move();
+            })
+        }
+        move(){
+            // 每次移动一张图片的尺寸，根据布局获取准确尺寸
+            // 此处假设为85
+            this.imgbox.animate({
+                left: -85 * this.index
+            })
+        }
+    }
+
+    // 渲染详情页的页面内容，不涉及到功能
+    function render(data){
+        console.log(data);
+        data.imgs = data.imgs || [];
+
+        // 默认中图
+        $(".smallimg-box").children("img").attr("src",data.imgs[0].middle);
+        
+        // 默认大图
+        $(".bigimg-box").children("img").attr("src",data.imgs[0].large);
+
+        // 图片列表
+        let str = "";
+        data.imgs.forEach(val=>{
+            str += `<li><img src="${val.small}"></li>`
+        })
+        $(".magnifier-banner-wrap").children("ul").html(str);
+
+        // 商品名称
+        $(".title-text").html( data.proName );
+
+        // 现价
+        $(".price").children("em").html( (data.price * data.discount / 10).toFixed(2) );
+        
+        // 原价
+        $("._price").children("em").html( data.price.toFixed(2) );
+
+        // 颜色
+        data.colors.forEach(val=>{
+            $(".phone-type").append($(`<dd class="color-black" style="background:${val.color}">${val.title}</dd>`));
+        })
+    }
+
+    class Magnifier {
+        constructor(data) {
+            this.data = data;
+            this.s_box = this.getEle('.smallimg-box');
+            this.s_img = this.s_box.children[0];
+            this.frame = this.s_box.children[1];
+            this.b_box = this.getEle(".bigimg-box");
+            this.b_img = this.b_box.children[0];
+    
+            this.btn_left = this.getEle("#left");
+            this.btn_right = this.getEle("#right");
+    
+            this.banner_box = this.getEle(".magnifier-banner-wrap ul");
+
+            this.banner_img = this.banner_box.querySelectorAll("li img");
+
+            this.index = 0;
+            
+            this.addEvent();
+        }
+        getEle(tag, single = true) {
+            if (single) {
+                return document.querySelector(tag);
+            } else {
+                return document.querySelectorAll(tag);
+            }
+        }
+        addEvent () {
+            const that = this;
+
+            this.s_box.onmouseenter = function () {
+                that.show();
+            }
+    
+            this.s_box.onmousemove = function (eve) {
+                const e = eve || window.event;
+                that.move(e);
+            }
+    
+            this.s_box.onmouseleave = function () {
+                that.hide();
+            }
+    
+            for (let i = 0; i < this.banner_img.length; i++) {
+                this.banner_img[i].onmouseover = () => {
+                    for (let j = 0; j < this.banner_img.length; j++) {
+                        this.banner_img[j].style.border = "2px solid #e0e0e0";
+                    }
+                    this.b_img.src = this.data.imgs[i].large;
+                    this.s_img.src = this.data.imgs[i].middle;
+
+                    this.banner_img[i].style.border = "2px solid #ff0036";
+                }
+            }
+        }
+        
+        show = function () {
+            this.frame.style.display = "block";
+            this.b_box.style.display = "block";
+            
+            this.frame.style.width = (this.b_box.offsetWidth / this.b_img.offsetWidth) * this.s_box.offsetWidth + "px";
+            this.frame.style.height = (this.b_box.offsetHeight / this.b_img.offsetHeight) * this.s_box.offsetHeight + "px";
+        }
+    
+        hide = function () {
+            this.frame.style.display = "none";
+            this.b_box.style.display = "none";
+        }
+    
+        move = function (e) {
+            let l = e.pageX - this.s_box.offsetLeft - this.frame.offsetWidth / 2 - 130;
+    
+            let t = e.pageY - this.s_box.offsetTop - this.frame.offsetHeight / 2 - 150;
+    
+            if (l < 0) l = 0;
+            if (t < 0) t = 0;
+            if (l > this.s_box.offsetWidth - this.frame.offsetWidth) {
+                l = this.s_box.offsetWidth - this.frame.offsetWidth;
+            }
+            if (t > this.s_box.offsetHeight - this.frame.offsetHeight) {
+                t = this.s_box.offsetHeight - this.frame.offsetHeight;
+            }
+    
+            this.frame.style.left = l + "px";
+            this.frame.style.top = t + "px";
+    
+            const x = l / (this.s_box.offsetWidth - this.frame.offsetWidth);
+            const y = t / (this.s_box.offsetHeight - this.frame.offsetHeight);
+    
+            this.b_img.style.left = (this.b_box.offsetWidth - this.b_img.offsetWidth) * x + "px";
+            this.b_img.style.top = (this.b_box.offsetHeight - this.b_img.offsetHeight) * y + "px";
+        }
+    }
+
+    
+</script>
+</html>

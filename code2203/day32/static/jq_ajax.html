@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="button" id="btn1" value="get请求">
+    <input type="button" id="btn2" value="post请求">
+    <input type="button" id="btn3" value="load请求">
+    <input type="button" id="btn4" value="jsonp请求">
+    <input type="button" id="btn5" value="有超时的请求">
+    <input type="button" id="btn6" value="有loading效果的请求">
+    <input type="button" id="btn7" value="不会触发ajax全局事件的请求">
+    <div class="box"></div>
+</body>
+<script src="jquery.js"></script>
+<script>
+    // ops = {
+    //     url:"",
+    //     type:"",
+    //     data:{},
+    //     success:()=>{},
+    //     error:()=>{},
+    //     timeout:1000,
+    //     jsonp:"cb",
+    //     dataType:"jsonp",
+    //     beforeSend:()=>{},
+    //     global:false
+    // }
+    // $.ajax(ops);      √
+
+    // get请求
+    $("#btn1").click(function(){
+        $.ajax({
+            url:"http://icodeilife.club:3000/api/pro/kind",
+            success:res=>{
+                console.log(res);
+            }
+        })
+    })
+    // post请求
+    $("#btn2").click(function(){
+        $.ajax({
+            type:"post",
+            url:"http://icodeilife.club:3000/api/user/register",
+            data:{
+                username:"admin",
+                password:"123123",
+                tel:17600901915,
+                code:6666
+            },
+            success:res=>{
+                console.log(res);
+            }
+        })
+    })
+    // load请求html文件
+    $("#btn3").click(function(){
+        $.ajax({
+            url:"http://localhost:3000/public_page/top.html",
+            success:res=>{
+                console.log(res);
+                $(".box").html(res);
+            }
+        })
+    })
+    // jsonp
+    $("#btn4").click(function(){
+        $.ajax({
+            url:"https://suggest.taobao.com/sug",
+            data:{
+                k: 1,
+                area: "c2c",
+                q: "手机",
+                code: "utf-8",
+                ts: 1652512732893,
+            },
+            jsonp:"callback",
+            success:res=>{
+                console.log(res);
+            },
+            dataType:"jsonp"
+        })
+    })
+    // 有超时的请求
+    $("#btn5").click(function(){
+        $.ajax({
+            url:"http://icodeilife.club:3000/api/pro/kind",
+            success:res=>{
+                console.log(res);
+            },
+            timeout:20,
+            error:(xhr, state, message)=>{
+                console.log(xhr, state, message);
+            }
+        })
+    })
+    // 有超时的请求
+    $("#btn6").click(function(){
+        $.ajax({
+            url:"http://icodeilife.club:3000/api/pro/kind",
+            success:res=>{
+                console.log(res);
+                $(".loading").remove();
+            },
+            beforeSend:()=>{
+                $("<img class='loading'>").attr("src","./imgs/loading.jpg").appendTo($("body"));
+            }
+        })
+    })
+    // 不会触发ajax全局事件的请求
+    $("#btn7").click(function(){
+        $.ajax({
+            url:"http://icodeilife.club:3000/api/pro/kind",
+            success:res=>{
+                console.log(res);
+            },
+            global:false
+        })
+    })
+
+    // ajax的全局事件：ajax请求过程中的每个阶段要执行的功能
+    $(document).ajaxComplete(function(){
+        console.log("ajax数据模板解析")
+    })
+    $(document).ajaxError(function(){
+        console.log("ajax失败")
+    })
+    $(document).ajaxSend(function(){
+        console.log("ajax发送")
+    })
+    $(document).ajaxStart(function(){
+        console.log("ajax启动")
+    })
+    $(document).ajaxStop(function(){
+        console.log("ajax停止")
+    })
+    $(document).ajaxSuccess(function(){
+        console.log("ajax成功")
+    })
+
+</script>
+</html>

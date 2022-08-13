@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script src="require.js"></script>
+<script>
+    // console.log(require)
+    // console.log(requirejs)
+    // console.log(define)
+    
+    // console.log(require === requirejs)
+
+    // define定义模块，实现功能
+    // require引入模块，并执行相关操作
+
+    // define(数组, 回调函数);
+    
+    // require(数组, 回调函数);
+    // 数组内放置要引入的模块路径
+    // 回调函数的形参，依次是数组中引入的模块内返回的功能
+    require(["./modules/random"], (a)=>{
+        console.log("模块必然已经引入成功了");
+        console.log(a);
+        console.log(a(23,25));
+    })
+    
+
+</script>
+</html>

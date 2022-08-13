@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <p style="display:none">段落1</p>
+    <p>段落2</p>
+    <div id="cont">4</div>
+    <div id="cont">5</div>
+    <div id="cont">6</div>
+    <ul class="list">
+        <li>link1</li>
+        <li>link2</li>
+        <li>link3</li>
+    </ul>
+    <ul class="list">
+        <li>javascript</li>
+        <li>html</li>
+        <li class="red">css</li>
+        <li>nodejs</li>
+        <li></li>
+        <li>python</li>
+        <li>mysql</li>
+        <li>mongodb</li>
+    </ul>
+    <em>a</em>
+    <em class="e">b</em>
+    <em>c</em>
+    <em>d</em>
+    <div class="msg">
+        <div class="xbox">
+            <p>段落1</p>
+            <p>段落2</p>
+        </div>
+        <p>段落3</p>
+        <p>段落4</p>
+    </div>
+    <span>7</span>
+    <span>8</span>
+    <span class="s">9</span>
+    <span>10</span>
+    <input type="text" abc>
+    <input type="text" abc="hello">
+    <input type="text" abc="hello" qwe>
+    <input type="text" abc="hello" qwe="world">
+</body>
+<script src="jquery.js"></script>
+<script>    
+    // $(".msg p").css({background: "red"});
+    // $(".msg").find("p").css({background: "red"});
+    
+    // $(".msg>p").css({background: "red"});
+    // $(".msg").children("p").css({background: "red"});
+
+    // $(".msg+span").css({background: "red"});
+    // $(".msg").next("span").css({background: "red"});
+    
+    // $(".msg~span").css({background: "red"});
+    // $(".msg").nextAll("span").css({background: "red"});
+    
+    // $(".msg").nextUntil(".s").css({background: "red"});
+
+    // 上面的兄弟
+    // $(".msg").prev("em").css({background: "red"});
+    // $(".msg").prevAll("em").css({background: "red"});
+    // $(".msg").prevUntil(".e").css({background: "red"});
+
+    // $(".list li:first").css({background: "red"})
+    // $(".list li").first().css({background: "red"})
+    
+    // $(".list li:last").css({background: "red"})
+    // $(".list li").last().css({background: "red"})
+    
+    // $(".list li:eq(2)").css({background: "red"})
+    // $(".list li").eq(4).css({background: "red"})
+    
+    // $(".list li:not(.red)").css({background: "red"})
+    // $(".list li").not(".red").css({background: "red"})
+    
+    // 父以子贵
+    // $(".list:has(.red)").css({border: "solid 1px black"})
+    // $(".list").has(".red").css({border: "solid 1px black"})
+
+    // 子选父
+    // $(".red").parent().css({border: "solid 1px black"})
+    // $(".red").parents().css({border: "solid 1px black"})
+    // $(".red").parentsUntil("html").css({border: "solid 1px black"})
+
+
+    // 返回上一步选择器：end
+    // $(".list").children("li").first().css({background: "red"}).end().css({border: "solid 1px black"});
+
+    // 所有兄弟
+    // $(".red").siblings().css({border: "solid 1px black"})
+</script>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <p style="display:none">段落1</p>
+    <p>段落2</p>
+    <div id="cont">4</div>
+    <div id="cont">5</div>
+    <div id="cont">6</div>
+    <ul class="list">
+        <li>link1</li>
+        <li>link2</li>
+        <li>link3</li>
+    </ul>
+    <ul class="list">
+        <li>javascript</li>
+        <li>html</li>
+        <li class="red">css</li>
+        <li>nodejs</li>
+        <li></li>
+        <li>python</li>
+        <li>mysql</li>
+        <li>mongodb</li>
+    </ul>
+    <em>a</em>
+    <em>b</em>
+    <em>c</em>
+    <em>d</em>
+    <div class="msg">
+        <div class="xbox">
+            <p>段落1</p>
+            <p>段落2</p>
+        </div>
+        <p>段落3</p>
+        <p>段落4</p>
+    </div>
+    <span>7</span>
+    <span>8</span>
+    <span>9</span>
+    <span>10</span>
+    <input type="text" abc>
+    <input type="text" abc="hello">
+    <input type="text" abc="hello" qwe>
+    <input type="text" abc="hello" qwe="world">
+</body>
+<script src="jquery.js"></script>
+<script>
+
+    // jq的选择器
+    // 直接执行jq函数，传入字符格式的选择器
+    // console.log($(".box"))
+
+    // $(".box").css({background: "red"});
+    
+    // $("#cont").css({background: "red"});
+    
+    // $("span").css({background: "red"});
+    
+    // $("input[abc]").css({background: "red"});
+    // $("input[abc=hello]").css({background: "red"});
+    // $("input[abc=hello][qwe]").css({background: "red"});
+    // $("input[abc=hello][qwe=world]").css({background: "red"});
+    
+    // $(".msg p").css({background: "red"});
+    // $(".msg>p").css({background: "red"});
+    
+    // $(".msg+span").css({background: "red"});
+    // $(".msg~span").css({background: "red"});
+
+    // $(".list li").css({background: "red"})
+    // $(".list li:first").css({background: "red"})
+    // $(".list li:last").css({background: "red"})
+    // $(".list li:eq(2)").css({background: "red"})
+    // $(".list li:even").css({background: "red"})
+    // $(".list li:odd").css({background: "pink"})
+    // $(".list li:not(.red)").css({background: "red"})
+    
+    // $(".list li:contains(j)").css({background: "red"})
+    // $(".list li:empty").css({background: "red"})
+    // 父以子贵
+    // $(".list:has(.red)").css({border: "solid 1px black"})
+
+    // $("p:hidden").css({background: "red"})
+    // $("p:visible").css({background: "red"})
+    
+
+    // $(".msg").css({border: "solid 1px black"});
+
+    // console.log($(".msg"));
+    // console.log(document.querySelector(".box"))
+    
+    // jqDOM元素数组使用原生的style属性
+    // $(".msg")[0].style.border = "solid 10px blue";
+
+    // 原生DOM元素节点对象使用jq的方法
+    // const omsg = document.querySelector(".msg");
+    // $(omsg).css("border", "solid 10px red");
+
+    // 原生DOM元素的操作 和 jqDOM元素的操作，不能直接互通
+    // 需要转换之后才能使用
+    // jq转原生：解析数组
+    // 原生转jq：使用$()包裹原生DOM
+
+</script>
+</html>

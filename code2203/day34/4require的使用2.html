@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    测试模块之间的执行顺序
+</body>
+<script src="require.js"></script>
+<script>
+    // 已知：有模块A，模块B，模块C
+    // 需求：模块B中使用了模块A的数据，模块C中使用了模块B的数据
+    // 引入顺序：A->B->C
+
+    // ========以上是常规引入顺序=======
+    
+    // 需求：模块B中使用了模块A的数据，模块C中使用了模块B的数据，模块A使用模块C的数据
+
+    // require.js甭管谁用到了谁，先随便引
+    // 因为require.js引入的模块之间为异步执行（同时）
+    // 但是引入成功后的回调函数绝对是同步执行（先...再...）
+
+    require(["./modules/B", "./modules/C", "./modules/A"], (obj1, obj2, obj3)=>{
+        console.log("a,b,c三个模块绝对已经被加载完成");
+        
+        obj1.show(obj3.data);
+        obj2.show(obj1.data);
+        obj3.show(obj2.data);
+    })
+
+
+
+</script>
+</html>

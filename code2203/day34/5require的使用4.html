@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    测试模块引入路径的处理
+</body>
+<!-- 当使用引入了require的script标签的自定义属性，引入主模块时，主模块内引入小模块的路径起始点，以主模块文件自身开始 -->
+<!-- <script src="./require.js" data-main="./js/main"></script> -->
+
+<!-- 当使用独立的script标签引入主模块时，主模块内引入小模块的路径起始点，以当前html文件开始 -->
+<!-- <script src="./js/main.js"></script> -->
+
+<script src="require.js" data-main="./js/main"></script>
+
+</html>

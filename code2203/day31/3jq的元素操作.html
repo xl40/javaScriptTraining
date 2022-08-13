@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span>hello</span>
+        <span>world</span>
+    </div>
+    <input type="button" class="btn" value="按钮">
+</body>
+<script src="jquery.js"></script>
+<script>
+
+    // 创建，并插入
+
+    // 父元素   被   子元素  插入
+    // $(".box").append($("<p>段落1</p>"));
+    // 把  子元素  插入到    父元素
+    // $("<p>段落2</p>").appendTo($(".box"));
+    
+    // $(".box").prepend($("<p>段落1</p>"));
+    // $("<p>段落2</p>").prependTo($(".box"));
+
+    // $(".box").before($("<p>段落1</p>"))
+    // $(".box").after($("<p>段落2</p>"))
+
+    // 删除
+    // $(".box").remove();
+    // $(".box").empty();
+
+    // 修改
+    // $('.box').replaceWith("<p>"+ $(".box").html() +"</p>");
+
+    // 查：选择器和过滤器
+
+    // 拷贝元素
+    // $(".box").clone().appendTo($("body"));
+
+    $(".btn").click(function(){
+        console.log(1);
+    })
+    // 拷贝元素和自身事件
+    $(".btn").clone(true).appendTo($("body"));
+    
+    
+
+
+</script>
+</html>

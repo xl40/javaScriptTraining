@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .cont{position: relative;}
+        .box{float: left;padding: 6px;}
+        .box p{width: 200px;background: #efefef;margin: 0;}
+        .imgbox{border: solid 1px black;padding: 6px;border-radius: 6px;}
+        .imgbox img{width: 200px;}
+    </style>
+    <script>
+        // OOA：瀑布流
+        // 0. 获取所有元素
+        // 1. 区分第一行
+            // 1-1.获取第一行所有元素的高度，作为初始列高
+        // 2. 区分其他行
+            // 2-1.定位
+            // 2-2.从列高中，获取最小列高作为top
+            // 2-3.根据最小列高的索引计算left
+            // 2-4.修改放置了新元素的这一列的列高：为原列高+元素的高度
+            // 从2-1开始重复
+
+        // OOD
+        // OOP
+        class WaterFall{
+            constructor(){
+                // 获取元素
+                this.box = document.querySelectorAll(".box");
+                this.clientW = document.documentElement.clientWidth;
+                // 计算一行最多放几个元素
+                this.num = Math.floor(this.clientW / this.box[0].offsetWidth);
+                // 第一行
+                this.firstLine()
+                // 其他行
+                this.otherLine()
+            }
+            firstLine(){
+                this.heightArr = [];
+                for(let i=0;i<this.num;i++){
+                    // 获取所有高度，存成数组
+                    this.heightArr.push(this.box[i].offsetHeight);
+                }
+            }
+            otherLine(){
+                // console.log(this.heightArr);
+                for(let i=this.num;i<this.box.length;i++){
+                    // 设置元素定位
+                    this.box[i].style.position = "absolute";
+                    // 获取最小值
+                    let min = Math.min(...this.heightArr);
+                    // 获取最小值的索引
+                    let minIndex = this.heightArr.indexOf(min);
+                    // 将最小值作为top
+                    this.box[i].style.top = min + "px";
+                    // 根据最小值的索引计算left
+                    this.box[i].style.left = minIndex * this.box[0].offsetWidth + "px";
+                    // 修改数组中原最小高度：原高度+当前元素高度
+                    this.heightArr[minIndex] += this.box[i].offsetHeight;
+                }
+            }
+        }
+
+
+        onload = function(){
+            new WaterFall();
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="cont">
+        <div class="box">
+            <div class="imgbox">
+                <img src="imgs/7.jpg" alt="">
+            </div>
+            <p>图片描述111图片描述111图片描述111图片描述111图片描述111图片描述111图片描述111图片描述111</p>
+        </div>
+        <div class="box">
+            <div class="imgbox">
+                <img src="imgs/3.jpg" alt="">
+            </div>
+            <p>图片描述111图片描述111图片描述111</p>
+        </div>
+        <div class="box">
+            <div class="imgbox">
+                <img src="imgs/2.jpg" alt="">
+            </div>
+            <p>图片描述111图片描述111图片描述111图片描述111图片描述111图片描述111图片描述111图片描述111图片描述111图片描述111图片描述111</p>
+        </div>
+        <div class="box">
+            <div class="imgbox">
+                <img src="imgs/1.jpg" alt="">
+            </div>
+            <p>图片描述111</p>
+        </div>
+        <div class="box">
+            <div class="imgbox">
+                <img src="imgs/4.jpg" alt="">
+            </div>
+            <p>图片描述111图片描述111图片描述111图片描述111</p>
+        </div>
+        <div class="box">
+            <div class="imgbox">
+                <img src="imgs/5.jpg" alt="">
+            </div>
+            <p>图片描述111</p>
+        </div>
+        <div class="box">
+            <div class="imgbox">
+                <img src="imgs/6.jpg" alt="">
+            </div>
+            <p>图片描述111</p>
+        </div>
+        <div class="box">
+            <div class="imgbox">
+                <img src="imgs/8.jpg" alt="">
+            </div>
+            <p>图片描述111</p>
+        </div>
+        <div class="box">
+            <div class="imgbox">
+                <img src="imgs/9.jpg" alt="">
+            </div>
+            <p>图片描述111</p>
+        </div>
+        <div class="box">
+            <div class="imgbox">
+                <img src="imgs/10.jpg" alt="">
+            </div>
+            <p>图片描述111</p>
+        </div>
+    </div>
+</body>
+</html>

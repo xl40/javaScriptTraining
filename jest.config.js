@@ -30,7 +30,7 @@ module.exports = {
   //   "/node_modules/"
   // ],
 
-  // Indicates which provider should be used to instrument code for coverage
+  // Indicates which provider should be used to instrument code2203 for coverage
   coverageProvider: "v8",
 
   // A list of reporter names that Jest uses when writing coverage reports
@@ -131,10 +131,10 @@ module.exports = {
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
 
-  // The paths to modules that run some code to configure or set up the testing environment before each test
+  // The paths to modules that run some code2203 to configure or set up the testing environment before each test
   // setupFiles: [],
 
-  // A list of paths to modules that run some code to configure or set up the testing framework before each test
+  // A list of paths to modules that run some code2203 to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.

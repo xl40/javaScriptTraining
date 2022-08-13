@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{width: 100px;height: 100px;background: red;position: absolute;left:0;top:40px;}
+    </style>
+</head>
+<body>
+    <input type="button" id="btn1" value="开始">
+    <div class="box">
+        文字
+    </div>
+</body>
+<script src="jquery.js"></script>
+<script>
+
+    $("#btn1").click(function(){
+        $(".box").animate({
+            left: 500,
+            background:"yellow",
+            fontSize: 50
+        }, 1000, ()=>{
+            console.log("动画结束了")
+        })
+    })
+    
+
+
+</script>
+</html>

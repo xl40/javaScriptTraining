@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 轮播图的皮肤包 -->
+    <link rel="stylesheet" href="jquery.banner.css">
+</head>
+<body>
+    <div class="banner1 cont"></div>
+    <div class="banner2 cont"></div>
+</body>
+<script src="jquery.js"></script>
+<script src="jquery.banner.js"></script>
+<script>
+    // 需求：
+    // 参数1：图片数据，必传
+    // 参数2：配置对象
+        // prev和next，左右按钮切换，默认为true
+        // list，分页器切换，默认为true
+        // autoPlay，自动切换，默认为true
+        // index，默认索引，默认为0
+        // moveTime，图片切换时间，默认为300
+        // delayTime，自动切换时的间隔时间，默认为3000
+
+    const imgs = [{
+        "bannerId": "banner-89121200-623e-11ec-948c-0321a62de7ce",
+        "alt": "1",
+        "title": "1",
+        "src": "http://icodeilife.club:3000/uploads/a77820ab34dbdcb45218395339684cb9-banner1.jpg",
+        "time": "1640078126880",
+        "author": "admin"
+    },{
+        "bannerId": "banner-90a96e00-623e-11ec-948c-0321a62de7ce",
+        "alt": "2",
+        "title": "2",
+        "src": "http://icodeilife.club:3000/uploads/d79b21cc8faa92b4c7040d9246860c2c-banner2.jpg",
+        "time": "1640078139616",
+        "author": "admin"
+    },{
+        "bannerId": "banner-b25bd560-623e-11ec-948c-0321a62de7ce",
+        "alt": "3",
+        "title": "3",
+        "src": "http://icodeilife.club:3000/uploads/c2e67507dfccac173062f63605a48f7a-banner3.jpg",
+        "time": "1640078196150",
+        "author": "admin"
+    },{
+        "bannerId": "banner-b92f9340-623e-11ec-948c-0321a62de7ce",
+        "alt": "4",
+        "title": "4",
+        "src": "http://icodeilife.club:3000/uploads/04728ef96a5254c87a1e86351f668907-banner4.jpg",
+        "time": "1640078207604",
+        "author": "admin"
+    },{
+        "bannerId": "banner-bebfad90-623e-11ec-948c-0321a62de7ce",
+        "alt": "5",
+        "title": "5",
+        "src": "http://icodeilife.club:3000/uploads/120dbfb4f1ba3d86131bd32ed4b3ee6b-banner5.jpg",
+        "time": "1640078216937",
+        "author": "admin"
+    }];
+
+    $(".banner1").banner(imgs);
+
+    $(".banner2").banner(imgs,{
+        list:false,
+        delayTime:4000
+    });
+
+</script>
+</html>
