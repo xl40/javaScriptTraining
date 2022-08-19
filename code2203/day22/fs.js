@@ -1,4 +1,4 @@
-const f = require("code/day22/fs");
+const f = require("fs");
 
 // console.log(f);
 

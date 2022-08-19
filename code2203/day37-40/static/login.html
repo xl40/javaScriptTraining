@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>小米账号 - 注册/登录</title>
-    <link rel="stylesheet" href="css/Puplic.css">
-    <link rel="stylesheet" href="css/Login.css">
+    <link rel="stylesheet" href="./css/Puplic.css">
+    <link rel="stylesheet" href="./css/Login.css">
 </head>
 <body>
     <div class="account-content">
@@ -122,7 +122,7 @@
         </div>
     </div>
 </body>
-<script src="libs/jquery.js"></script>
+<script src="./libs/jquery.js"></script>
 <script>
     // 生成验证码
     // 四位数字的随机验证码
@@ -236,7 +236,7 @@
                     localStorage.setItem("username", res.data.username);
 
                     if(confirm("登录成功，是否跳转到首页")){
-                        location.assign("index.html");
+                        location.assign("http://localhost:3000/index.html");
                         // ...
                     }
                 }else if(res.code === 2){

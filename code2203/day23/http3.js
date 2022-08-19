@@ -1,6 +1,6 @@
-const http = require("code/day23/http");
+const http = require("http");
 const fs = require("fs");
-const url = require("code/day23/url");
+const url = require("url");
 const qs = require("querystring");
 
 // 路由设定

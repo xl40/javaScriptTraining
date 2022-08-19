@@ -73,7 +73,7 @@ function login(req, res, data){
     // }else{
         // 失败
         // obj.title = "login error";
-        // obj.code2203 = 444;
+        // obj.code = 444;
         // obj.data = null;
     // }
     res.write(JSON.stringify(obj));

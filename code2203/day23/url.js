@@ -1,4 +1,4 @@
-const url = require("code/day23/url");
+const url = require("url");
 
 const urlStr = "http://liyang:123456@www.liyang.com:3000/abc/qwe/zxc/index.html?stuName=张三&age=18&sex=男#top";
 console.log(urlStr);

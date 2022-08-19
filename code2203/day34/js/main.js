@@ -31,7 +31,7 @@ require.config({
         jq: "https://lib.baomitu.com/jquery/3.6.0/jquery"
     }
 })
-require(["hello", "code/day34/modules/C", "world", "jq", "random"], (a, c, b, _jq, r)=>{
+require(["hello", "C", "world", "jq", "random"], (a, c, b, _jq, r)=>{
     console.log(a);
     console.log(b);
     console.log(c);

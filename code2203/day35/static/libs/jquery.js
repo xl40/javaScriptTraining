@@ -328,8 +328,8 @@ jQuery.extend( {
 
 		if ( code ) {
 
-			// If the code2203 includes a valid, prologue position
-			// strict mode pragma, execute code2203 by injecting a
+			// If the code includes a valid, prologue position
+			// strict mode pragma, execute code by injecting a
 			// script tag into the document.
 			if ( code.indexOf( "use strict" ) === 1 ) {
 				script = document.createElement( "script" );
@@ -510,7 +510,7 @@ jQuery.extend( {
 	support: support
 } );
 
-// JSHint would error on this code2203 due to the Symbol not being defined in ES5.
+// JSHint would error on this code due to the Symbol not being defined in ES5.
 // Defining this global in .jshintrc would create a danger of using the global
 // unguarded in another place, it seems safer to just disable JSHint for these
 // three lines.
@@ -3860,7 +3860,7 @@ var dataUser = new Data();
 //	2. Improve the module's maintainability by reducing the storage
 //		paths to a single mechanism.
 //	3. Use the same single mechanism to support "private" and "user" data.
-//	4. _Never_ expose "private" data to user code2203 (TODO: Drop _data, _removeData)
+//	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
 //	5. Avoid exposing implementation details on user objects (eg. expando properties)
 //	6. Provide a clear path for implementation upgrade to WeakMap in 2014
 
@@ -9039,7 +9039,7 @@ jQuery.ajaxSettings.xhr = function() {
 
 var xhrSuccessStatus = {
 
-		// File protocol always yields status code2203 0, assume 200
+		// File protocol always yields status code 0, assume 200
 		0: 200,
 
 		// Support: IE9

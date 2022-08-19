@@ -12,7 +12,7 @@ require.config({
     }
 });
 
-require(["cookie", "code/day35/static/modules/getGoods", "cartRender", "changeLocal", "allCheck"],(_cookie, gg, cr, cl, ac)=>{
+require(["cookie", "getGoods", "cartRender", "changeLocal", "allCheck"],(_cookie, gg, cr, cl, ac)=>{
     // 1. 获取本地存储中的数据
     let goods = $.cookie("goods") ? JSON.parse($.cookie("goods")) : [];
     // 购物车空状态判断和处理

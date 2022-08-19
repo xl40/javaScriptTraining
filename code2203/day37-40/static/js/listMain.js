@@ -13,7 +13,7 @@ require.config({
     }
 })
 // 引入各种小模块，实现商品列表功能
-require(["cookie", "code/day37-40/static/modules/getGoods", "listRender", "setLocal"],(_cookie, gg, lr, sl)=>{
+require(["cookie", "getGoods", "listRender", "setLocal"],(_cookie, gg, lr, sl)=>{
 
     // 守卫去购物车的链接
     $(".goCartLink").click(function(){
@@ -66,7 +66,7 @@ require(["cookie", "code/day37-40/static/modules/getGoods", "listRender", "setLo
         // 登录守卫
         if(!localStorage.getItem("token")){
             if(confirm("没有登录，不能加入购物车，是否要跳转到登录呢？")){
-                location.assign("../login.html");
+                location.assign("http://localhost:3000/login.html");
             }
             return;
         }

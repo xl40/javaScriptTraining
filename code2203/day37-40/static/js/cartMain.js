@@ -4,7 +4,7 @@ require.config({
     paths:{
         jq: "../libs/jquery",
         "cookie": "../libs/jquery.cookie",
-        number:"./number"
+        number:"../js/number"
     },
     shim:{
         cookie:{
@@ -13,7 +13,7 @@ require.config({
     }
 });
 
-require(["cookie", "code/day37-40/static/modules/getGoods", "cartRender", "changeLocal", "allCheck","number"],(_cookie, gg, cr, cl, ac, _number)=>{
+require(["cookie", "getGoods", "cartRender", "changeLocal", "allCheck","number"],(_cookie, gg, cr, cl, ac, _number)=>{
     // 1. 获取本地存储中的数据
     let goods = $.cookie("goods") ? JSON.parse($.cookie("goods")) : [];
     // 购物车空状态判断和处理

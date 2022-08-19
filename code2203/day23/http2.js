@@ -1,4 +1,4 @@
-const http = require("code/day23/http");
+const http = require("http");
 const fs = require("fs");
 
 // 需求：

@@ -213,7 +213,7 @@ var requirejs, require, define;
             },
             registry = {},
             //registry of just enabled modules, to speed
-            //cycle breaking code2203 when lots of modules
+            //cycle breaking code when lots of modules
             //are registered, but not activated.
             enabledRegistry = {},
             undefEvents = {},
@@ -1032,7 +1032,7 @@ var requirejs, require, define;
                         onError(err);
                     });
 
-                    //Allow plugins to load other code2203 without having to know the
+                    //Allow plugins to load other code without having to know the
                     //context or how to 'complete' the load.
                     load.fromText = bind(this, function (text, textAlt) {
                         /*jslint evil: true */
@@ -1549,7 +1549,7 @@ var requirejs, require, define;
              * Called to enable a module if it is still in the registry
              * awaiting enablement. A second arg, parent, the parent module,
              * is passed in for context, when this method is overridden by
-             * the optimizer. Not shown here to keep code2203 compact.
+             * the optimizer. Not shown here to keep code compact.
              */
             enable: function (depMap) {
                 var mod = getOwn(registry, depMap.id);
@@ -1913,11 +1913,11 @@ var requirejs, require, define;
                     //Check if node.attachEvent is artificially added by custom script or
                     //natively supported by browser
                     //read https://github.com/requirejs/requirejs/issues/187
-                    //if we can NOT find [native code2203] then it must NOT natively supported.
+                    //if we can NOT find [native code] then it must NOT natively supported.
                     //in IE8, node.attachEvent does not have toString()
-                    //Note the test for "[native code2203" with no closing brace, see:
+                    //Note the test for "[native code" with no closing brace, see:
                     //https://github.com/requirejs/requirejs/issues/273
-                    !(node.attachEvent.toString && node.attachEvent.toString().indexOf('[native code2203') < 0) &&
+                    !(node.attachEvent.toString && node.attachEvent.toString().indexOf('[native code') < 0) &&
                     !isOpera) {
                 //Probably IE. IE (at least 6-8) do not fire
                 //script onload right after executing the script, so

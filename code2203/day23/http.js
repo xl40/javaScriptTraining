@@ -1,4 +1,4 @@
-const http = require("code/day23/http");
+const http = require("http");
 
 // 要挂载到端口的程序
 const serObj = http.createServer((req, res)=>{

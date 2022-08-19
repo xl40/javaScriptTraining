@@ -20,7 +20,7 @@ require.config({
     }
 })
 
-require(["hello", "code/day34/modules/C", "world", "jquery.cookie", "jquery.banner"], (a, c, b)=>{
+require(["hello", "C", "world", "jquery.cookie", "jquery.banner"], (a, c, b)=>{
     console.log(a);
     console.log(b);
     console.log(c);

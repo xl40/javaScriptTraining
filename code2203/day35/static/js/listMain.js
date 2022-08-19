@@ -13,7 +13,7 @@ require.config({
     }
 })
 // 引入各种小模块，实现商品列表功能
-require(["cookie", "code/day35/static/modules/getGoods", "listRender", "setLocal"],(_cookie, gg, lr, sl)=>{
+require(["cookie", "getGoods", "listRender", "setLocal"],(_cookie, gg, lr, sl)=>{
     // 1. 请求数据
     const serUrl = "http://localhost:3000/api";
     gg(serUrl, "getGoods", res=>{
